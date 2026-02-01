@@ -1,0 +1,48 @@
+import type { Metadata } from 'next';
+import './globals.css';
+
+export const metadata: Metadata = {
+  title: 'Portfolio | Adaze Oviawe',
+  description: 'UX Designer - Building user-centered digital experiences',
+  keywords: ['portfolio', 'UX designer', 'product design', 'Amazon', 'Omnicom'],
+  authors: [{ name: 'Adaze Oviawe' }],
+  openGraph: {
+    title: 'Portfolio | Adaze Oviawe',
+    description: 'UX Designer - Building user-centered digital experiences',
+    url: 'https://ahdahzeh.com',
+    siteName: 'Adaze Oviawe Portfolio',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Portfolio | Adaze Oviawe',
+    description: 'UX Designer - Building user-centered digital experiences',
+  },
+};
+
+export const viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 5,
+};
+
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
+  return (
+    <html lang="en" suppressHydrationWarning>
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){var t=localStorage.getItem('theme');if(t==='dark'){document.documentElement.classList.add('dark');document.documentElement.style.colorScheme='dark';}else{document.documentElement.classList.remove('dark');document.documentElement.style.colorScheme='light';if(!t)localStorage.setItem('theme','light');}})();`,
+          }}
+        />
+      </head>
+      <body className="antialiased" suppressHydrationWarning>
+        {children}
+      </body>
+    </html>
+  );
+}
