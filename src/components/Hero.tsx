@@ -63,9 +63,9 @@ export default function Hero({ animationDelayMs = 0 }: HeroProps) {
   }, [animationDelayMs]);
 
   return (
-    <section className="w-full mt-5 sm:mt-6 md:mt-[100px] mb-[27px] relative min-h-[400px] md:min-h-[300px] bg-white dark:bg-black px-4 sm:px-6 md:px-8">
+    <section className="w-full mt-5 sm:mt-6 md:mt-[100px] mb-[27px] relative min-h-[400px] md:min-h-[300px] bg-white dark:bg-black">
       <div className="max-w-[1200px] mx-auto">
-        <div className="flex flex-col md:flex-row md:gap-[80px] gap-10 items-start relative z-40">
+        <div className="flex flex-col md:flex-row md:gap-[80px] gap-8 items-start relative z-40">
           {/* Left - Name with typewriter animation */}
           <div className="flex flex-col gap-2 md:gap-4" aria-label={`Name: ${personalInfo.name || 'Adaze Oviawe'}`}>
             <span className="sr-only">{personalInfo.name || 'Adaze Oviawe'}</span>
@@ -116,7 +116,7 @@ export default function Hero({ animationDelayMs = 0 }: HeroProps) {
               <span className="text-base text-black dark:text-white">Want to chat?</span>
               <a
                 href={`mailto:${personalInfo.email.replace(/^mailto:/i, '')}?subject=Hey!%20👋`}
-                className="flex items-center justify-center px-5 h-[51px] min-w-[158px] bg-[#006eff] rounded-[13px] hover:bg-[#0060d9] transition-colors font-medium text-white"
+                className="flex items-center justify-center px-6 py-3 min-w-[160px] bg-[#006eff] rounded-2xl hover:bg-[#0060d9] transition-colors font-medium text-white"
               >
                 Get In Touch
               </a>

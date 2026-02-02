@@ -12,11 +12,13 @@ export const personalInfo = {
   bio: `I have over 6 years of experience solving problems, designing experiences, and building digital products. I've worked with both startups and enterprise teams at companies like Amazon, Block Equity Group, and Omnicom, delivering user-centered solutions that drive measurable results.`,
   bioCompanies: [
     { name: "Amazon", url: "https://www.amazon.com" },
-    { name: "Block Equity Group", url: "https://www.blockequitygroup.com" },
+    { name: "Block Equity Group", url: "https://www.blockequitygr.com" },
     { name: "Omnicom", url: "https://www.omnicomhealthgroup.com" },
   ] as const,
   availableForWork: true,
   contactMessage: "I'm always happy to chat and talk shop. Send me a note!",
+  /** Video URL (local path e.g. /videos/intro.mp4) shown 50px to the right of Get In Touch. Set to a string to enable. */
+  contactVideoUrl: undefined as string | undefined,
 };
 
 export const socialLinks = {
@@ -53,10 +55,20 @@ export interface WorkItem {
     /** When set, narrative is split: part1 + optional middle content (e.g. wireframes) + part2 */
     narrativePart1?: string;
     narrativePart2?: string;
+    /** Optional paragraph for the "Launched Site" section (e.g. Vemlidy case study) */
+    launchedSiteNarrative?: string;
+    /** Optional video of the current site (Loom/YouTube/Vimeo URL or path to local video; Vemlidy case study) */
+    launchedSiteVideoUrl?: string;
+    /** Optional images for the Launched Site carousel (when using generic work template) */
+    launchedSiteImages?: { src: string; alt: string; caption?: string }[];
     images?: { src: string; alt: string; caption?: string }[];
     videoUrl?: string;
     /** Optional video URL for WeChipn case study Problem & Solution section (file path or Loom/YouTube/Vimeo embed) */
     problemSolutionVideoUrl?: string;
+    /** Optional video URL for WeChipn case study Mobile View section (file path or Loom/YouTube/Vimeo embed) */
+    mobileViewVideoUrl?: string;
+    /** Optional sections for rich case studies (e.g. Amazon): title, content, and images per section */
+    sections?: { title?: string; content?: string; images?: { src: string; alt: string; caption?: string }[] }[];
   };
 }
 
@@ -108,13 +120,16 @@ export const workHistory: WorkItem[] = [
     caseStudy: {
       title: "Vemlidy",
       subtitle: "Hepatitis B Patient Engagement",
+      roleDisplay: "Senior UX Designer",
+      timeline: "2025",
       narrative: `Vemlidy is a hepatitis B treatment by Gilead Sciences. I led the UX design for the patient engagement platform, working closely with medical, legal, and regulatory teams to ensure everything met compliance standards while still feeling human and approachable.
 
-Healthcare UX is a unique challenge. You're designing for patients who may be dealing with difficult diagnoses, for clinicians who are already overwhelmed with administrative burden, and for clients who operate under strict regulatory requirements. Every design decision carries weight.
+Healthcare UX is a unique challenge. You're designing for patients who may be dealing with difficult diagnoses, for clinicians who are already overwhelmed with administrative burden, and for clients who operate under strict regulatory requirements. Every design decision carries weight.`,
+      narrativePart2: `My approach was rooted in research. I conducted empathy interviews with patients to understand their daily struggles with medication adherence. These insights directly informed the interfaces I designed—medication reminder systems that actually fit into people's lives, resources that help patients understand their condition.
 
-My approach was rooted in research. I conducted empathy interviews with patients to understand their daily struggles with medication adherence. These insights directly informed the interfaces I designed—medication reminder systems that actually fit into people's lives, resources that help patients understand their condition.
-
-The work focused on accessibility and health literacy, ensuring patients from all backgrounds could navigate the platform with ease.`
+The work focused on accessibility and health literacy, ensuring patients from all backgrounds could navigate the platform with ease.`,
+      launchedSiteNarrative: `The site launched with separate experiences for healthcare providers (HCP) and patients. On the HCP side, I designed the efficacy and safety experience—pivotal and long-term data, trials, and guidelines—so clinicians could quickly find what they need. My contribution was end-to-end UX from wireframes through launch: defining structure, content hierarchy, and interactions while working with medical, legal, and regulatory to keep everything compliant and on-brand. The live site reflects that—one experience for the moments that matter to patients, and one for the evidence that matters to clinicians.`,
+      launchedSiteVideoUrl: "/videos/work/vemlidy/Vemlidy%20crop.mp4",
     }
   },
   {
@@ -125,12 +140,13 @@ The work focused on accessibility and health literacy, ensuring patients from al
     period: "2024",
     description: "Founded UX vision and led design for small business financing portal",
     color: "#f59e0b",
-    image: "/images/work/block-equity-group/1.png",
-    coverStyle: true,
+    image: "/images/work/block-equity-group/cover.png",
     link: "https://www.blockequitygr.com/",
     caseStudy: {
       title: "Block Equity Group",
       subtitle: "Small Business Financing Platform",
+      roleDisplay: "Product Designer",
+      timeline: "2024",
       narrative: `Block Equity Group brought me on as their first Product Designer to build their small business financing platform from scratch. It was the kind of opportunity where you get to shape everything—not just the UI, but the entire product vision and design system.
 
 Small business financing is, frankly, a mess. Applications involve mountains of paperwork, endless back-and-forth between borrowers and lenders, and timelines that stretch into weeks or months. Block Equity wanted to digitize and streamline the process—offering term loans, revenue-based financing, lines of credit, bridge loans, SBA loans, invoice factoring, and more through a single, easy-to-use experience.
@@ -188,13 +204,18 @@ The platform launched successfully. Block Equity Group continues to help small b
 
 The design challenge was unique—creating interfaces that feel reassuring rather than clinical, while still meeting strict pharmaceutical compliance requirements. I worked closely with mental health advocates and medical teams to ensure the tone and functionality supported patients' emotional needs.
 
-The platform includes medication tracking, appointment reminders, and educational resources—all designed with sensitivity to the mental health context.`
+The platform includes medication tracking, appointment reminders, and educational resources—all designed with sensitivity to the mental health context.`,
+      launchedSiteNarrative: `The site launched with a patient-focused experience that prioritizes clarity and emotional support. On the patient side, I designed the core experience—medication tracking, appointment reminders, and educational resources—so users could manage their care without feeling overwhelmed. My contribution was end-to-end UX from wireframes through launch: defining structure, content hierarchy, and interactions while working with mental health advocates and medical teams to keep the tone reassuring and compliant. The live site reflects that—one experience built for the moments that matter to people managing mental health conditions.`,
+      launchedSiteImages: [
+        { src: "/images/work/abilify/1.png", alt: "Abilify launched site", caption: "Patient support platform — key screens." },
+        { src: "/images/work/abilify/2.png", alt: "Abilify launched site", caption: "Patient support platform — resources and tracking." },
+      ],
     }
   },
   {
     id: "6",
-    slug: "meibo",
-    company: "Meibo",
+    slug: "miebo",
+    company: "Miebo",
     role: "Senior UX Designer",
     period: "2025",
     description: "Dry eye treatment patient engagement platform",
@@ -202,18 +223,23 @@ The platform includes medication tracking, appointment reminders, and educationa
     image: "/images/work/meibo/cover.png",
     coverStyle: true,
     caseStudy: {
-      title: "Meibo",
+      title: "Miebo",
       subtitle: "Dry Eye Treatment Launch",
-      narrative: `Meibo is a dry eye treatment by Bausch + Lomb. I led the UX design for the patient engagement platform, working closely with medical, legal, and regulatory teams to ensure everything met compliance standards while still feeling human and approachable.
+      narrative: `Miebo is a dry eye treatment by Bausch + Lomb. I led the UX design for the patient engagement platform, working closely with medical, legal, and regulatory teams to ensure everything met compliance standards while still feeling human and approachable.
 
 This project won a MM+M Awards GOLD for Product Launch, which was a proud moment for the team. The platform helps patients understand their condition, track their treatment progress, and connect with healthcare providers.
 
-My approach focused on simplicity and clarity—dry eye patients often experience screen fatigue, so every interface decision was made with their comfort in mind.`
+My approach focused on simplicity and clarity—dry eye patients often experience screen fatigue, so every interface decision was made with their comfort in mind.`,
+      launchedSiteNarrative: `The site launched with a patient engagement experience that puts clarity and comfort first. I designed the patient-facing experience—condition education, treatment progress, and connection to healthcare providers—so users could understand their care without added visual strain. My contribution was end-to-end UX from wireframes through launch: defining structure, content hierarchy, and interactions while working with medical, legal, and regulatory to keep everything compliant and on-brand. The live site reflects that—one experience for the moments that matter to patients, and this project went on to win a MM+M Awards GOLD for Product Launch.`,
+      launchedSiteImages: [
+        { src: "/images/work/meibo/desktop.png", alt: "Miebo launched site — desktop", caption: "Miebo patient engagement — desktop experience." },
+        { src: "/images/work/meibo/mobile.png", alt: "Miebo launched site — mobile", caption: "Miebo patient engagement — mobile experience." },
+      ],
     }
   },
   {
     id: "7",
-    slug: "wechipin",
+    slug: "wechipn",
     company: "WeChipn",
     role: "Product Designer",
     period: "2024",
@@ -249,7 +275,8 @@ The Rewards Center and Actions pages are key parts of the WeChipn program. The b
 The entire webapp is responsive and the mobile optimization was done to keep the same level of engagement and interaction at the user's fingertips. The menu CTAs were condensed into a hamburger menu and the 3-column structure was condensed into a 1-column image-focused card.
 
 Key takeaways: If more time was allotted for the project I would have loved to continue testing even after the project was completed to see how well users are engaging with the app. Working on the code side by side with the engineer made for a more seamless and efficient process—I knew the proper way all my designs should be translated.`,
-      problemSolutionVideoUrl: "/videos/work/wechipn/problem-solution-1.mp4"
+      problemSolutionVideoUrl: "/videos/work/wechipn/problem-solution-1.mp4",
+      mobileViewVideoUrl: "/videos/work/wechipn/ScreenRecording_02-01-2026%2017-40-46_1.mp4"
     }
   },
   {
@@ -264,7 +291,9 @@ Key takeaways: If more time was allotted for the project I would have loved to c
     coverStyle: true,
     caseStudy: {
       title: "Amazon",
-      subtitle: "Inspire & Shop By Interest",
+      subtitle: "Inspirational Shopping",
+      roleDisplay: "UX Designer",
+      timeline: "2023",
       narrative: `Working at Amazon was my first experience designing at true scale. I joined the team working on Amazon Inspire and Shop By Interest—experimental shopping experiences aimed at helping customers discover products they didn't know they wanted.
 
 The challenge was fascinating: Amazon has millions of products, but traditional search and category navigation only work when you know what you're looking for. What about inspiration-driven shopping? What about the customer who's just browsing, open to discovering something new?
@@ -275,7 +304,11 @@ The process was heavily data-driven. We ran constant A/B tests, sometimes testin
 
 I contributed to component libraries that needed to scale across different product categories while maintaining consistency with Amazon's broader design language. It was a lesson in systems thinking—every component I designed would be used by other teams, so documentation and flexibility were crucial.
 
-The work reached millions of customers. But beyond the scale, what I took away was an understanding of how large organizations ship product. The collaboration required, the processes that enable speed without chaos, the importance of clear communication across distributed teams.`
+The work reached millions of customers. But beyond the scale, what I took away was an understanding of how large organizations ship product. The collaboration required, the processes that enable speed without chaos, the importance of clear communication across distributed teams.`,
+      sections: [
+        // Add more sections from your PDF. Each section can have title, content, and images.
+        // Example: { title: "Design system", content: "Paste text from PDF...", images: [{ src: "/images/work/amazon/page-1.png", alt: "Description", caption: "Optional caption" }] }
+      ],
     }
   },
   {
@@ -392,10 +425,10 @@ export interface ArchiveProject {
 
 export const archiveProjects: ArchiveProject[] = [
   { id: "1", name: "Patients and Purpose", role: "UX Design", year: "2025" },
-  { id: "2", name: "Block Equity Group", role: "UX Design", year: "2024" },
+  { id: "2", name: "Block Equity Group", role: "UX Design", year: "2024", link: "/work/block-equity-group" },
   { id: "3", name: "Nova One Technology", role: "UX Design", year: "2024" },
   { id: "4", name: "Well Engineered Website", role: "3D/UX Design", year: "2024" },
-  { id: "5", name: "WeChipn", role: "UX Design", year: "2024" },
+  { id: "5", name: "WeChipn", role: "UX Design", year: "2024", link: "/work/wechipn" },
   { id: "6", name: "Body By Raven Tracy", role: "3D Design", year: "2024" },
   { id: "7", name: "Well Engineered", role: "Apparel Design", year: "2024" },
   { id: "8", name: "Poise By Amelia J", role: "Web Design", year: "2024" },
@@ -405,16 +438,16 @@ export const archiveProjects: ArchiveProject[] = [
   { id: "12", name: "Davido (MSG)", role: "Apparel Design", year: "2024" },
   { id: "13", name: "Playhouse Worldwide", role: "Web Design", year: "2024" },
   { id: "14", name: "Mikewest NYC", role: "3D/Web Design", year: "2024" },
-  { id: "15", name: "Swank Studios", role: "Design", year: "2024" },
+  { id: "15", name: "Swank Studios", role: "Design", year: "2024", link: "/work/swank-studio" },
   { id: "16", name: "Manifested Luck", role: "Web Design", year: "2024" },
   { id: "17", name: "Freelance Design", role: "Lead Design", year: "2023" },
-  { id: "18", name: "Amazon", role: "UX Design", year: "2023" },
+  { id: "18", name: "Amazon", role: "UX Design", year: "2023", link: "/work/amazon" },
   { id: "19", name: "Blacktooth Publishing", role: "Web Design", year: "2023" },
   { id: "20", name: "Renauthentics", role: "Web Design", year: "2023" },
   { id: "21", name: "Better School", role: "UX Design", year: "2023" },
   { id: "22", name: "Well Engineered", role: "Creative Direction", year: "2022" },
   { id: "23", name: "ADP List", role: "Web Design", year: "2022" },
-  { id: "24", name: "Eki Express", role: "UX Design", year: "2022" },
+  { id: "24", name: "Eki Express", role: "UX Design", year: "2022", link: "/work/eki-express" },
   { id: "25", name: "Malcolm X Shabazz Center", role: "Creative Direction/Graphic", year: "2022" },
   { id: "26", name: "Tech Packs", role: "Design", year: "2021" },
   { id: "27", name: "Career Path", role: "Design", year: "2021" },

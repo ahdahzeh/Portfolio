@@ -4,13 +4,15 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "dev:turbo": "next dev --turbo",
+    "dev:fresh": "rm -rf .next && next dev --port 3000",
+    "dev:clean": "rm -rf .next node_modules && npm install && next dev --port 3000",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
   },
   "dependencies": {
-    "framer-motion": "^12.29.2",
-    "next": "^15.5.11",
+    "next": "^16.1.6",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
   },

@@ -36,6 +36,13 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* Hide Next.js dev overlay portal */
+nextjs-portal {
+  display: none !important;
+  left: unset;
+  top: 6px;
+}
+
 /* Button hover using foreground (for theme toggle) */
 .hover\:bg-foreground\/10:hover {
   background-color: color-mix(in srgb, var(--foreground) 10%, transparent);

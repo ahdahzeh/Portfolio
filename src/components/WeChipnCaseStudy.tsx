@@ -1,6 +1,23 @@
+'use client';
+
 import Link from 'next/link';
 import Image from 'next/image';
+import ScrollProgressBar from '@/components/ScrollProgressBar';
+import SectionNav, { type SectionNavItem } from '@/components/SectionNav';
 import VideoWithFallback from '@/components/VideoWithFallback';
+
+const WECHIPN_SECTIONS: SectionNavItem[] = [
+  { id: 'overview', label: 'Overview' },
+  { id: 'old-experience', label: 'Old experience' },
+  { id: 'problem-solution', label: 'Problem & solution' },
+  { id: 'landing', label: 'Landing' },
+  { id: 'rewards', label: 'Rewards' },
+  { id: 'kpis', label: 'KPIs & process' },
+  { id: 'design-decision', label: 'Design decision' },
+  { id: 'mobile-view', label: 'Mobile view' },
+  { id: 'figma', label: 'Figma' },
+  { id: 'takeaways', label: 'Takeaways' },
+];
 
 const IMG = {
   logo: '/images/work/wechipn/wechipn-logo.png',
@@ -14,7 +31,6 @@ const IMG = {
   designDecision: '/images/work/wechipn/wechipn-design-decision.png',
   mobileView: '/images/work/wechipn/wechipn-mobile-view.png',
   figma: '/images/work/wechipn/wechipn-figma-design.png',
-  keyTakeaways: '/images/work/wechipn/wechipn-key-takeaways.png',
 };
 
 interface WeChipnCaseStudyProps {
@@ -25,6 +41,8 @@ interface WeChipnCaseStudyProps {
   videoUrl?: string;
   /** When set, the Problem & Solution section shows this video instead of the static image */
   problemSolutionVideoUrl?: string;
+  /** When set, the Mobile View section shows this video instead of the static image */
+  mobileViewVideoUrl?: string;
 }
 
 export default function WeChipnCaseStudy({
@@ -34,9 +52,12 @@ export default function WeChipnCaseStudy({
   timeline,
   videoUrl,
   problemSolutionVideoUrl,
+  mobileViewVideoUrl,
 }: WeChipnCaseStudyProps) {
   return (
-    <article className="max-w-[1200px] mx-auto px-4 py-16 md:py-24">
+    <article className="max-w-[1200px] mx-auto px-6 py-16 md:py-24">
+      <ScrollProgressBar />
+      <SectionNav sections={WECHIPN_SECTIONS} />
       <Link
         href="/"
         className="text-gray-500 hover:text-gray-700 dark:text-gray-300 text-sm mb-8 inline-block"
@@ -44,17 +65,17 @@ export default function WeChipnCaseStudy({
         ← Back
       </Link>
 
-      {/* Hero: centered title, meta row, then full-width image (Terrace-style) */}
-      <section className="mt-20 md:mt-[88px] text-center mb-16">
-        <h1 className="text-[40px] leading-[40px] font-normal text-black dark:text-white tracking-[-0.02em] mb-6">
+      {/* Hero */}
+      <section id="overview" className="mb-16 text-center w-full max-w-[1200px] mx-auto scroll-mt-24">
+        <h1 className="text-4xl md:text-5xl font-normal text-black dark:text-white tracking-tight mb-4">
           {title}: {subtitle ?? 'UX Design'}
         </h1>
-        <div className="flex flex-wrap justify-center gap-4 md:gap-8 text-sm text-black/60 dark:text-white/60 mb-8">
-          {timeline != null && <span>Years: {timeline}</span>}
+        <div className="flex flex-wrap justify-center gap-4 md:gap-8 text-sm text-gray-500 dark:text-gray-400 mb-8">
+          {timeline != null && <span>Timeline: {timeline}</span>}
           {roleDisplay != null && <span>Title: {roleDisplay}</span>}
           <span>Project: {title}</span>
         </div>
-        <div className="relative w-full aspect-video rounded-[20px] overflow-hidden border-2 border-gray-200 dark:border-gray-600 bg-gray-900">
+        <div className="relative w-full aspect-video rounded-2xl overflow-hidden border-2 border-gray-200 dark:border-gray-600 bg-[#F3F3F3]">
           {videoUrl ? (
             <iframe
               src={videoUrl.replace('/share/', '/embed/')}
@@ -68,7 +89,7 @@ export default function WeChipnCaseStudy({
               src={IMG.hero}
               alt="WeChipn product preview"
               fill
-              className="object-cover w-full h-full"
+              className="object-contain w-full h-full"
               sizes="100vw"
             />
           )}
@@ -76,7 +97,7 @@ export default function WeChipnCaseStudy({
       </section>
 
       {/* Intro paragraph */}
-      <section className="mb-12 text-center">
+      <section className="mb-12 text-center scroll-mt-24">
         <p className="text-black dark:text-white leading-relaxed max-w-[934px] mx-auto text-center">
           WeChipn is a social organization in partnership with Live Nation that pushes for social
           action and community building. Their mission is to catalyze One Billion actions worldwide
@@ -87,7 +108,7 @@ export default function WeChipnCaseStudy({
       </section>
 
       {/* The Old Experience */}
-      <section className="mb-12 text-center">
+      <section id="old-experience" className="mb-12 text-center scroll-mt-24">
         <h2 className="text-xl md:text-2xl font-medium text-[#8b5cf6] dark:text-[#a78bfa] mb-4">
           The Old Experience
         </h2>
@@ -98,20 +119,20 @@ export default function WeChipnCaseStudy({
           and where people were dropping off.
         </p>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          <div className="relative aspect-[4/3] rounded-[10px] overflow-hidden border border-gray-200 dark:border-gray-700 bg-gray-100 dark:bg-gray-900">
+          <div className="relative aspect-[4/3] rounded-xl overflow-hidden border border-gray-200 dark:border-gray-700 bg-[#F3F3F3]">
             <Image src={IMG.old1} alt="Old WeChipn home and rewards" fill className="object-cover" sizes="(max-width: 768px) 100vw, 33vw" />
           </div>
-          <div className="relative aspect-[4/3] rounded-[10px] overflow-hidden border border-gray-200 dark:border-gray-700 bg-gray-100 dark:bg-gray-900">
+          <div className="relative aspect-[4/3] rounded-xl overflow-hidden border border-gray-200 dark:border-gray-700 bg-[#F3F3F3]">
             <Image src={IMG.old2} alt="Old WeChipn signup" fill className="object-cover" sizes="(max-width: 768px) 100vw, 33vw" />
           </div>
-          <div className="relative aspect-[4/3] rounded-[10px] overflow-hidden border border-gray-200 dark:border-gray-700 bg-gray-100 dark:bg-gray-900">
+          <div className="relative aspect-[4/3] rounded-xl overflow-hidden border border-gray-200 dark:border-gray-700 bg-[#F3F3F3]">
             <Image src={IMG.old3} alt="Old WeChipn volunteer drive" fill className="object-cover" sizes="(max-width: 768px) 100vw, 33vw" />
           </div>
         </div>
       </section>
 
       {/* Problem & Solution */}
-      <section className="mb-12 text-center">
+      <section id="problem-solution" className="mb-12 text-center scroll-mt-24">
         <p className="text-black dark:text-white leading-relaxed max-w-[934px] mx-auto text-center mb-8">
           WeChipn was struggling to retain users. Complicated flows and outdated patterns made it
           hard to engage the customer base—and that was limiting growth. The opportunity was real:
@@ -122,7 +143,7 @@ export default function WeChipnCaseStudy({
           moved quickly and relied on rapid feedback—shipping iterations, testing with real users,
           and refining so we could learn fast without losing sight of the bigger picture.
         </p>
-        <div className="relative w-full aspect-video rounded-[20px] overflow-hidden border border-white/20 bg-gray-900">
+        <div className="relative w-full aspect-video rounded-2xl overflow-hidden border border-white/20 bg-[#F3F3F3]">
           {problemSolutionVideoUrl ? (
             (() => {
               const isEmbed =
@@ -164,7 +185,7 @@ export default function WeChipnCaseStudy({
       </section>
 
       {/* New landing page paragraph */}
-      <section className="mb-8 text-center">
+      <section id="landing" className="mb-8 text-center scroll-mt-24">
         <p className="text-black dark:text-white leading-relaxed max-w-[934px] mx-auto">
           I led with a new landing experience that put big, clear copy and strong CTAs front and
           center—speaking to people who care about community but also expect a product that feels
@@ -175,8 +196,8 @@ export default function WeChipnCaseStudy({
       </section>
 
       {/* Rewards Center & Actions image */}
-      <section className="mb-8">
-        <div className="relative w-full aspect-video rounded-[20px] overflow-hidden border border-white/20 bg-gray-900">
+      <section id="rewards" className="mb-8 scroll-mt-24">
+        <div className="relative w-full aspect-video rounded-2xl overflow-hidden border border-white/20 bg-[#F3F3F3]">
           <Image
             src={IMG.rewardsActions}
             alt="Rewards Center and Actions page"
@@ -200,8 +221,8 @@ export default function WeChipnCaseStudy({
       </section>
 
       {/* KPIs & Process */}
-      <section className="mb-12">
-        <div className="relative w-full rounded-[20px] overflow-hidden border border-gray-200 dark:border-gray-600 bg-[#f8f6f3] dark:bg-[#f8f6f3]">
+      <section id="kpis" className="mb-12 scroll-mt-24">
+        <div className="relative w-full rounded-2xl overflow-hidden border border-gray-200 dark:border-gray-600 bg-[#f8f6f3] dark:bg-[#f8f6f3]">
           <Image
             src={IMG.kpisProcess}
             alt="KPIs and Process — Discover, Define, Design, Test, Deliver"
@@ -214,18 +235,18 @@ export default function WeChipnCaseStudy({
       </section>
 
       {/* Design Decision */}
-      <section className="mb-12 text-center">
+      <section id="design-decision" className="mb-12 text-center scroll-mt-24">
         <h2 className="text-xl md:text-2xl font-medium text-[#8b5cf6] dark:text-[#a78bfa] mb-4">
           Design Decision
         </h2>
-        <p className="text-black dark:text-white leading-relaxed mb-6 max-w-[934px] mx-auto">
+        <p className="text-black dark:text-white leading-relaxed mb-8 max-w-[934px] mx-auto">
           I mapped the full user journey to find where we could have the biggest impact. Signup
           dropoff had several possible causes, but the clearest lever was the homepage: it had to
           feel more dynamic and engaging for a younger, community-minded audience without burying
           the information they needed to understand the initiative. So I focused there first—making
           the hero and scroll experience do more of the work.
         </p>
-        <div className="relative w-full rounded-[20px] overflow-hidden border border-white/20 bg-gray-900">
+        <div className="relative w-full rounded-2xl overflow-hidden border border-white/20 bg-[#F3F3F3]">
           <Image
             src={IMG.designDecision}
             alt="Landing page top and middle mockups"
@@ -237,36 +258,46 @@ export default function WeChipnCaseStudy({
         </div>
       </section>
 
-      {/* Mobile View */}
-      <section className="mb-12 text-center">
-        <h2 className="text-xl md:text-2xl font-medium text-[#8b5cf6] dark:text-[#a78bfa] mb-4">
+      {/* Mobile View — paragraph and video side by side on desktop */}
+      <section id="mobile-view" className="mb-12 scroll-mt-24">
+        <h2 className="text-xl md:text-2xl font-medium text-[#8b5cf6] dark:text-[#a78bfa] mb-4 text-center">
           Mobile View
         </h2>
-        <p className="text-black dark:text-white leading-relaxed mb-6 max-w-[934px] mx-auto">
-          The whole product is responsive, and I treated mobile as a first-class experience—same
-          level of engagement and clarity, just tuned for the small screen. Primary CTAs live in a
-          hamburger menu so the main content has room to breathe, and the desktop three-column
-          layout becomes a single-column, image-forward flow on mobile so events and rewards stay
-          easy to browse on the go.
-        </p>
-        <div className="relative w-full rounded-[20px] overflow-hidden border border-white/20 bg-gray-900 max-w-lg">
-          <Image
-            src={IMG.mobileView}
-            alt="Mobile view — responsive, hamburger menu, 1-column cards"
-            width={600}
-            height={800}
-            className="w-full h-auto object-contain"
-            sizes="(max-width: 768px) 100vw, 512px"
-          />
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center">
+          <p className="text-black dark:text-white leading-relaxed max-w-[934px] md:max-w-none mx-auto order-2 md:order-1">
+            The whole product is responsive, and I treated mobile as a first-class experience—same
+            level of engagement and clarity, just tuned for the small screen. Primary CTAs live in a
+            hamburger menu so the main content has room to breathe, and the desktop three-column
+            layout becomes a single-column, image-forward flow on mobile so events and rewards stay
+            easy to browse on the go.
+          </p>
+          <div className="relative w-full max-w-lg mx-auto aspect-[3/4] rounded-2xl overflow-hidden border-2 border-white bg-[#F3F3F3] order-1 md:order-2">
+            {mobileViewVideoUrl && !/loom\.com|youtube\.com|youtu\.be|vimeo\.com/.test(mobileViewVideoUrl) ? (
+              <VideoWithFallback
+                src={mobileViewVideoUrl}
+                fallbackImageSrc={IMG.mobileView}
+                fallbackAlt="Mobile view — responsive, hamburger menu, 1-column cards"
+                className="absolute inset-0 w-full h-full object-contain box-content bg-black"
+              />
+            ) : (
+              <Image
+                src={IMG.mobileView}
+                alt="Mobile view — responsive, hamburger menu, 1-column cards"
+                fill
+                className="object-contain"
+                sizes="(max-width: 768px) 100vw, 512px"
+              />
+            )}
+          </div>
         </div>
       </section>
 
       {/* Figma design */}
-      <section className="mb-12 text-center">
+      <section id="figma" className="mb-12 text-center scroll-mt-24">
         <h2 className="text-xl md:text-2xl font-medium text-[#8b5cf6] dark:text-[#a78bfa] mb-4">
           Design — Swank x WeChipn
         </h2>
-        <div className="relative w-full rounded-[20px] overflow-hidden border border-white/20 bg-gray-900">
+        <div className="relative w-full rounded-2xl overflow-hidden border border-white/20 bg-[#F3F3F3]">
           <Image
             src={IMG.figma}
             alt="Figma design — Swank x WeChipn flows"
@@ -279,23 +310,13 @@ export default function WeChipnCaseStudy({
       </section>
 
       {/* Key Takeaways */}
-      <section className="mb-16 text-center">
-        <p className="text-black dark:text-white leading-relaxed mb-6 max-w-[934px] mx-auto">
+      <section id="takeaways" className="mb-16 text-center scroll-mt-24">
+        <p className="text-black dark:text-white leading-relaxed max-w-[934px] mx-auto">
           If we had had more time, I would have kept testing after launch to see how people
           actually engaged with the product—but even within the timeline we had, working side by
           side with engineering made the handoff smooth. I knew how the designs were meant to
           behave, and that made it easier to ship something that felt right.
         </p>
-        <div className="relative w-full rounded-[20px] overflow-hidden border border-white/20 bg-gray-900 max-w-4xl mx-auto">
-          <Image
-            src={IMG.keyTakeaways}
-            alt="Key Takeaways and Thank You"
-            width={1000}
-            height={500}
-            className="w-full h-auto object-contain"
-            sizes="100vw"
-          />
-        </div>
       </section>
     </article>
   );

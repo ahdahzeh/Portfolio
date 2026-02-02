@@ -1,0 +1,35 @@
+---
+description: Always use Turbopack for Next.js dev to avoid Webpack module errors
+alwaysApply: true
+---
+
+# Next.js Dev Server — Use Turbopack Only
+
+## Rule
+
+**Always start the dev server with Turbopack.** Never run the dev server with Webpack for this project.
+
+- **Use:** `npm run dev` (runs `next dev --turbo`)
+- **Do not use:** `next dev`, `npm run dev:webpack`, or any command that starts Next.js without `--turbo`
+
+## Why
+
+Running `next dev` without `--turbo` uses Webpack. This project has hit the Webpack error:
+
+`Runtime TypeError: __webpack_modules__[moduleId] is not a function`
+
+That error does not occur when using Turbopack. Using Turbopack avoids it entirely.
+
+## When Starting or Restarting the Dev Server
+
+1. Run **`npm run dev`** from the project root.
+2. If the user reports the Webpack error or a stale build, run **`npm run dev:fresh`** (clears `.next` and starts with Turbopack).
+3. Do not suggest or run `next dev` or `npm run dev:webpack` unless the user explicitly needs Webpack for a specific reason.
+
+## Scripts Reference
+
+| Command | Use |
+|--------|-----|
+| `npm run dev` | Default — use this. Starts with Turbopack. |
+| `npm run dev:fresh` | Clean start (deletes `.next`) with Turbopack. Use when cache/errors occur. |
+| `npm run dev:webpack` | Webpack only — avoid unless explicitly required. |

@@ -1,6 +1,9 @@
 'use client';
 
+import Link from 'next/link';
 import { archiveProjects } from '@/data/portfolio';
+
+const linkClassName = "group flex flex-col sm:flex-row sm:items-baseline py-3 sm:py-4 border-b border-gray-200 dark:border-gray-800 hover:opacity-60 transition-opacity";
 
 export default function Archive() {
   return (
@@ -13,22 +16,36 @@ export default function Archive() {
           {archiveProjects.map((project) => (
             <div key={project.id}>
               {project.link ? (
-                <a
-                  href={project.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group flex flex-col sm:flex-row sm:items-baseline py-3 sm:py-4 border-b border-gray-200 dark:border-gray-800 hover:opacity-60 transition-opacity"
-                >
-                  <span className="text-lg font-medium text-black dark:text-white sm:w-[200px] md:w-[280px] flex-shrink-0">
-                    {project.name}
-                  </span>
-                  <span className="text-base font-normal text-gray-500 dark:text-gray-400 sm:flex-1">
-                    {project.role}
-                  </span>
-                  <span className="text-sm font-normal text-gray-400 dark:text-gray-500 sm:text-right">
-                    {project.year}
-                  </span>
-                </a>
+                project.link.startsWith('/') ? (
+                  <Link href={project.link} className={linkClassName}>
+                    <span className="text-lg font-medium text-black dark:text-white sm:w-[200px] md:w-[280px] flex-shrink-0">
+                      {project.name}
+                    </span>
+                    <span className="text-base font-normal text-gray-500 dark:text-gray-400 sm:flex-1">
+                      {project.role}
+                    </span>
+                    <span className="text-sm font-normal text-gray-400 dark:text-gray-500 sm:text-right">
+                      {project.year}
+                    </span>
+                  </Link>
+                ) : (
+                  <a
+                    href={project.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={linkClassName}
+                  >
+                    <span className="text-lg font-medium text-black dark:text-white sm:w-[200px] md:w-[280px] flex-shrink-0">
+                      {project.name}
+                    </span>
+                    <span className="text-base font-normal text-gray-500 dark:text-gray-400 sm:flex-1">
+                      {project.role}
+                    </span>
+                    <span className="text-sm font-normal text-gray-400 dark:text-gray-500 sm:text-right">
+                      {project.year}
+                    </span>
+                  </a>
+                )
               ) : (
                 <div className="flex flex-col sm:flex-row sm:items-baseline py-3 sm:py-4 border-b border-gray-200 dark:border-gray-800">
                   <span className="text-lg font-medium text-black dark:text-white sm:w-[200px] md:w-[280px] flex-shrink-0">

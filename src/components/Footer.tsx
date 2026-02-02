@@ -6,9 +6,14 @@ export default function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="w-full py-8 px-4 md:px-6 lg:px-8 border-t border-gray-200 dark:border-gray-800">
-      <div className="flex flex-col md:flex-row items-center justify-between gap-4 max-w-[1200px] mx-auto px-4">
-        <div className="flex items-center gap-6 sm:gap-12 lg:gap-20 flex-wrap justify-center md:justify-start">
+    <footer className="w-full py-8 border-t border-gray-200 dark:border-gray-800">
+      <div className="flex flex-col md:flex-row items-center justify-between gap-4 max-w-[1200px] mx-auto px-4 sm:px-6 md:px-8">
+        <div className="flex items-center gap-6 sm:gap-12 lg:gap-24 flex-wrap justify-center md:justify-start">
+          {socialLinks.linkedin && (
+            <a href={socialLinks.linkedin} target="_blank" rel="noopener noreferrer" className="text-base font-normal text-black dark:text-white hover:text-gray-500 dark:hover:text-gray-400 transition-colors">
+              LinkedIn
+            </a>
+          )}
           {socialLinks.instagram && (
             <a href={socialLinks.instagram} target="_blank" rel="noopener noreferrer" className="text-base font-normal text-black dark:text-white hover:text-gray-500 dark:hover:text-gray-400 transition-colors">
               Instagram

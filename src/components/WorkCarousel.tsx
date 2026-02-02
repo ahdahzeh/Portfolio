@@ -1,12 +1,11 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
 import Image from 'next/image';
 import { workHistory } from '@/data/portfolio';
 
-function WorkCardImage({ item }: { item: (typeof workHistory)[0] }) {
+function WorkCardImage({ item, priority = false }: { item: (typeof workHistory)[0]; priority?: boolean }) {
   const images = item.caseStudy?.images ?? [];
   const [currentIndex, setCurrentIndex] = useState(0);
 
@@ -31,6 +30,7 @@ function WorkCardImage({ item }: { item: (typeof workHistory)[0] }) {
               fill
               sizes="280px"
               className="object-cover object-top"
+              priority={priority}
             />
           </div>
         </div>
@@ -42,34 +42,10 @@ function WorkCardImage({ item }: { item: (typeof workHistory)[0] }) {
               fill
               sizes="120px"
               className="object-cover object-top"
+              priority={priority}
             />
           </div>
         </div>
-      </div>
-    );
-  }
-
-  if (images.length > 0) {
-    return (
-      <div className="relative w-full h-full overflow-hidden bg-white dark:bg-gray-900">
-        <AnimatePresence mode="sync">
-          <motion.div
-            key={currentIndex}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.3 }}
-            className="absolute inset-0"
-          >
-            <Image
-              src={images[currentIndex].src}
-              alt={images[currentIndex].alt}
-              fill
-              sizes="300px"
-              className="object-cover"
-            />
-          </motion.div>
-        </AnimatePresence>
       </div>
     );
   }
@@ -83,7 +59,32 @@ function WorkCardImage({ item }: { item: (typeof workHistory)[0] }) {
         height={300}
         sizes="(max-width: 640px) 260px, 300px"
         className={`w-full h-full ${item.coverStyle ? 'object-contain' : 'object-cover'} transition-transform duration-300 group-hover:scale-105`}
+        priority={priority}
       />
+    );
+  }
+
+  if (images.length > 0) {
+    return (
+      <div className="relative w-full h-full overflow-hidden bg-white dark:bg-gray-900">
+        {images.map((img, i) => (
+          <div
+            key={i}
+            className="absolute inset-0 transition-opacity duration-300"
+            style={{ opacity: i === currentIndex ? 1 : 0, pointerEvents: i === currentIndex ? 'auto' : 'none' }}
+            aria-hidden={i !== currentIndex}
+          >
+            <Image
+              src={img.src}
+              alt={img.alt}
+              fill
+              sizes="300px"
+              className="object-cover"
+              priority={i === 0}
+            />
+          </div>
+        ))}
+      </div>
     );
   }
 
@@ -127,11 +128,26 @@ export default function WorkCarousel() {
       </h2>
       <div
         ref={scrollRef}
+        tabIndex={0}
+        role="region"
+        aria-label="Past work carousel — use arrow keys to navigate"
         onMouseEnter={() => setIsPaused(true)}
         onMouseLeave={() => setIsPaused(false)}
         onTouchStart={() => setIsPaused(true)}
         onTouchEnd={() => setIsPaused(false)}
-        className="flex flex-nowrap gap-1 items-start overflow-x-scroll overflow-y-hidden scrollbar-hide py-4 pl-4 sm:pl-6 md:pl-[max(16px,calc((100vw-1200px)/2+16px))] pr-4 sm:pr-6 select-none cursor-grab active:cursor-grabbing touch-pan-x"
+        onKeyDown={(e) => {
+          const el = scrollRef.current;
+          if (!el) return;
+          const step = 320;
+          if (e.key === 'ArrowLeft') {
+            e.preventDefault();
+            el.scrollBy({ left: -step, behavior: 'smooth' });
+          } else if (e.key === 'ArrowRight') {
+            e.preventDefault();
+            el.scrollBy({ left: step, behavior: 'smooth' });
+          }
+        }}
+        className="flex flex-nowrap gap-1 items-start overflow-x-scroll overflow-y-hidden scrollbar-hide py-4 pl-4 sm:pl-6 md:pl-[max(16px,calc((100vw-1200px)/2+16px))] pr-4 sm:pr-6 select-none cursor-grab active:cursor-grabbing touch-pan-x focus:outline-none focus-visible:ring-2 focus-visible:ring-[#006eff] focus-visible:ring-offset-2"
         style={{ scrollbarWidth: 'none', msOverflowStyle: 'none', WebkitOverflowScrolling: 'touch' }}
       >
         {duplicatedItems.map((item, index) => (
@@ -145,7 +161,7 @@ export default function WorkCarousel() {
                   item.coverImages ? 'rounded-none bg-black/5 dark:bg-white/5' : item.coverStyle ? 'rounded-none bg-white dark:bg-gray-900' : ''
                 }`}
               >
-                <WorkCardImage item={item} />
+                <WorkCardImage item={item} priority={index < 3} />
               </div>
               <span className="font-medium">{item.company}</span>
               <span className="text-sm text-gray-500 dark:text-gray-400">{item.role}</span>

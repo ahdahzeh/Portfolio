@@ -12,6 +12,7 @@ export const metadata: Metadata = {
     url: 'https://ahdahzeh.com',
     siteName: 'Adaze Oviawe Portfolio',
     type: 'website',
+    images: [{ url: '/images/profile.png', width: 480, height: 480, alt: 'Adaze Oviawe' }],
   },
   twitter: {
     card: 'summary_large_image',

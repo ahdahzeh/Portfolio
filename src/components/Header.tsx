@@ -4,6 +4,8 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { personalInfo, socialLinks } from '@/data/portfolio';
 
+const showAvailableBanner = personalInfo.availableForWork;
+
 const navLinks = [
   { href: '/', label: 'Home', external: false },
   ...(socialLinks.twitter ? [{ href: socialLinks.twitter, label: 'Twitter / X', external: true }] : []),
@@ -71,7 +73,12 @@ export default function Header() {
 
   return (
     <>
-      <header className="sticky top-0 z-40 w-full bg-white dark:bg-black border-b border-gray-200 dark:border-gray-800">
+      {showAvailableBanner && (
+        <div className="sticky top-0 z-50 w-full py-1.5 text-center text-sm bg-emerald-500 text-white dark:bg-emerald-600">
+          <span>Available for work</span>
+        </div>
+      )}
+      <header className={`sticky z-40 w-full bg-white dark:bg-black border-b border-gray-200 dark:border-gray-800 ${showAvailableBanner ? 'top-8' : 'top-0'}`}>
         <div className="flex items-center justify-between h-14 sm:h-16 max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8 gap-2 sm:gap-4 overflow-hidden">
           {/* Mobile: time & weather on left | Desktop: nav on left */}
           <span className="text-sm sm:text-base font-normal text-black dark:text-white flex-shrink-0 truncate max-w-[180px] sm:max-w-none whitespace-nowrap order-first md:order-last" suppressHydrationWarning>
@@ -98,7 +105,7 @@ export default function Header() {
           <button
             type="button"
             onClick={toggleTheme}
-            className="p-2 rounded-lg hover:bg-foreground/10 transition-colors shrink-0 ml-auto"
+            className="p-4 rounded-xl hover:bg-foreground/10 transition-colors shrink-0 ml-auto"
             aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
           >
             {isDark ? (
@@ -120,7 +127,7 @@ export default function Header() {
         <button
           type="button"
           onClick={() => setMenuOpen(!menuOpen)}
-          className="flex flex-col justify-center items-center w-14 h-14 rounded-full bg-white dark:bg-white text-black border border-gray-200 dark:border-gray-600 shadow-[0_4px_12px_rgba(0,0,0,0.15)] hover:opacity-90 transition-opacity"
+          className="flex flex-col justify-center items-center w-14 h-14 rounded-full bg-white dark:bg-gray-900 text-black dark:text-white border border-gray-200 dark:border-gray-700 shadow-[0_4px_12px_rgba(0,0,0,0.15)] dark:shadow-[0_4px_12px_rgba(0,0,0,0.4)] hover:opacity-90 transition-opacity"
           aria-label={menuOpen ? 'Close menu' : 'Open menu'}
           aria-expanded={menuOpen}
         >
@@ -138,7 +145,7 @@ export default function Header() {
             onClick={() => setMenuOpen(false)}
             aria-hidden="true"
           />
-          <div className="md:hidden fixed bottom-24 left-4 right-4 z-50 p-6 rounded-2xl bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 shadow-xl">
+          <div className="md:hidden fixed bottom-24 left-6 right-6 z-50 p-6 rounded-2xl bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 shadow-xl">
             <nav className="grid grid-cols-3 gap-x-6 gap-y-4 text-center">
               {navLinks.map((item) => (
                 <div key={item.label}>

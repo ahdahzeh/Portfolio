@@ -39,7 +39,7 @@ export default function WorkCaseStudyCarousel({ images }: { images: CaseStudyIma
   const img = images[currentIndex];
 
   return (
-    <div className="mt-12 not-prose">
+    <div className="mt-8 not-prose">
       <div
         ref={scrollRef}
         className="flex overflow-x-auto overflow-y-hidden snap-x snap-mandatory scrollbar-hide -mx-4 px-4 md:-mx-0 md:px-0 touch-pan-x"
@@ -50,8 +50,8 @@ export default function WorkCaseStudyCarousel({ images }: { images: CaseStudyIma
             key={i}
             className="flex-shrink-0 w-full snap-start snap-always"
           >
-            <div className="relative rounded-lg border border-gray-200 dark:border-gray-800 overflow-hidden bg-gray-50 dark:bg-gray-900/30">
-              <div className="relative aspect-video w-full max-h-[70vh] min-h-[280px]">
+            <div className="relative rounded-xl border border-gray-200 dark:border-gray-800 overflow-hidden bg-gray-50 dark:bg-gray-900/30">
+              <div className="relative aspect-video w-full max-h-[70vh] min-h-[288px]">
                 <Image
                   src={slide.src}
                   alt={slide.alt}
@@ -67,7 +67,7 @@ export default function WorkCaseStudyCarousel({ images }: { images: CaseStudyIma
       </div>
 
       {total > 1 && (
-        <div className="flex justify-center gap-1.5 mt-3">
+        <div className="flex justify-center gap-2 mt-6">
           {images.map((_, i) => (
             <button
               key={i}
@@ -86,7 +86,7 @@ export default function WorkCaseStudyCarousel({ images }: { images: CaseStudyIma
       )}
 
       {img?.caption && (
-        <p className="text-sm text-gray-500 dark:text-gray-400 mt-2 text-center">
+        <p className="text-sm text-gray-500 dark:text-gray-400 mt-6 text-center">
           {currentIndex + 1} / {total} — {img.caption}
         </p>
       )}

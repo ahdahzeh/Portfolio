@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import ScrollProgressBar from '@/components/ScrollProgressBar';
 
 interface WorkInProgressProps {
   title: string;
@@ -9,7 +10,8 @@ interface WorkInProgressProps {
 
 export default function WorkInProgress({ title, nextProject }: WorkInProgressProps) {
   return (
-    <article className="max-w-[1200px] mx-auto px-4 py-16 md:py-24">
+    <article className="max-w-[1200px] mx-auto px-6 py-16 md:py-24">
+      <ScrollProgressBar />
       <Link
         href="/"
         className="text-gray-500 hover:text-gray-700 dark:hover:text-gray-300 text-sm mb-8 inline-block"
@@ -24,7 +26,7 @@ export default function WorkInProgress({ title, nextProject }: WorkInProgressPro
         >
           😢
         </div>
-        <div className="space-y-3">
+        <div className="space-y-4">
           <h1 className="text-3xl md:text-4xl font-normal text-black dark:text-white tracking-tight">
             {title}
           </h1>
@@ -35,7 +37,7 @@ export default function WorkInProgress({ title, nextProject }: WorkInProgressPro
         {nextProject ? (
           <Link
             href={`/work/${nextProject.slug}`}
-            className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-[13px] bg-[#006eff] hover:bg-[#0060d9] text-white font-medium transition-colors"
+            className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-2xl bg-[#006eff] hover:bg-[#0060d9] text-white font-medium transition-colors"
           >
             See {nextProject.label}
             <span aria-hidden>→</span>
@@ -43,7 +45,7 @@ export default function WorkInProgress({ title, nextProject }: WorkInProgressPro
         ) : (
           <Link
             href="/"
-            className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-[13px] bg-[#006eff] hover:bg-[#0060d9] text-white font-medium transition-colors"
+            className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-2xl bg-[#006eff] hover:bg-[#0060d9] text-white font-medium transition-colors"
           >
             See other projects
             <span aria-hidden>→</span>

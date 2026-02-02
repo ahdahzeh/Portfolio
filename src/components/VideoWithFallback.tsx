@@ -36,7 +36,7 @@ export default function VideoWithFallback({
       controls
       preload="metadata"
       playsInline
-      className={className}
+      className={`box-content bg-black ${className}`}
       onError={() => setError(true)}
     >
       Your browser does not support the video tag.
