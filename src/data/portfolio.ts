@@ -44,6 +44,8 @@ export interface WorkItem {
   coverImages?: { desktop: string; mobile: string };
   /** When true, shows a WIP (work in progress) page instead of the full case study */
   wip?: boolean;
+  /** When true, hides from the work carousel and appears only in the archive */
+  archived?: boolean;
   caseStudy?: {
     title: string;
     subtitle?: string;
@@ -83,8 +85,9 @@ export const workHistory: WorkItem[] = [
     image: "/images/work/morton-salt.png",
     color: "#fbbf24",
     wip: true,
+    archived: true,
     caseStudy: {
-      title: "Morton Salt",
+      title: "MORTON SALT",
       subtitle: "Digital Experience Design",
       narrative: `Currently working as a UX Designer on Morton Salt's digital initiatives, creating user-centered experiences for one of America's most iconic brands.`
     }
@@ -100,9 +103,41 @@ export const workHistory: WorkItem[] = [
     color: "#10b981",
     wip: true,
     caseStudy: {
-      title: "Community Health Media",
+      title: "COMMUNITY HEALTH MEDIA",
       subtitle: "Health Communication Platform",
       narrative: `Working as a Product Designer at Community Health Media (CHT), designing digital products that help connect communities with vital health information and resources.`
+    }
+  },
+  {
+    id: "8",
+    slug: "amazon",
+    company: "Amazon",
+    role: "UX Designer",
+    period: "2023",
+    description: "Design system for Amazon Inspire and Shop By Interest",
+    color: "#f59e0b",
+    image: "/images/work/amazon.png",
+    coverStyle: true,
+    caseStudy: {
+      title: "AMAZON",
+      subtitle: "Inspirational Shopping",
+      roleDisplay: "UX Designer",
+      timeline: "2023",
+      narrative: `Working at Amazon was my first experience designing at true scale. I joined the team working on Amazon Inspire and Shop By Interest—experimental shopping experiences aimed at helping customers discover products they didn't know they wanted.
+
+The challenge was fascinating: Amazon has millions of products, but traditional search and category navigation only work when you know what you're looking for. What about inspiration-driven shopping? What about the customer who's just browsing, open to discovering something new?
+
+I worked within a cross-functional team of product managers, engineers, and data scientists. My role focused on the design system and interaction patterns that would power these new discovery experiences. We were essentially creating a visual, feed-based shopping experience—think social media meets e-commerce.
+
+The process was heavily data-driven. We ran constant A/B tests, sometimes testing micro-interactions to see how small changes affected engagement. I learned to balance design intuition with empirical evidence—sometimes the data surprised us, sometimes it confirmed our hypotheses.
+
+I contributed to component libraries that needed to scale across different product categories while maintaining consistency with Amazon's broader design language. It was a lesson in systems thinking—every component I designed would be used by other teams, so documentation and flexibility were crucial.
+
+The work reached millions of customers. But beyond the scale, what I took away was an understanding of how large organizations ship product. The collaboration required, the processes that enable speed without chaos, the importance of clear communication across distributed teams.`,
+      sections: [
+        // Add more sections from your PDF. Each section can have title, content, and images.
+        // Example: { title: "Design system", content: "Paste text from PDF...", images: [{ src: "/images/work/amazon/page-1.png", alt: "Description", caption: "Optional caption" }] }
+      ],
     }
   },
   {
@@ -118,7 +153,7 @@ export const workHistory: WorkItem[] = [
       mobile: "/images/work/vemlidy/mobile.png"
     },
     caseStudy: {
-      title: "Vemlidy",
+      title: "VEMLIDY",
       subtitle: "Hepatitis B Patient Engagement",
       roleDisplay: "Senior UX Designer",
       timeline: "2025",
@@ -143,7 +178,7 @@ The work focused on accessibility and health literacy, ensuring patients from al
     image: "/images/work/block-equity-group/cover.png",
     link: "https://www.blockequitygr.com/",
     caseStudy: {
-      title: "Block Equity Group",
+      title: "BLOCK EQUITY GROUP",
       subtitle: "Small Business Financing Platform",
       roleDisplay: "Product Designer",
       timeline: "2024",
@@ -188,56 +223,6 @@ The platform launched successfully. Block Equity Group continues to help small b
     }
   },
   {
-    id: "5",
-    slug: "abilify",
-    company: "Abilify",
-    role: "Senior UX Designer",
-    period: "2025",
-    description: "Mental health patient support platform",
-    color: "#8b5cf6",
-    image: "/images/work/abilify/cover.png",
-    coverStyle: true,
-    caseStudy: {
-      title: "Abilify",
-      subtitle: "Mental Health Patient Support",
-      narrative: `Abilify is a mental health medication used to treat conditions like schizophrenia, bipolar disorder, and depression. I designed the patient support platform, focusing on creating a calming, supportive digital experience for users managing mental health conditions.
-
-The design challenge was unique—creating interfaces that feel reassuring rather than clinical, while still meeting strict pharmaceutical compliance requirements. I worked closely with mental health advocates and medical teams to ensure the tone and functionality supported patients' emotional needs.
-
-The platform includes medication tracking, appointment reminders, and educational resources—all designed with sensitivity to the mental health context.`,
-      launchedSiteNarrative: `The site launched with a patient-focused experience that prioritizes clarity and emotional support. On the patient side, I designed the core experience—medication tracking, appointment reminders, and educational resources—so users could manage their care without feeling overwhelmed. My contribution was end-to-end UX from wireframes through launch: defining structure, content hierarchy, and interactions while working with mental health advocates and medical teams to keep the tone reassuring and compliant. The live site reflects that—one experience built for the moments that matter to people managing mental health conditions.`,
-      launchedSiteImages: [
-        { src: "/images/work/abilify/1.png", alt: "Abilify launched site", caption: "Patient support platform — key screens." },
-        { src: "/images/work/abilify/2.png", alt: "Abilify launched site", caption: "Patient support platform — resources and tracking." },
-      ],
-    }
-  },
-  {
-    id: "6",
-    slug: "miebo",
-    company: "Miebo",
-    role: "Senior UX Designer",
-    period: "2025",
-    description: "Dry eye treatment patient engagement platform",
-    color: "#ec4899",
-    image: "/images/work/meibo/cover.png",
-    coverStyle: true,
-    caseStudy: {
-      title: "Miebo",
-      subtitle: "Dry Eye Treatment Launch",
-      narrative: `Miebo is a dry eye treatment by Bausch + Lomb. I led the UX design for the patient engagement platform, working closely with medical, legal, and regulatory teams to ensure everything met compliance standards while still feeling human and approachable.
-
-This project won a MM+M Awards GOLD for Product Launch, which was a proud moment for the team. The platform helps patients understand their condition, track their treatment progress, and connect with healthcare providers.
-
-My approach focused on simplicity and clarity—dry eye patients often experience screen fatigue, so every interface decision was made with their comfort in mind.`,
-      launchedSiteNarrative: `The site launched with a patient engagement experience that puts clarity and comfort first. I designed the patient-facing experience—condition education, treatment progress, and connection to healthcare providers—so users could understand their care without added visual strain. My contribution was end-to-end UX from wireframes through launch: defining structure, content hierarchy, and interactions while working with medical, legal, and regulatory to keep everything compliant and on-brand. The live site reflects that—one experience for the moments that matter to patients, and this project went on to win a MM+M Awards GOLD for Product Launch.`,
-      launchedSiteImages: [
-        { src: "/images/work/meibo/desktop.png", alt: "Miebo launched site — desktop", caption: "Miebo patient engagement — desktop experience." },
-        { src: "/images/work/meibo/mobile.png", alt: "Miebo launched site — mobile", caption: "Miebo patient engagement — mobile experience." },
-      ],
-    }
-  },
-  {
     id: "7",
     slug: "wechipn",
     company: "WeChipn",
@@ -250,7 +235,7 @@ My approach focused on simplicity and clarity—dry eye patients often experienc
       mobile: "/images/work/wechipn/mobile.png"
     },
     caseStudy: {
-      title: "WeChipn",
+      title: "WECHIPN",
       subtitle: "UX Design (Mobile/Web App)",
       roleDisplay: "Product Designer/UX Engineer",
       timeline: "Q1 2024",
@@ -280,34 +265,52 @@ Key takeaways: If more time was allotted for the project I would have loved to c
     }
   },
   {
-    id: "8",
-    slug: "amazon",
-    company: "Amazon",
-    role: "UX Designer",
-    period: "2023",
-    description: "Design system for Amazon Inspire and Shop By Interest",
-    color: "#f59e0b",
-    image: "/images/work/amazon.png",
+    id: "5",
+    slug: "abilify",
+    company: "Abilify",
+    role: "Senior UX Designer",
+    period: "2025",
+    description: "Mental health patient support platform",
+    color: "#8b5cf6",
+    image: "/images/work/abilify/cover.png",
     coverStyle: true,
     caseStudy: {
-      title: "Amazon",
-      subtitle: "Inspirational Shopping",
-      roleDisplay: "UX Designer",
-      timeline: "2023",
-      narrative: `Working at Amazon was my first experience designing at true scale. I joined the team working on Amazon Inspire and Shop By Interest—experimental shopping experiences aimed at helping customers discover products they didn't know they wanted.
+      title: "ABILIFY",
+      subtitle: "Mental Health Patient Support",
+      narrative: `Abilify is a mental health medication used to treat conditions like schizophrenia, bipolar disorder, and depression. I designed the patient support platform, focusing on creating a calming, supportive digital experience for users managing mental health conditions.
 
-The challenge was fascinating: Amazon has millions of products, but traditional search and category navigation only work when you know what you're looking for. What about inspiration-driven shopping? What about the customer who's just browsing, open to discovering something new?
+The design challenge was unique—creating interfaces that feel reassuring rather than clinical, while still meeting strict pharmaceutical compliance requirements. I worked closely with mental health advocates and medical teams to ensure the tone and functionality supported patients' emotional needs.
 
-I worked within a cross-functional team of product managers, engineers, and data scientists. My role focused on the design system and interaction patterns that would power these new discovery experiences. We were essentially creating a visual, feed-based shopping experience—think social media meets e-commerce.
+The platform includes medication tracking, appointment reminders, and educational resources—all designed with sensitivity to the mental health context.`,
+      launchedSiteNarrative: `The site launched with a patient-focused experience that prioritizes clarity and emotional support. On the patient side, I designed the core experience—medication tracking, appointment reminders, and educational resources—so users could manage their care without feeling overwhelmed. My contribution was end-to-end UX from wireframes through launch: defining structure, content hierarchy, and interactions while working with mental health advocates and medical teams to keep the tone reassuring and compliant. The live site reflects that—one experience built for the moments that matter to people managing mental health conditions.`,
+      launchedSiteImages: [
+        { src: "/images/work/abilify/1.png", alt: "Abilify launched site", caption: "Patient support platform — key screens." },
+        { src: "/images/work/abilify/2.png", alt: "Abilify launched site", caption: "Patient support platform — resources and tracking." },
+      ],
+    }
+  },
+  {
+    id: "6",
+    slug: "miebo",
+    company: "Miebo",
+    role: "Senior UX Designer",
+    period: "2025",
+    description: "Dry eye treatment patient engagement platform",
+    color: "#ec4899",
+    image: "/images/work/meibo/cover.png",
+    coverStyle: true,
+    caseStudy: {
+      title: "MIEBO",
+      subtitle: "Dry Eye Treatment Launch",
+      narrative: `Miebo is a dry eye treatment by Bausch + Lomb. I led the UX design for the patient engagement platform, working closely with medical, legal, and regulatory teams to ensure everything met compliance standards while still feeling human and approachable.
 
-The process was heavily data-driven. We ran constant A/B tests, sometimes testing micro-interactions to see how small changes affected engagement. I learned to balance design intuition with empirical evidence—sometimes the data surprised us, sometimes it confirmed our hypotheses.
+This project won a MM+M Awards GOLD for Product Launch, which was a proud moment for the team. The platform helps patients understand their condition, track their treatment progress, and connect with healthcare providers.
 
-I contributed to component libraries that needed to scale across different product categories while maintaining consistency with Amazon's broader design language. It was a lesson in systems thinking—every component I designed would be used by other teams, so documentation and flexibility were crucial.
-
-The work reached millions of customers. But beyond the scale, what I took away was an understanding of how large organizations ship product. The collaboration required, the processes that enable speed without chaos, the importance of clear communication across distributed teams.`,
-      sections: [
-        // Add more sections from your PDF. Each section can have title, content, and images.
-        // Example: { title: "Design system", content: "Paste text from PDF...", images: [{ src: "/images/work/amazon/page-1.png", alt: "Description", caption: "Optional caption" }] }
+My approach focused on simplicity and clarity—dry eye patients often experience screen fatigue, so every interface decision was made with their comfort in mind.`,
+      launchedSiteNarrative: `The site launched with a patient engagement experience that puts clarity and comfort first. I designed the patient-facing experience—condition education, treatment progress, and connection to healthcare providers—so users could understand their care without added visual strain. My contribution was end-to-end UX from wireframes through launch: defining structure, content hierarchy, and interactions while working with medical, legal, and regulatory to keep everything compliant and on-brand. The live site reflects that—one experience for the moments that matter to patients, and this project went on to win a MM+M Awards GOLD for Product Launch.`,
+      launchedSiteImages: [
+        { src: "/images/work/meibo/desktop.png", alt: "Miebo launched site — desktop", caption: "Miebo patient engagement — desktop experience." },
+        { src: "/images/work/meibo/mobile.png", alt: "Miebo launched site — mobile", caption: "Miebo patient engagement — mobile experience." },
       ],
     }
   },
@@ -322,7 +325,7 @@ The work reached millions of customers. But beyond the scale, what I took away w
     image: "/images/work/swank-studio/cover.png",
     coverStyle: true,
     caseStudy: {
-      title: "Swank Studio",
+      title: "SWANK STUDIO",
       subtitle: "Broccoli City & Culture-Forward Brands",
       narrative: `Swank Studio was where I cut my teeth on brand and visual design. As a Digital Designer, I created assets for entertainment and lifestyle brands—the most notable being Broccoli City, one of DC's largest music festivals and cultural events.
 
@@ -346,7 +349,7 @@ The work reached over 50,000 festival attendees and drove significant social med
     image: "/images/work/eki-express/cover.png",
     coverStyle: true,
     caseStudy: {
-      title: "Eki Express",
+      title: "EKI EXPRESS",
       subtitle: "African Marketplace E-commerce",
       narrative: `Eki Express was my introduction to startup product design. The company was building a mobile-first e-commerce platform to connect African diaspora communities with authentic African marketplace products—think specialty foods, traditional clothing, and artisanal goods.
 
@@ -424,6 +427,7 @@ export interface ArchiveProject {
 }
 
 export const archiveProjects: ArchiveProject[] = [
+  { id: "29", name: "Morton Salt", role: "UX Design", year: "2026", link: "/work/morton-salt" },
   { id: "1", name: "Patients and Purpose", role: "UX Design", year: "2025" },
   { id: "2", name: "Block Equity Group", role: "UX Design", year: "2024", link: "/work/block-equity-group" },
   { id: "3", name: "Nova One Technology", role: "UX Design", year: "2024" },

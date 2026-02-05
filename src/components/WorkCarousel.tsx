@@ -101,7 +101,8 @@ function WorkCardImage({ item, priority = false }: { item: (typeof workHistory)[
 export default function WorkCarousel() {
   const scrollRef = useRef<HTMLDivElement>(null);
   const [isPaused, setIsPaused] = useState(false);
-  const duplicatedItems = [...workHistory, ...workHistory];
+  const visibleItems = workHistory.filter((w) => !w.archived);
+  const duplicatedItems = [...visibleItems, ...visibleItems];
 
   useEffect(() => {
     const el = scrollRef.current;
@@ -165,7 +166,6 @@ export default function WorkCarousel() {
               </div>
               <span className="font-medium">{item.company}</span>
               <span className="text-sm text-gray-500 dark:text-gray-400">{item.role}</span>
-              <span className="text-sm text-gray-400 dark:text-gray-500">{item.period}</span>
             </Link>
           </div>
         ))}

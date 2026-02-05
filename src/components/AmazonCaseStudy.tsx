@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import ScrollProgressBar from '@/components/ScrollProgressBar';
 import SectionNav, { type SectionNavItem } from '@/components/SectionNav';
 import WorkCaseStudyCarousel from '@/components/WorkCaseStudyCarousel';
@@ -46,7 +47,7 @@ export default function AmazonCaseStudy({
   return (
     <article className="min-h-screen bg-white dark:bg-black text-black dark:text-white">
       <ScrollProgressBar />
-      <div className="max-w-[1200px] mx-auto px-4 sm:px-6 md:px-8 py-16 md:py-24">
+      <div className="max-w-[1200px] mx-auto px-4 sm:px-6 md:px-8 py-3.5">
         <Link
           href="/"
           className="text-gray-500 hover:text-gray-700 dark:hover:text-gray-300 text-sm mb-12 inline-block"
@@ -55,13 +56,13 @@ export default function AmazonCaseStudy({
         </Link>
 
         <header className="mb-16">
-          <h1 className="text-4xl md:text-5xl font-normal text-black dark:text-white tracking-tight mb-4 text-center">
+          <h1 className="text-[85px] font-normal text-black dark:text-white tracking-tight mb-8 text-center leading-tight">
             {title}
           </h1>
           {subtitle && (
-            <p className="text-xl text-gray-500 dark:text-gray-400 text-center mt-4">{subtitle}</p>
+            <p className="text-[40px] text-black dark:text-black text-center mt-8" style={{ letterSpacing: '-2.4px' }}>{subtitle}</p>
           )}
-          <div className="flex flex-wrap justify-center gap-6 md:gap-8 text-sm text-gray-500 dark:text-gray-400 mt-8 mb-8">
+          <div className="flex flex-wrap justify-center gap-6 md:gap-8 text-[20px] text-black dark:text-black mt-8 mb-8" style={{ letterSpacing: '0px' }}>
             {timeline != null && <span>Timeline: {timeline}</span>}
             {roleDisplay != null && <span>Title: {roleDisplay}</span>}
             <span>Project: {title}</span>
@@ -93,9 +94,21 @@ export default function AmazonCaseStudy({
             </div>
           )}
         </header>
-        <p className="text-black dark:text-white leading-relaxed text-center max-w-[811px] mx-auto mb-16">
+        <div className="flex flex-col md:flex-row md:items-start gap-8 md:gap-12 mb-16">
+          <p className="text-black dark:text-white text-lg leading-relaxed text-center md:text-left flex-1 min-w-0 max-w-[811px] md:max-w-none mx-auto md:mx-0">
           I joined the team working on Amazon Inspire and Shop By Interest—experimental experiences aimed at helping customers discover products they didn’t know they wanted. Amazon has millions of products, but search and category navigation only work when you know what you’re looking for. We were building a visual, feed-based shopping experience: discovery-driven browsing at scale. My role focused on the design system and interaction patterns that would power these experiences, and on making them findable—so customers could reach Inspirational Shopping and Shop By Interest without already knowing they existed.
         </p>
+          <div className="relative w-full md:w-[45%] md:max-w-[480px] md:flex-shrink-0 rounded-2xl overflow-hidden border border-gray-200 dark:border-gray-700 mx-auto md:mx-0">
+            <Image
+              src="/images/work/amazon/inspire-video-product-flow.png"
+              alt="Amazon Inspire — video playback view and product detail pop-up showing discovery-to-purchase flow"
+              width={480}
+              height={520}
+              className="w-full h-auto object-contain"
+              sizes="(max-width: 768px) 100vw, 480px"
+            />
+          </div>
+        </div>
       </div>
 
       <SectionNav sections={SECTIONS} />

@@ -63,8 +63,13 @@ export default function VemlidyCaseStudy({
   launchedSiteNarrative,
   launchedSiteVideoUrl,
 }: VemlidyCaseStudyProps) {
+  const keepVideoMuted = (e: React.SyntheticEvent<HTMLVideoElement>) => {
+    const video = e.currentTarget;
+    if (!video.muted) video.muted = true;
+  };
+
   return (
-    <article className="max-w-[1200px] mx-auto px-4 sm:px-6 md:px-8 py-16 md:py-24">
+    <article className="max-w-[1200px] mx-auto px-4 sm:px-6 md:px-8 py-3">
       <ScrollProgressBar />
       <Link
         href="/"
@@ -73,14 +78,14 @@ export default function VemlidyCaseStudy({
         ← Back
       </Link>
 
-      <header className="mb-16">
-        <h1 className="text-4xl md:text-5xl font-normal text-black dark:text-white tracking-tight mb-4 text-center">
+      <header className="mb-[30px]">
+        <h1 className="text-[85px] font-normal text-black dark:text-white tracking-tight mb-8 text-center leading-tight">
           {title}
         </h1>
         {subtitle && (
-          <p className="text-xl text-gray-500 dark:text-gray-400 text-center mt-4">{subtitle}</p>
+          <p className="text-[40px] text-black dark:text-black text-center mt-8" style={{ letterSpacing: '-2.4px' }}>{subtitle}</p>
         )}
-        <div className="flex flex-wrap justify-center gap-6 md:gap-8 text-sm text-gray-500 dark:text-gray-400 mt-8 mb-8">
+        <div className="flex flex-wrap justify-center gap-6 md:gap-8 text-[20px] text-black dark:text-black mt-8 mb-8" style={{ letterSpacing: '0px' }}>
           {timeline != null && <span>Timeline: {timeline}</span>}
           {roleDisplay != null && <span>Title: {roleDisplay}</span>}
           <span>Project: {title}</span>
@@ -116,14 +121,48 @@ export default function VemlidyCaseStudy({
       <SectionNav sections={VEMLIDY_SECTIONS} />
 
       <div className="prose prose-lg dark:prose-invert max-w-none">
-        <section id="overview" className="scroll-mt-24">
-          <p className="text-black dark:text-white leading-relaxed whitespace-pre-line text-center mb-16">
-            {narrative}
-          </p>
+        <section id="overview" className="scroll-mt-24 mb-16">
+          <div className="flex flex-col md:flex-row md:items-start gap-8 md:gap-12">
+            <p className="text-black dark:text-white leading-relaxed whitespace-pre-line text-center md:text-left flex-1 min-w-0">
+              {narrative}
+            </p>
+            {launchedSiteVideoUrl && (
+              <div className="relative w-full md:w-[50%] md:max-w-[560px] md:flex-shrink-0 aspect-video rounded-2xl overflow-hidden border border-gray-200 dark:border-gray-700 bg-black max-w-4xl mx-auto md:mx-0">
+                {/loom\.com|youtube\.com|youtu\.be|vimeo\.com/.test(launchedSiteVideoUrl) ? (
+                  <iframe
+                    src={
+                      launchedSiteVideoUrl.includes('/share/')
+                        ? launchedSiteVideoUrl.replace('/share/', '/embed/')
+                        : launchedSiteVideoUrl
+                    }
+                    title="Vemlidy — current site walkthrough"
+                    className="absolute inset-0 w-full h-full"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                  />
+                ) : (
+                  <video
+                    src={launchedSiteVideoUrl}
+                    controls
+                    preload="metadata"
+                    playsInline
+                    muted
+                    onVolumeChange={keepVideoMuted}
+                    className="absolute inset-0 w-full h-full object-contain"
+                  >
+                    Your browser does not support the video tag.
+                  </video>
+                )}
+              </div>
+            )}
+          </div>
         </section>
 
         {/* Sitemap */}
         <section id="sitemap" className="mt-16 mb-16 text-center scroll-mt-24">
+          <p className="text-black dark:text-white leading-relaxed text-center mb-8 max-w-3xl mx-auto">
+            I led design strategy and established the UX practices that shaped this engagement. My first move was reworking the information architecture, creating a sitemap that clarified how users flowed through the site. This reduced friction for both patients and clinicians and gave the product a scalable foundation.
+          </p>
           <h2 className="text-2xl font-medium text-black dark:text-white mb-8">
             Sitemap
           </h2>
@@ -138,6 +177,9 @@ export default function VemlidyCaseStudy({
               />
             </div>
           </div>
+          <p className="text-black dark:text-white leading-relaxed text-center mt-8 max-w-3xl mx-auto">
+            That structure influenced everything downstream: what users could find, how quickly they could act, and how the experience could expand across audiences. After launch, users completed key tasks 20% faster.
+          </p>
         </section>
 
         {/* Low-fi wireframes — single carousel with all wireframe images */}
@@ -145,6 +187,9 @@ export default function VemlidyCaseStudy({
           <h2 className="text-2xl font-medium text-black dark:text-white mb-8">
             Low-fi wireframes
           </h2>
+          <p className="text-black dark:text-white leading-relaxed text-center mb-8 max-w-3xl mx-auto">
+            From there, I translated the strategy into low-fidelity wireframes that showed the client how everything would actually work. I designed full page layouts to demonstrate how new widgets and features would function, how content and assets would relate to each other, and how the pieces would come together as a cohesive system.
+          </p>
           <WorkCaseStudyCarousel images={WIREFRAME_CAROUSEL_IMAGES} />
         </section>
 
@@ -161,7 +206,7 @@ export default function VemlidyCaseStudy({
           </h2>
           <WorkCaseStudyCarousel images={LAUNCHED_SITE_IMAGES} />
           {launchedSiteNarrative && (
-            <p className="text-black dark:text-white leading-relaxed text-center mt-8 max-w-3xl mx-auto">
+            <p className="text-black dark:text-white leading-relaxed text-center mt-8 mx-auto" style={{ width: '774px', maxWidth: '100%' }}>
               {launchedSiteNarrative}
             </p>
           )}
@@ -185,6 +230,8 @@ export default function VemlidyCaseStudy({
                   controls
                   preload="metadata"
                   playsInline
+                  muted
+                  onVolumeChange={keepVideoMuted}
                   className="absolute inset-0 w-full h-full object-contain"
                 >
                   Your browser does not support the video tag.

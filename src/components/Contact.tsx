@@ -47,12 +47,12 @@ export default function Contact() {
           </div>
 
           {/* Right - Profile image (desktop) / Above content (mobile, perlera.co style) */}
-          <div className="relative w-full max-w-[280px] mx-auto md:mx-0 md:max-w-none md:w-[480px] aspect-square flex-shrink-0 order-1 md:order-2">
+          <div className="relative w-full max-w-[280px] mx-auto md:mx-0 md:max-w-none md:w-[360px] aspect-[360/242] flex-shrink-0 order-1 md:order-2">
             <Image
               src="/images/profile.png"
               alt={`${personalInfo.name} headshot`}
-              width={480}
-              height={480}
+              width={360}
+              height={242}
               className="absolute inset-0 w-full h-full object-contain"
               priority={false}
             />

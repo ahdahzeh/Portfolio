@@ -67,10 +67,10 @@ export default function WeChipnCaseStudy({
 
       {/* Hero */}
       <section id="overview" className="mb-16 text-center w-full max-w-[1200px] mx-auto scroll-mt-24">
-        <h1 className="text-4xl md:text-5xl font-normal text-black dark:text-white tracking-tight mb-4">
+        <h1 className="text-[85px] font-normal text-black dark:text-white tracking-tight mb-8 leading-tight">
           {title}: {subtitle ?? 'UX Design'}
         </h1>
-        <div className="flex flex-wrap justify-center gap-4 md:gap-8 text-sm text-gray-500 dark:text-gray-400 mb-8">
+        <div className="flex flex-wrap justify-center gap-4 md:gap-8 text-[20px] text-black dark:text-black mb-8" style={{ letterSpacing: '0px' }}>
           {timeline != null && <span>Timeline: {timeline}</span>}
           {roleDisplay != null && <span>Title: {roleDisplay}</span>}
           <span>Project: {title}</span>

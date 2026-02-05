@@ -1,6 +1,8 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import Image from 'next/image';
+import Link from 'next/link';
 import { personalInfo, socialLinks } from '@/data/portfolio';
 
 interface HeroProps {
@@ -63,66 +65,71 @@ export default function Hero({ animationDelayMs = 0 }: HeroProps) {
   }, [animationDelayMs]);
 
   return (
-    <section className="w-full mt-5 sm:mt-6 md:mt-[100px] mb-[27px] relative min-h-[400px] md:min-h-[300px] bg-white dark:bg-black">
-      <div className="max-w-[1200px] mx-auto">
-        <div className="flex flex-col md:flex-row md:gap-[80px] gap-8 items-start relative z-40">
+    <section className="w-full mt-0 sm:mt-1 md:mt-[80px] mb-[27px] relative min-h-[400px] md:min-h-[350px] bg-white dark:bg-black overflow-visible">
+      <div className="max-w-[1200px] mx-auto relative overflow-visible">
+        <div className="flex flex-col md:flex-row md:gap-[80px] gap-8 items-start relative z-40 pt-[52px] pb-[52px] h-[336px] overflow-visible">
           {/* Left - Name with typewriter animation */}
-          <div className="flex flex-col gap-2 md:gap-4" aria-label={`Name: ${personalInfo.name || 'Adaze Oviawe'}`}>
+          <div className="flex flex-col gap-2 md:gap-4 order-2 md:order-1 md:min-w-[400px] flex-shrink-0" aria-label={`Name: ${personalInfo.name || 'Adaze Oviawe'}`}>
             <span className="sr-only">{personalInfo.name || 'Adaze Oviawe'}</span>
-            <div className="flex items-center gap-2 md:gap-3 flex-nowrap">
-              <h1 className="text-[48px] sm:text-[56px] md:text-[clamp(3rem,10vw,7rem)] font-normal leading-[0.9] text-black dark:text-white tracking-[-2px] md:tracking-[-4px] min-w-[1ch] shrink-0">
-                {displayedFirstName}
-                {showCursor && displayedFirstName.length < firstName.length && (
-                  <span className="inline-block w-1 md:w-1.5 h-[0.85em] bg-black dark:bg-white ml-0.5 align-middle animate-pulse" aria-hidden />
-                )}
+            <div className="flex items-center gap-2 md:gap-3 flex-nowrap relative">
+              <h1 className="text-[48px] sm:text-[56px] md:text-[clamp(3rem,10vw,7rem)] font-normal leading-[0.9] text-black dark:text-white tracking-[-2px] md:tracking-[-4px] shrink-0 relative">
+                {/* Hidden full name to reserve space and prevent layout shifts */}
+                <span className="invisible">{firstName}</span>
+                <span className="absolute inset-0">
+                  {displayedFirstName}
+                  {showCursor && displayedFirstName.length < firstName.length && (
+                    <span className="inline-block w-1 md:w-1.5 h-[0.85em] bg-black dark:bg-white ml-0.5 align-middle animate-pulse" aria-hidden />
+                  )}
+                </span>
               </h1>
               {displayedFirstName === firstName && (
                 <span className="text-sm sm:text-base md:text-lg font-normal text-gray-400 whitespace-nowrap shrink-0 translate-y-2.5 py-0">{firstPron}</span>
               )}
             </div>
-            <div className="flex items-center gap-2 md:gap-3 flex-nowrap">
-              <h1 className="text-[48px] sm:text-[56px] md:text-[clamp(3rem,10vw,7rem)] font-normal leading-[0.9] text-black dark:text-white tracking-[-2px] md:tracking-[-4px] min-w-[1ch] shrink-0">
-                {displayedLastName}
-                {showCursor && displayedFirstName === firstName && displayedLastName.length < lastName.length && (
-                  <span className="inline-block w-1 md:w-1.5 h-[0.85em] bg-black dark:bg-white ml-0.5 align-middle animate-pulse" aria-hidden />
-                )}
+            <div className="flex items-center gap-2 md:gap-3 flex-nowrap relative">
+              <h1 className="text-[48px] sm:text-[56px] md:text-[clamp(3rem,10vw,7rem)] font-normal leading-[0.9] text-black dark:text-white tracking-[-2px] md:tracking-[-4px] shrink-0 relative">
+                {/* Hidden full name to reserve space and prevent layout shifts */}
+                <span className="invisible">{lastName}</span>
+                <span className="absolute inset-0">
+                  {displayedLastName}
+                  {showCursor && displayedFirstName === firstName && displayedLastName.length < lastName.length && (
+                    <span className="inline-block w-1 md:w-1.5 h-[0.85em] bg-black dark:bg-white ml-0.5 align-middle animate-pulse" aria-hidden />
+                  )}
+                </span>
               </h1>
               {displayedLastName === lastName && (
                 <span className="text-sm sm:text-base md:text-lg font-normal text-gray-400 whitespace-nowrap shrink-0 translate-y-2.5 py-0">{lastPron}</span>
               )}
             </div>
           </div>
-
-          {/* Right - Bio & CTA */}
-          <div className="flex flex-col gap-6 md:max-w-[480px] md:pt-2">
-            <p className="text-base sm:text-[17px] font-normal text-gray-500 dark:text-gray-400 leading-[1.6]">
-              I have over 6 years of experience solving problems, designing experiences, and building digital products. I&apos;ve worked with both startups and enterprise teams at companies like{' '}
-              {'bioCompanies' in personalInfo && personalInfo.bioCompanies.map((company, i) => (
-                <span key={company.name}>
-                  <a
-                    href={company.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="font-semibold italic text-[#006eff] underline underline-offset-2 hover:text-[#0060d9]"
-                  >
-                    {company.name}
-                  </a>
-                  {i < personalInfo.bioCompanies.length - 2 ? ', ' : i === personalInfo.bioCompanies.length - 2 ? ', and ' : ''}
-                </span>
-              ))}
-              , delivering user-centered solutions that drive measurable results.
-            </p>
-            <div className="mt-2 sm:mt-4 flex flex-wrap items-center gap-3">
-              <span className="text-base text-black dark:text-white">Want to chat?</span>
-              <a
-                href={`mailto:${personalInfo.email.replace(/^mailto:/i, '')}?subject=Hey!%20👋`}
-                className="flex items-center justify-center px-6 py-3 min-w-[160px] bg-[#006eff] rounded-2xl hover:bg-[#0060d9] transition-colors font-medium text-white"
-              >
-                Get In Touch
-              </a>
-            </div>
+          {/* Right - Profile image (top of hero) - Fixed position to prevent layout shifts */}
+          <div className="relative w-full max-w-[280px] mx-auto md:mx-0 md:max-w-none md:w-[360px] aspect-[360/364] flex-shrink-0 order-1 md:order-2 overflow-visible" style={{ isolation: 'isolate', position: 'relative' }}>
+            <Image
+              src="/images/profile.png"
+              alt={`${personalInfo.name} headshot`}
+              width={360}
+              height={364}
+              className="absolute inset-0 w-full h-full object-contain left-[145px] top-[-63px]"
+              style={{ 
+                transform: 'translateZ(0)',
+                willChange: 'auto',
+                backfaceVisibility: 'hidden',
+                WebkitBackfaceVisibility: 'hidden',
+                position: 'absolute'
+              }}
+              priority={true}
+            />
           </div>
         </div>
+        <p className="text-base sm:text-[17px] font-normal text-black dark:text-white text-center max-w-[1200px] leading-[1.6] mx-auto mt-2 sm:mt-4 md:pt-2">
+          I design digital experiences that help people do meaningful things, whether that&apos;s accessing healthcare or making confident purchases online. These are industries where getting it wrong has real consequences. I&apos;ve worked across startups and enterprise teams at{' '}
+          <Link href="/work/amazon" className="font-semibold italic text-[#006eff] underline underline-offset-2 hover:text-[#0060d9]">Amazon</Link>
+          ,{' '}
+          <Link href="/work/block-equity-group" className="font-semibold italic text-[#006eff] underline underline-offset-2 hover:text-[#0060d9]">Block Equity Group</Link>
+          , and{' '}
+          <a href="https://www.omc.com/capabilities/capability-health/" target="_blank" rel="noopener noreferrer" className="font-semibold italic text-[#006eff] underline underline-offset-2 hover:text-[#0060d9]">Omnicom</a>
+          , shipping solutions that improve outcomes, not just metrics.
+        </p>
       </div>
     </section>
   );

@@ -60,7 +60,7 @@ async function WorkContent({ params }: { params: Promise<{ slug: string }> }) {
           launchedSiteVideoUrl={study.launchedSiteVideoUrl}
         />
         <nav
-          className="max-w-[1200px] mx-auto px-4 sm:px-6 md:px-8 mt-16 pt-8 border-t border-gray-200 dark:border-gray-800 flex flex-wrap items-center justify-between gap-6"
+          className="max-w-[1200px] mx-auto px-4 sm:px-6 md:px-8 mt-[10px] mb-[10px] pt-8 border-t border-gray-200 dark:border-gray-800 flex flex-wrap items-center justify-between gap-6"
           aria-label="Project navigation"
         >
           {itemIndex > 0 ? (
@@ -103,7 +103,7 @@ async function WorkContent({ params }: { params: Promise<{ slug: string }> }) {
           mobileViewVideoUrl={study.mobileViewVideoUrl}
         />
         <nav
-          className="max-w-[1200px] mx-auto px-4 sm:px-6 md:px-8 mt-16 pt-8 border-t border-gray-200 dark:border-gray-800 flex flex-wrap items-center justify-between gap-6"
+          className="max-w-[1200px] mx-auto px-4 sm:px-6 md:px-8 mt-[10px] mb-[10px] pt-8 border-t border-gray-200 dark:border-gray-800 flex flex-wrap items-center justify-between gap-6"
           aria-label="Project navigation"
         >
           {itemIndex > 0 ? (
@@ -147,7 +147,7 @@ async function WorkContent({ params }: { params: Promise<{ slug: string }> }) {
           sections={study.sections ?? []}
         />
         <nav
-          className="max-w-[1200px] mx-auto px-4 sm:px-6 md:px-8 mt-16 pt-8 border-t border-gray-200 dark:border-gray-800 flex flex-wrap items-center justify-between gap-6"
+          className="max-w-[1200px] mx-auto px-4 sm:px-6 md:px-8 mt-[10px] mb-[10px] pt-8 border-t border-gray-200 dark:border-gray-800 flex flex-wrap items-center justify-between gap-6"
           aria-label="Project navigation"
         >
           {itemIndex > 0 ? (
@@ -194,13 +194,13 @@ async function WorkContent({ params }: { params: Promise<{ slug: string }> }) {
           ← Back
         </Link>
         <header className="mb-16">
-        <h1 className="text-4xl md:text-5xl font-normal text-black dark:text-white tracking-tight mb-4 text-center">
-          {study?.title ?? item.company}
-        </h1>
-        {study?.subtitle && (
-          <p className="text-xl text-gray-500 dark:text-gray-400 text-center mt-4">{study.subtitle}</p>
-        )}
-        <div className="flex flex-wrap justify-center gap-6 md:gap-8 text-sm text-gray-500 dark:text-gray-400 mt-8 mb-8">
+          <h1 className="text-[85px] font-normal text-black dark:text-white tracking-tight mb-8 text-center leading-tight">
+            {study?.title ?? item.company}
+          </h1>
+          {study?.subtitle && (
+            <p className="text-[40px] text-black dark:text-black text-center mt-8" style={{ letterSpacing: '-2.4px' }}>{study.subtitle}</p>
+          )}
+          <div className="flex flex-wrap justify-center gap-6 md:gap-8 text-[20px] text-black dark:text-black mt-8 mb-8" style={{ letterSpacing: '0px' }}>
           {study?.timeline != null && <span>Timeline: {study.timeline}</span>}
           {study?.roleDisplay != null && <span>Title: {study.roleDisplay}</span>}
           <span>Project: {study?.title ?? item.company}</span>
@@ -287,7 +287,7 @@ async function WorkContent({ params }: { params: Promise<{ slug: string }> }) {
           )}
         </div>
         <nav
-          className="max-w-[1200px] mx-auto px-4 sm:px-6 md:px-8 mt-16 pt-8 border-t border-gray-200 dark:border-gray-800 flex flex-wrap items-center justify-between gap-6"
+          className="max-w-[1200px] mx-auto px-4 sm:px-6 md:px-8 mt-[10px] mb-[10px] pt-8 border-t border-gray-200 dark:border-gray-800 flex flex-wrap items-center justify-between gap-6"
           aria-label="Project navigation"
         >
           {itemIndex > 0 ? (
