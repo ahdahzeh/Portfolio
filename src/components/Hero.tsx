@@ -109,7 +109,7 @@ export default function Hero({ animationDelayMs = 0 }: HeroProps) {
               alt={`${personalInfo.name} headshot`}
               width={360}
               height={364}
-              className="absolute inset-0 w-full h-full object-contain left-0 top-0 md:left-[145px] md:top-[-63px]"
+              className="absolute w-full h-full object-contain left-0 top-0 md:left-[145px] md:top-[-63px]"
               style={{ 
                 transform: 'translateZ(0)',
                 willChange: 'auto',
