@@ -67,7 +67,7 @@ export default function Hero({ animationDelayMs = 0 }: HeroProps) {
   return (
     <section className="w-full mt-0 sm:mt-1 md:mt-[80px] mb-[27px] relative min-h-[400px] md:min-h-[350px] bg-white dark:bg-black overflow-visible">
       <div className="max-w-[1200px] mx-auto relative overflow-visible">
-        <div className="flex flex-col md:flex-row md:gap-[80px] gap-8 items-start relative z-40 pt-[52px] pb-[52px] min-h-0 md:min-h-[336px] overflow-visible">
+        <div className="flex flex-col md:flex-row md:gap-[80px] gap-8 items-start relative z-40 pt-[52px] pb-[52px] min-h-0 md:min-h-[336px]">
           {/* Left - Name with typewriter animation */}
           <div className="flex flex-col gap-2 md:gap-4 order-2 md:order-1 w-full md:min-w-[400px] flex-shrink-0" aria-label={`Name: ${personalInfo.name || 'Adaze Oviawe'}`}>
             <span className="sr-only">{personalInfo.name || 'Adaze Oviawe'}</span>
@@ -103,22 +103,17 @@ export default function Hero({ animationDelayMs = 0 }: HeroProps) {
             </div>
           </div>
           {/* Right - Profile image (top of hero) - Fixed position to prevent layout shifts */}
-          <div className="relative w-full max-w-[280px] mx-auto md:mx-0 md:max-w-none md:w-[360px] aspect-[360/364] flex-shrink-0 order-1 md:order-2 overflow-visible" style={{ isolation: 'isolate', position: 'relative' }}>
-            <Image
-              src="/images/profile.png"
-              alt={`${personalInfo.name} headshot`}
-              width={360}
-              height={364}
-              className="absolute w-full h-full object-contain left-0 top-0 md:left-[145px] md:top-[-63px]"
-              style={{ 
-                transform: 'translateZ(0)',
-                willChange: 'auto',
-                backfaceVisibility: 'hidden',
-                WebkitBackfaceVisibility: 'hidden',
-                position: 'absolute'
-              }}
-              priority={true}
-            />
+          <div className="relative w-full max-w-[280px] mx-auto md:mx-0 md:max-w-none md:w-[360px] flex-shrink-0 order-1 md:order-2">
+            <div className="relative w-full aspect-[360/364]">
+              <Image
+                src="/images/profile.png"
+                alt={`${personalInfo.name} headshot`}
+                fill
+                className="object-contain"
+                priority={true}
+                sizes="(max-width: 768px) 280px, 360px"
+              />
+            </div>
           </div>
         </div>
         <p className="text-base sm:text-[17px] font-normal text-black dark:text-white text-center max-w-[1200px] leading-[1.6] mx-auto mt-2 sm:mt-4 md:pt-2">
