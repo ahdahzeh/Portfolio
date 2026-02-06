@@ -21,6 +21,11 @@ html {
   scroll-behavior: smooth;
   color-scheme: light;
   background-color: var(--background);
+  scrollbar-width: none; /* hide main scrollbar to avoid black bar on right */
+}
+
+html::-webkit-scrollbar {
+  display: none; /* hide main scrollbar in Chrome/Safari */
 }
 
 html.dark {
@@ -211,4 +216,5 @@ nextjs-portal {
 .dark .hover-lift:hover {
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
 }
+
 

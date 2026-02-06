@@ -1,7 +1,12 @@
 import type { Metadata } from 'next';
 import './globals.css';
 
+const baseUrl = process.env.VERCEL_URL
+  ? `https://${process.env.VERCEL_URL}`
+  : process.env.NEXT_PUBLIC_SITE_URL ?? 'http://localhost:3000';
+
 export const metadata: Metadata = {
+  metadataBase: new URL(baseUrl),
   title: 'Portfolio | Adaze Oviawe',
   description: 'UX Designer - Building user-centered digital experiences',
   keywords: ['portfolio', 'UX designer', 'product design', 'Amazon', 'Omnicom'],

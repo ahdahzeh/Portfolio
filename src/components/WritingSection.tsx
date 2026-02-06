@@ -15,12 +15,12 @@ export default function WritingSection() {
   }, []);
 
   return (
-    <section className="w-full mt-16 md:mt-24">
-      <h2 className="text-[32px] sm:text-[40px] leading-[40px] sm:leading-[48px] font-normal tracking-[-0.02em] text-black dark:text-white mb-2">
+    <section className="w-full mt-16 md:mt-24" aria-labelledby="design-videos-heading">
+      <h2 id="design-videos-heading" className="text-[32px] sm:text-[40px] leading-[40px] sm:leading-[48px] font-normal tracking-[-0.02em] text-black dark:text-white mb-2">
         Design Videos
       </h2>
       <p className="text-sm text-gray-400 dark:text-gray-500 mb-4">TikTok design content</p>
-      <div className="flex gap-6 overflow-x-auto scrollbar-hide pb-4">
+      <div className="flex gap-6 overflow-x-auto overflow-y-hidden scrollbar-hide pb-4 min-h-0 w-full">
         {tiktokVideos.map((video) => (
           <blockquote
             key={video.id}

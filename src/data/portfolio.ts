@@ -24,7 +24,7 @@ export const personalInfo = {
 export const socialLinks = {
   twitter: "",
   linkedin: "https://linkedin.com/in/ahdahzeh",
-  instagram: "https://www.instagram.com/adxze/",
+  instagram: "",
   tiktok: "https://www.tiktok.com/@adxze98",
   github: "",
   email: "mailto:ahdahzeh@gmail.com",

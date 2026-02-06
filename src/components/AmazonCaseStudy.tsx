@@ -8,12 +8,12 @@ import WorkCaseStudyCarousel from '@/components/WorkCaseStudyCarousel';
 
 const SECTIONS: SectionNavItem[] = [
   { id: 'overview', label: 'Overview' },
+  { id: 'results', label: 'Results' },
   { id: 'problem', label: 'Problem' },
   { id: 'solution', label: 'Solution' },
   { id: 'design-homepage', label: 'Design – Homepage' },
   { id: 'design-search', label: 'Design – Search' },
   { id: 'design-explorations', label: 'Design – Explorations' },
-  { id: 'results', label: 'Results' },
   { id: 'research', label: 'Research' },
   { id: 'challenges', label: 'Challenges' },
   { id: 'closing', label: 'Closing' },
@@ -113,7 +113,7 @@ export default function AmazonCaseStudy({
 
       <SectionNav sections={SECTIONS} />
 
-      <div className="max-w-[1200px] mx-auto px-4 sm:px-6 md:px-8 space-y-24 md:space-y-32">
+      <div className="max-w-[1200px] mx-auto px-4 sm:px-6 md:px-8 pt-[77px] pb-[77px] space-y-24 md:space-y-32">
         {/* 2. PROJECT OVERVIEW */}
         <section id="overview" className="scroll-mt-24">
           <h2 className="text-3xl md:text-4xl font-semibold tracking-tight text-gray-900 dark:text-white mb-8">
@@ -130,17 +130,56 @@ export default function AmazonCaseStudy({
               <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
                 A dedicated surface for discovery: curated collections, trending picks, and personalized inspiration in a feed format. Customers can browse without a search query and still land on relevant products.
               </p>
+              <div className="mt-4 rounded-xl overflow-hidden">
+                <Image
+                  src="/images/work/amazon/inspire-tab-mens-style.png"
+                  alt="Inspire tab — Men’s Style feed with shoppable outfit and product carousel"
+                  width={382}
+                  height={520}
+                  className="w-full h-auto object-contain"
+                  sizes="(max-width: 768px) 100vw, 382px"
+                />
+              </div>
             </div>
             <div className="rounded-2xl border border-gray-200 dark:border-gray-800 p-6 md:p-8">
               <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-3">Shop By Interest</h3>
               <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
                 Interest-based browsing—explore by category, community picks, and themed collections in a scrollable experience. Content and products adapt to what users follow and engage with, so the feed stays relevant.
               </p>
+              <div className="mt-4 rounded-xl overflow-hidden">
+                <Image
+                  src="/images/work/amazon/shop-by-interest-inspire-feed.png"
+                  alt="Inspire feed — shoppable post with Logitech mouse and creator content"
+                  width={382}
+                  height={520}
+                  className="w-full h-auto object-contain"
+                  sizes="(max-width: 768px) 100vw, 382px"
+                />
+              </div>
             </div>
           </div>
-          <p className="text-gray-600 dark:text-gray-400 leading-relaxed mt-8 max-w-3xl">
-            Together, the product delivers a curated scroll feed and community-based shopping experience that bridges traditional search and discovery. The design system had to support multiple categories and teams while staying consistent with Amazon’s broader UI—every component built for reuse and clear documentation.
+        </section>
+
+        {/* RESULTS & INSIGHTS */}
+        <section id="results" className="scroll-mt-24">
+          <h2 className="text-3xl md:text-4xl font-semibold tracking-tight text-gray-900 dark:text-white mb-6">
+            Results & Insights
+          </h2>
+          <p className="text-gray-600 dark:text-gray-400 leading-relaxed max-w-3xl mb-12">
+            Making Inspirational Shopping and Shop By Interest discoverable through templates drove meaningful gains in traffic and revenue. The work reached millions of customers and reinforced how important findability and consistent entry points are for discovery experiences at scale.
           </p>
+          <div className="grid sm:grid-cols-2 gap-8">
+            <div className="rounded-2xl border-2 border-amber-500/40 dark:border-amber-400/30 bg-amber-50/50 dark:bg-amber-950/20 p-8 md:p-10 text-center">
+              <p className="text-5xl md:text-6xl font-bold text-amber-600 dark:text-amber-400 tabular-nums">12%</p>
+              <p className="text-lg font-semibold text-gray-900 dark:text-white mt-2">Traffic increase</p>
+              <p className="text-sm text-gray-600 dark:text-gray-400 mt-2">First week after launch — more users finding and entering the discovery experiences</p>
+            </div>
+            <div className="rounded-2xl border-2 border-amber-500/40 dark:border-amber-400/30 bg-amber-50/50 dark:bg-amber-950/20 p-8 md:p-10 text-center">
+              <p className="text-5xl md:text-6xl font-bold text-amber-600 dark:text-amber-400 tabular-nums">20%</p>
+              <p className="text-lg font-semibold text-gray-900 dark:text-white mt-2">Revenue increase</p>
+              <p className="text-sm text-gray-600 dark:text-gray-400 mt-2">After 2 weeks — discovery-driven browsing contributing to conversion</p>
+            </div>
+          </div>
         </section>
 
         {/* 3. PROBLEM STATEMENT */}
@@ -166,10 +205,15 @@ export default function AmazonCaseStudy({
           <p className="text-lg text-gray-600 dark:text-gray-400 leading-relaxed max-w-3xl mb-8">
             We introduced a template-based solution for navigation and placement: reusable widget templates that could surface Inspirational Shopping and Shop By Interest from the homepage, search, and key entry points—giving users a clear path to discovery without prior knowledge. The templates lived in our shared component library so multiple teams could adopt them without reinventing placement or hierarchy.
           </p>
-          <div className="rounded-2xl border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-900/50 p-8 md:p-10">
-            <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
-              Templates standardized how these experiences were promoted across the product, creating consistent ingress points and making the features findable at scale. Because every component was designed for reuse, we could iterate on placement and content (e.g. hero cards, grid widgets, search integrations) while keeping the system maintainable. The process was heavily data-driven: we ran A/B tests on template placement and micro-interactions, balancing design intuition with what the data showed about engagement and discovery.
-            </p>
+          <div className="rounded-2xl overflow-hidden mb-10">
+            <Image
+              src="/images/work/amazon/solution-templates-wireframes.png"
+              alt="Shop By Interest and Collection Faceouts widget templates — asymmetrical layouts, grids, and ingress to Shop By Interest"
+              width={1024}
+              height={576}
+              className="w-full h-auto object-contain"
+              sizes="(max-width: 1200px) 100vw, 1024px"
+            />
           </div>
         </section>
 
@@ -266,28 +310,6 @@ export default function AmazonCaseStudy({
           />
         </section>
 
-        {/* 6. RESULTS / INSIGHTS */}
-        <section id="results" className="scroll-mt-24">
-          <h2 className="text-3xl md:text-4xl font-semibold tracking-tight text-gray-900 dark:text-white mb-6">
-            Results & Insights
-          </h2>
-          <p className="text-gray-600 dark:text-gray-400 leading-relaxed max-w-3xl mb-12">
-            Making Inspirational Shopping and Shop By Interest discoverable through templates drove meaningful gains in traffic and revenue. The work reached millions of customers and reinforced how important findability and consistent entry points are for discovery experiences at scale.
-          </p>
-          <div className="grid sm:grid-cols-2 gap-8">
-            <div className="rounded-2xl border-2 border-amber-500/40 dark:border-amber-400/30 bg-amber-50/50 dark:bg-amber-950/20 p-8 md:p-10 text-center">
-              <p className="text-5xl md:text-6xl font-bold text-amber-600 dark:text-amber-400 tabular-nums">12%</p>
-              <p className="text-lg font-semibold text-gray-900 dark:text-white mt-2">Traffic increase</p>
-              <p className="text-sm text-gray-600 dark:text-gray-400 mt-2">First week after launch — more users finding and entering the discovery experiences</p>
-            </div>
-            <div className="rounded-2xl border-2 border-amber-500/40 dark:border-amber-400/30 bg-amber-50/50 dark:bg-amber-950/20 p-8 md:p-10 text-center">
-              <p className="text-5xl md:text-6xl font-bold text-amber-600 dark:text-amber-400 tabular-nums">20%</p>
-              <p className="text-lg font-semibold text-gray-900 dark:text-white mt-2">Revenue increase</p>
-              <p className="text-sm text-gray-600 dark:text-gray-400 mt-2">After 2 weeks — discovery-driven browsing contributing to conversion</p>
-            </div>
-          </div>
-        </section>
-
         {/* 7. RESEARCH */}
         <section id="research" className="scroll-mt-24">
           <h2 className="text-3xl md:text-4xl font-semibold tracking-tight text-gray-900 dark:text-white mb-6">
@@ -332,7 +354,7 @@ export default function AmazonCaseStudy({
         </section>
 
         {/* 9. CLOSING */}
-        <section id="closing" className="scroll-mt-24 py-24 md:py-32 text-center">
+        <section id="closing" className="scroll-mt-24 py-[90px] text-center">
           <p className="text-2xl md:text-3xl font-semibold tracking-tight text-gray-900 dark:text-white">
             Thank you for your time
           </p>
