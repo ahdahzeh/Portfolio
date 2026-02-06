@@ -113,7 +113,7 @@ export default function AmazonCaseStudy({
 
       <SectionNav sections={SECTIONS} />
 
-      <div className="max-w-[1200px] mx-auto px-4 sm:px-6 md:px-8 pt-[77px] pb-[77px] space-y-24 md:space-y-32">
+      <div className="max-w-[1200px] mx-auto px-4 sm:px-6 md:px-8 pt-[35px] pb-[35px] space-y-24 md:space-y-32">
         {/* 2. PROJECT OVERVIEW */}
         <section id="overview" className="scroll-mt-24">
           <h2 className="text-3xl md:text-4xl font-semibold tracking-tight text-gray-900 dark:text-white mb-8">
@@ -354,7 +354,7 @@ export default function AmazonCaseStudy({
         </section>
 
         {/* 9. CLOSING */}
-        <section id="closing" className="scroll-mt-24 py-[90px] text-center">
+        <section id="closing" className="scroll-mt-24 py-[15px] text-center">
           <p className="text-2xl md:text-3xl font-semibold tracking-tight text-gray-900 dark:text-white">
             Thank you for your time
           </p>

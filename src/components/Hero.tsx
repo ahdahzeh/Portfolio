@@ -67,15 +67,15 @@ export default function Hero({ animationDelayMs = 0 }: HeroProps) {
   return (
     <section className="w-full mt-0 sm:mt-1 md:mt-[80px] mb-[27px] relative min-h-[400px] md:min-h-[350px] bg-white dark:bg-black overflow-visible">
       <div className="max-w-[1200px] mx-auto relative overflow-visible">
-        <div className="flex flex-col md:flex-row md:gap-[80px] gap-8 items-start relative z-40 pt-[52px] pb-[52px] h-[336px] overflow-visible">
+        <div className="flex flex-col md:flex-row md:gap-[80px] gap-8 items-start relative z-40 pt-[52px] pb-[52px] min-h-0 md:min-h-[336px] overflow-visible">
           {/* Left - Name with typewriter animation */}
-          <div className="flex flex-col gap-2 md:gap-4 order-2 md:order-1 md:min-w-[400px] flex-shrink-0" aria-label={`Name: ${personalInfo.name || 'Adaze Oviawe'}`}>
+          <div className="flex flex-col gap-2 md:gap-4 order-2 md:order-1 w-full md:min-w-[400px] flex-shrink-0" aria-label={`Name: ${personalInfo.name || 'Adaze Oviawe'}`}>
             <span className="sr-only">{personalInfo.name || 'Adaze Oviawe'}</span>
-            <div className="flex items-center gap-2 md:gap-3 flex-nowrap relative">
-              <h1 className="text-[48px] sm:text-[56px] md:text-[clamp(3rem,10vw,7rem)] font-normal leading-[0.9] text-black dark:text-white tracking-[-2px] md:tracking-[-4px] shrink-0 relative">
+            <div className="flex items-center gap-2 md:gap-3 flex-nowrap relative min-w-0">
+              <h1 className="text-[48px] sm:text-[56px] md:text-[clamp(3rem,10vw,7rem)] font-normal leading-[0.9] text-black dark:text-white tracking-[-2px] md:tracking-[-4px] shrink-0 relative overflow-hidden">
                 {/* Hidden full name to reserve space and prevent layout shifts */}
-                <span className="invisible">{firstName}</span>
-                <span className="absolute inset-0">
+                <span className="invisible block" aria-hidden>{firstName}</span>
+                <span className="absolute left-0 top-0">
                   {displayedFirstName}
                   {showCursor && displayedFirstName.length < firstName.length && (
                     <span className="inline-block w-1 md:w-1.5 h-[0.85em] bg-black dark:bg-white ml-0.5 align-middle animate-pulse" aria-hidden />
@@ -86,11 +86,11 @@ export default function Hero({ animationDelayMs = 0 }: HeroProps) {
                 <span className="text-sm sm:text-base md:text-lg font-normal text-gray-400 whitespace-nowrap shrink-0 translate-y-2.5 py-0">{firstPron}</span>
               )}
             </div>
-            <div className="flex items-center gap-2 md:gap-3 flex-nowrap relative">
-              <h1 className="text-[48px] sm:text-[56px] md:text-[clamp(3rem,10vw,7rem)] font-normal leading-[0.9] text-black dark:text-white tracking-[-2px] md:tracking-[-4px] shrink-0 relative">
+            <div className="flex items-center gap-2 md:gap-3 flex-nowrap relative min-w-0">
+              <h1 className="text-[48px] sm:text-[56px] md:text-[clamp(3rem,10vw,7rem)] font-normal leading-[0.9] text-black dark:text-white tracking-[-2px] md:tracking-[-4px] shrink-0 relative overflow-hidden">
                 {/* Hidden full name to reserve space and prevent layout shifts */}
-                <span className="invisible">{lastName}</span>
-                <span className="absolute inset-0">
+                <span className="invisible block" aria-hidden>{lastName}</span>
+                <span className="absolute left-0 top-0">
                   {displayedLastName}
                   {showCursor && displayedFirstName === firstName && displayedLastName.length < lastName.length && (
                     <span className="inline-block w-1 md:w-1.5 h-[0.85em] bg-black dark:bg-white ml-0.5 align-middle animate-pulse" aria-hidden />
@@ -109,7 +109,7 @@ export default function Hero({ animationDelayMs = 0 }: HeroProps) {
               alt={`${personalInfo.name} headshot`}
               width={360}
               height={364}
-              className="absolute inset-0 w-full h-full object-contain left-[145px] top-[-63px]"
+              className="absolute inset-0 w-full h-full object-contain left-0 top-0 md:left-[145px] md:top-[-63px]"
               style={{ 
                 transform: 'translateZ(0)',
                 willChange: 'auto',
