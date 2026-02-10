@@ -8,11 +8,11 @@ export default function Contact() {
   const videoUrl = personalInfo.contactVideoUrl;
 
   return (
-    <section className="w-full mt-3 md:mt-[46px] mb-[27px]">
+    <section className="w-full mb-[27px]">
       <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-8 md:gap-12">
           {/* Left - Contact content */}
           <div className="max-w-3xl py-0 order-2 md:order-1">
-            <h2 className="text-[32px] sm:text-[40px] leading-[40px] sm:leading-[48px] font-normal tracking-[-0.02em] text-black dark:text-white mb-8">
+            <h2 className="text-3xl md:text-4xl font-semibold tracking-tight text-gray-900 dark:text-white mb-8">
               Talk to Me
             </h2>
             <p className="text-lg text-gray-600 dark:text-gray-400 max-w-[348px] mb-8">

@@ -5,6 +5,7 @@ import Image from 'next/image';
 import ScrollProgressBar from '@/components/ScrollProgressBar';
 import SectionNav, { type SectionNavItem } from '@/components/SectionNav';
 import WorkCaseStudyCarousel from '@/components/WorkCaseStudyCarousel';
+import LightboxTrigger from '@/components/LightboxTrigger';
 
 const SECTIONS: SectionNavItem[] = [
   { id: 'overview', label: 'Overview' },
@@ -98,7 +99,10 @@ export default function AmazonCaseStudy({
           <p className="text-black dark:text-white text-lg leading-relaxed text-center md:text-left flex-1 min-w-0 max-w-[811px] md:max-w-none mx-auto md:mx-0">
           I joined the team working on Amazon Inspire and Shop By Interest—experimental experiences aimed at helping customers discover products they didn’t know they wanted. Amazon has millions of products, but search and category navigation only work when you know what you’re looking for. We were building a visual, feed-based shopping experience: discovery-driven browsing at scale. My role focused on the design system and interaction patterns that would power these experiences, and on making them findable—so customers could reach Inspirational Shopping and Shop By Interest without already knowing they existed.
         </p>
-          <div className="relative w-full md:w-[45%] md:max-w-[480px] md:flex-shrink-0 rounded-2xl overflow-hidden border border-gray-200 dark:border-gray-700 mx-auto md:mx-0">
+          <LightboxTrigger
+            images={[{ src: '/images/work/amazon/inspire-video-product-flow.png', alt: 'Amazon Inspire — video playback view and product detail pop-up showing discovery-to-purchase flow' }]}
+            className="relative w-full md:w-[45%] md:max-w-[480px] md:flex-shrink-0 rounded-2xl overflow-hidden border border-gray-200 dark:border-gray-700 mx-auto md:mx-0"
+          >
             <Image
               src="/images/work/amazon/inspire-video-product-flow.png"
               alt="Amazon Inspire — video playback view and product detail pop-up showing discovery-to-purchase flow"
@@ -107,7 +111,7 @@ export default function AmazonCaseStudy({
               className="w-full h-auto object-contain"
               sizes="(max-width: 768px) 100vw, 480px"
             />
-          </div>
+          </LightboxTrigger>
         </div>
       </div>
 
@@ -146,7 +150,7 @@ export default function AmazonCaseStudy({
               <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
                 Interest-based browsing—explore by category, community picks, and themed collections in a scrollable experience. Content and products adapt to what users follow and engage with, so the feed stays relevant.
               </p>
-              <div className="mt-4 rounded-xl overflow-hidden">
+              <LightboxTrigger images={[{ src: '/images/work/amazon/shop-by-interest-inspire-feed.png', alt: 'Inspire feed — shoppable post with Logitech mouse and creator content' }]} className="mt-4 rounded-xl overflow-hidden">
                 <Image
                   src="/images/work/amazon/shop-by-interest-inspire-feed.png"
                   alt="Inspire feed — shoppable post with Logitech mouse and creator content"
@@ -155,7 +159,7 @@ export default function AmazonCaseStudy({
                   className="w-full h-auto object-contain"
                   sizes="(max-width: 768px) 100vw, 382px"
                 />
-              </div>
+              </LightboxTrigger>
             </div>
           </div>
         </section>
@@ -205,7 +209,10 @@ export default function AmazonCaseStudy({
           <p className="text-lg text-gray-600 dark:text-gray-400 leading-relaxed max-w-3xl mb-8">
             We introduced a template-based solution for navigation and placement: reusable widget templates that could surface Inspirational Shopping and Shop By Interest from the homepage, search, and key entry points—giving users a clear path to discovery without prior knowledge. The templates lived in our shared component library so multiple teams could adopt them without reinventing placement or hierarchy.
           </p>
-          <div className="rounded-2xl overflow-hidden mb-10">
+          <LightboxTrigger
+            images={[{ src: '/images/work/amazon/solution-templates-wireframes.png', alt: 'Shop By Interest and Collection Faceouts widget templates — asymmetrical layouts, grids, and ingress to Shop By Interest' }]}
+            className="rounded-2xl overflow-hidden mb-10"
+          >
             <Image
               src="/images/work/amazon/solution-templates-wireframes.png"
               alt="Shop By Interest and Collection Faceouts widget templates — asymmetrical layouts, grids, and ingress to Shop By Interest"
@@ -214,7 +221,7 @@ export default function AmazonCaseStudy({
               className="w-full h-auto object-contain"
               sizes="(max-width: 1200px) 100vw, 1024px"
             />
-          </div>
+          </LightboxTrigger>
         </section>
 
         {/* 5. DESIGN WORK SHOWCASE */}

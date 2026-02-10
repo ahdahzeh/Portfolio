@@ -3,9 +3,10 @@
 ## Pre-Deployment
 
 ✅ **Build Test**: `npm run build` completes successfully  
-✅ **Configuration**: `vercel.json` configured  
+✅ **Configuration**: `vercel.json` configured (Next.js + security headers)  
+✅ **Node**: `.nvmrc` set to Node 20 (Vercel uses Node 20 by default)  
 ✅ **Environment Variables**: Optional `NEXT_PUBLIC_SITE_URL` for custom domain  
-✅ **Static Assets**: Images in `/public/images/` are accessible  
+✅ **Static Assets**: Images in `/public/` are served automatically  
 
 ## Deployment Steps
 

@@ -7,9 +7,9 @@ const linkClassName = "group flex flex-col sm:flex-row sm:items-baseline py-3 sm
 
 export default function Archive() {
   return (
-    <section className="w-full mt-12 sm:mt-16 md:mt-24">
+    <section className="w-full">
       <div className="w-full">
-        <h2 className="text-[32px] sm:text-[40px] leading-[40px] sm:leading-[48px] font-normal tracking-[-0.02em] text-black dark:text-white mb-6">
+        <h2 className="text-3xl md:text-4xl font-semibold tracking-tight text-gray-900 dark:text-white mb-6">
           Archive
         </h2>
         <div className="flex flex-col">

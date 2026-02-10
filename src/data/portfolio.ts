@@ -56,6 +56,8 @@ export interface WorkItem {
     narrative: string;
     /** When set, narrative is split: part1 + optional middle content (e.g. wireframes) + part2 */
     narrativePart1?: string;
+    /** Optional closing paragraph for intro (part1), rendered separately and center-aligned */
+    narrativePart1Closing?: string;
     narrativePart2?: string;
     /** Optional paragraph for the "Launched Site" section (e.g. Vemlidy case study) */
     launchedSiteNarrative?: string;
@@ -197,9 +199,8 @@ I also established the design system from the ground up—50+ reusable component
 The platform launched successfully. Block Equity Group continues to help small businesses access working capital—fast, simple, and trusted financing.`,
       narrativePart1: `Block Equity Group brought me on as their first Product Designer to build their small business financing platform from scratch. It was the kind of opportunity where you get to shape everything—not just the UI, but the entire product vision and design system.
 
-Small business financing is, frankly, a mess. Applications involve mountains of paperwork, endless back-and-forth between borrowers and lenders, and timelines that stretch into weeks or months. Block Equity wanted to digitize and streamline the process—offering term loans, revenue-based financing, lines of credit, bridge loans, SBA loans, invoice factoring, and more through a single, easy-to-use experience.
-
-I started with discovery. Spent weeks interviewing small business owners, loan officers, and partners to understand their pain points. The insights were clear: people were drowning in document management, had no visibility into application status, and lacked trust in the process because everything felt opaque.`,
+Small business financing is, frankly, a mess. Applications involve mountains of paperwork, endless back-and-forth between borrowers and lenders, and timelines that stretch into weeks or months. Block Equity wanted to digitize and streamline the process—offering term loans, revenue-based financing, lines of credit, bridge loans, SBA loans, invoice factoring, and more through a single, easy-to-use experience.`,
+      narrativePart1Closing: `I started with discovery. Spent weeks interviewing small business owners, loan officers, and partners to understand their pain points. The insights were clear: people were drowning in document management, had no visibility into application status, and lacked trust in the process because everything felt opaque.`,
       narrativePart2: `From there, I mapped the entire lending journey and identified opportunities for intervention. I designed an intelligent document management system that could automatically categorize and validate uploads. I created a real-time application tracker that gave borrowers visibility at every stage. For the team, I built dashboards that display all the most important information the sales broker would need—application status, deal pipeline, document status, and communication history in one place so brokers can move deals forward without hunting across tools.
 
 The platform I designed acted as a connecting point between lenders and lendees, allowing both parties to see every step they're in within the process. It also enables the team to have better data collection, more accurate communication, and faster response times—which leads to closed deals.
@@ -274,6 +275,7 @@ Key takeaways: If more time was allotted for the project I would have loved to c
     color: "#8b5cf6",
     image: "/images/work/abilify/cover.png",
     coverStyle: true,
+    archived: true,
     caseStudy: {
       title: "ABILIFY",
       subtitle: "Mental Health Patient Support",
@@ -299,6 +301,7 @@ The platform includes medication tracking, appointment reminders, and educationa
     color: "#ec4899",
     image: "/images/work/meibo/cover.png",
     coverStyle: true,
+    archived: true,
     caseStudy: {
       title: "MIEBO",
       subtitle: "Dry Eye Treatment Launch",
@@ -324,6 +327,7 @@ My approach focused on simplicity and clarity—dry eye patients often experienc
     color: "#ec4899",
     image: "/images/work/swank-studio/cover.png",
     coverStyle: true,
+    archived: true,
     caseStudy: {
       title: "SWANK STUDIO",
       subtitle: "Broccoli City & Culture-Forward Brands",
@@ -385,25 +389,43 @@ export const tiktokVideos: TikTokVideo[] = [
   {
     id: "2",
     title: "Video 2",
-    url: "https://www.tiktok.com/@adxze98/video/7553057147970407735",
+    url: "https://www.tiktok.com/@adxze98/video/7595747959392783671",
     date: "2025",
   },
   {
     id: "3",
     title: "Video 3",
-    url: "https://www.tiktok.com/@adxze98/video/7570129157217193230",
+    url: "https://www.tiktok.com/@adxze98/video/7553057147970407735",
     date: "2025",
   },
   {
     id: "4",
     title: "Video 4",
-    url: "https://www.tiktok.com/@adxze98/video/7499687486713531694",
+    url: "https://www.tiktok.com/@adxze98/video/7556465369423170871",
     date: "2025",
   },
   {
     id: "5",
     title: "Video 5",
+    url: "https://www.tiktok.com/@adxze98/video/7570129157217193230",
+    date: "2025",
+  },
+  {
+    id: "6",
+    title: "Video 6",
+    url: "https://www.tiktok.com/@adxze98/video/7499687486713531694",
+    date: "2025",
+  },
+  {
+    id: "7",
+    title: "Video 7",
     url: "https://www.tiktok.com/@adxze98/video/7545635509188513079",
+    date: "2025",
+  },
+  {
+    id: "8",
+    title: "Video 8",
+    url: "https://www.tiktok.com/@adxze98/video/7568659508273204493",
     date: "2025",
   },
 ];

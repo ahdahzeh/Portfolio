@@ -15,8 +15,8 @@ export default function WritingSection() {
   }, []);
 
   return (
-    <section className="w-full mt-16 md:mt-24" aria-labelledby="design-videos-heading">
-      <h2 id="design-videos-heading" className="text-[32px] sm:text-[40px] leading-[40px] sm:leading-[48px] font-normal tracking-[-0.02em] text-black dark:text-white mb-2">
+    <section className="w-full" aria-labelledby="design-videos-heading">
+      <h2 id="design-videos-heading" className="text-3xl md:text-4xl font-semibold tracking-tight text-gray-900 dark:text-white mb-2">
         Design Videos
       </h2>
       <p className="text-sm text-gray-400 dark:text-gray-500 mb-4">TikTok design content</p>

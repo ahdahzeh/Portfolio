@@ -51,10 +51,10 @@ export default function SectionNav({ sections }: SectionNavProps) {
           <li key={id}>
             <a
               href={`#${id}`}
-              className={`block w-2.5 h-2.5 rounded-full transition-colors focus:outline-none focus:ring-2 focus:ring-amber-500 focus:ring-offset-2 focus:ring-offset-white dark:focus:ring-offset-black ${
+              className={`block w-2.5 h-2.5 rounded-full transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-white dark:focus:ring-offset-black ${
                 activeId === id
-                  ? 'bg-amber-500 dark:bg-amber-500'
-                  : 'bg-gray-300 dark:bg-gray-600 hover:bg-amber-500 dark:hover:bg-amber-500'
+                  ? 'bg-blue-500 dark:bg-blue-500'
+                  : 'bg-gray-300 dark:bg-gray-600 hover:bg-blue-500 dark:hover:bg-blue-500'
               }`}
               title={label ?? id.replace(/-/g, ' ')}
               aria-current={activeId === id ? 'true' : undefined}

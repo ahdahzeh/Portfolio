@@ -124,9 +124,11 @@ export default function WorkCarousel() {
 
   return (
     <section className="w-full mt-12 md:mt-20 overflow-hidden">
-      <h2 className="text-[32px] sm:text-[40px] leading-[40px] sm:leading-[48px] font-normal tracking-[-0.02em] text-black dark:text-white mb-6 px-4 max-w-[1200px] mx-auto">
-        Past Work
-      </h2>
+      <div className="max-w-[1200px] mx-auto px-4 sm:px-6 md:px-8 mb-6">
+        <h2 className="text-3xl md:text-4xl font-semibold tracking-tight text-gray-900 dark:text-white">
+          Past Work
+        </h2>
+      </div>
       <div
         ref={scrollRef}
         tabIndex={0}

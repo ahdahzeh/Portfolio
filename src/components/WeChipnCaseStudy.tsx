@@ -5,6 +5,7 @@ import Image from 'next/image';
 import ScrollProgressBar from '@/components/ScrollProgressBar';
 import SectionNav, { type SectionNavItem } from '@/components/SectionNav';
 import VideoWithFallback from '@/components/VideoWithFallback';
+import LightboxTrigger from '@/components/LightboxTrigger';
 
 const WECHIPN_SECTIONS: SectionNavItem[] = [
   { id: 'overview', label: 'Overview' },
@@ -85,13 +86,15 @@ export default function WeChipnCaseStudy({
               allowFullScreen
             />
           ) : (
-            <Image
-              src={IMG.hero}
-              alt="WeChipn product preview"
-              fill
-              className="object-contain w-full h-full"
-              sizes="100vw"
-            />
+            <LightboxTrigger images={[{ src: IMG.hero, alt: 'WeChipn product preview' }]} className="absolute inset-0">
+              <Image
+                src={IMG.hero}
+                alt="WeChipn product preview"
+                fill
+                className="object-contain w-full h-full"
+                sizes="100vw"
+              />
+            </LightboxTrigger>
           )}
         </div>
       </section>
@@ -119,15 +122,15 @@ export default function WeChipnCaseStudy({
           and where people were dropping off.
         </p>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          <div className="relative aspect-[4/3] rounded-xl overflow-hidden border border-gray-200 dark:border-gray-700 bg-[#F3F3F3]">
+          <LightboxTrigger images={[{ src: IMG.old1, alt: 'Old WeChipn home and rewards' }]} className="relative aspect-[4/3] rounded-xl overflow-hidden border border-gray-200 dark:border-gray-700 bg-[#F3F3F3]">
             <Image src={IMG.old1} alt="Old WeChipn home and rewards" fill className="object-cover" sizes="(max-width: 768px) 100vw, 33vw" />
-          </div>
-          <div className="relative aspect-[4/3] rounded-xl overflow-hidden border border-gray-200 dark:border-gray-700 bg-[#F3F3F3]">
+          </LightboxTrigger>
+          <LightboxTrigger images={[{ src: IMG.old2, alt: 'Old WeChipn signup' }]} className="relative aspect-[4/3] rounded-xl overflow-hidden border border-gray-200 dark:border-gray-700 bg-[#F3F3F3]">
             <Image src={IMG.old2} alt="Old WeChipn signup" fill className="object-cover" sizes="(max-width: 768px) 100vw, 33vw" />
-          </div>
-          <div className="relative aspect-[4/3] rounded-xl overflow-hidden border border-gray-200 dark:border-gray-700 bg-[#F3F3F3]">
+          </LightboxTrigger>
+          <LightboxTrigger images={[{ src: IMG.old3, alt: 'Old WeChipn volunteer drive' }]} className="relative aspect-[4/3] rounded-xl overflow-hidden border border-gray-200 dark:border-gray-700 bg-[#F3F3F3]">
             <Image src={IMG.old3} alt="Old WeChipn volunteer drive" fill className="object-cover" sizes="(max-width: 768px) 100vw, 33vw" />
-          </div>
+          </LightboxTrigger>
         </div>
       </section>
 
@@ -173,13 +176,15 @@ export default function WeChipnCaseStudy({
               );
             })()
           ) : (
-            <Image
-              src={IMG.problemSolution}
-              alt="Problem and Solution — WeChipn screenshot"
-              fill
-              className="object-contain"
-              sizes="100vw"
-            />
+            <LightboxTrigger images={[{ src: IMG.problemSolution, alt: 'Problem and Solution — WeChipn screenshot' }]} className="absolute inset-0">
+              <Image
+                src={IMG.problemSolution}
+                alt="Problem and Solution — WeChipn screenshot"
+                fill
+                className="object-contain"
+                sizes="100vw"
+              />
+            </LightboxTrigger>
           )}
         </div>
       </section>
@@ -197,7 +202,7 @@ export default function WeChipnCaseStudy({
 
       {/* Rewards Center & Actions image */}
       <section id="rewards" className="mb-8 scroll-mt-24">
-        <div className="relative w-full aspect-video rounded-2xl overflow-hidden border border-white/20 bg-[#F3F3F3]">
+        <LightboxTrigger images={[{ src: IMG.rewardsActions, alt: 'Rewards Center and Actions page' }]} className="relative w-full aspect-video rounded-2xl overflow-hidden border border-white/20 bg-[#F3F3F3]">
           <Image
             src={IMG.rewardsActions}
             alt="Rewards Center and Actions page"
@@ -205,7 +210,7 @@ export default function WeChipnCaseStudy({
             className="object-contain"
             sizes="100vw"
           />
-        </div>
+        </LightboxTrigger>
       </section>
 
       {/* Rewards Center & Actions paragraph */}
@@ -222,7 +227,7 @@ export default function WeChipnCaseStudy({
 
       {/* KPIs & Process */}
       <section id="kpis" className="mb-12 scroll-mt-24">
-        <div className="relative w-full rounded-2xl overflow-hidden border border-gray-200 dark:border-gray-600 bg-[#f8f6f3] dark:bg-[#f8f6f3]">
+        <LightboxTrigger images={[{ src: IMG.kpisProcess, alt: 'KPIs and Process — Discover, Define, Design, Test, Deliver' }]} className="relative w-full rounded-2xl overflow-hidden border border-gray-200 dark:border-gray-600 bg-[#f8f6f3] dark:bg-[#f8f6f3]">
           <Image
             src={IMG.kpisProcess}
             alt="KPIs and Process — Discover, Define, Design, Test, Deliver"
@@ -231,7 +236,7 @@ export default function WeChipnCaseStudy({
             className="w-full h-auto object-contain"
             sizes="100vw"
           />
-        </div>
+        </LightboxTrigger>
       </section>
 
       {/* Design Decision */}
@@ -246,7 +251,7 @@ export default function WeChipnCaseStudy({
           the information they needed to understand the initiative. So I focused there first—making
           the hero and scroll experience do more of the work.
         </p>
-        <div className="relative w-full rounded-2xl overflow-hidden border border-white/20 bg-[#F3F3F3]">
+        <LightboxTrigger images={[{ src: IMG.designDecision, alt: 'Landing page top and middle mockups' }]} className="relative w-full rounded-2xl overflow-hidden border border-white/20 bg-[#F3F3F3]">
           <Image
             src={IMG.designDecision}
             alt="Landing page top and middle mockups"
@@ -255,7 +260,7 @@ export default function WeChipnCaseStudy({
             className="w-full h-auto object-contain"
             sizes="100vw"
           />
-        </div>
+        </LightboxTrigger>
       </section>
 
       {/* Mobile View — paragraph and video side by side on desktop */}
@@ -280,13 +285,15 @@ export default function WeChipnCaseStudy({
                 className="absolute inset-0 w-full h-full object-contain box-content bg-black"
               />
             ) : (
-              <Image
-                src={IMG.mobileView}
-                alt="Mobile view — responsive, hamburger menu, 1-column cards"
-                fill
-                className="object-contain"
-                sizes="(max-width: 768px) 100vw, 512px"
-              />
+              <LightboxTrigger images={[{ src: IMG.mobileView, alt: 'Mobile view — responsive, hamburger menu, 1-column cards' }]} className="absolute inset-0">
+                <Image
+                  src={IMG.mobileView}
+                  alt="Mobile view — responsive, hamburger menu, 1-column cards"
+                  fill
+                  className="object-contain"
+                  sizes="(max-width: 768px) 100vw, 512px"
+                />
+              </LightboxTrigger>
             )}
           </div>
         </div>
@@ -297,7 +304,7 @@ export default function WeChipnCaseStudy({
         <h2 className="text-xl md:text-2xl font-medium text-[#8b5cf6] dark:text-[#a78bfa] mb-4">
           Design — Swank x WeChipn
         </h2>
-        <div className="relative w-full rounded-2xl overflow-hidden border border-white/20 bg-[#F3F3F3]">
+        <LightboxTrigger images={[{ src: IMG.figma, alt: 'Figma design — Swank x WeChipn flows' }]} className="relative w-full rounded-2xl overflow-hidden border border-white/20 bg-[#F3F3F3]">
           <Image
             src={IMG.figma}
             alt="Figma design — Swank x WeChipn flows"
@@ -306,7 +313,7 @@ export default function WeChipnCaseStudy({
             className="w-full h-auto object-contain"
             sizes="100vw"
           />
-        </div>
+        </LightboxTrigger>
       </section>
 
       {/* Key Takeaways */}

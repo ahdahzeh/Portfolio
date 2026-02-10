@@ -2,6 +2,7 @@
 
 import { useRef, useState, useEffect } from 'react';
 import Image from 'next/image';
+import Lightbox from '@/components/Lightbox';
 
 export interface CaseStudyImage {
   src: string;
@@ -12,7 +13,14 @@ export interface CaseStudyImage {
 export default function WorkCaseStudyCarousel({ images }: { images: CaseStudyImage[] }) {
   const scrollRef = useRef<HTMLDivElement>(null);
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [lightboxOpen, setLightboxOpen] = useState(false);
+  const [lightboxIndex, setLightboxIndex] = useState(0);
   const total = images.length;
+
+  const openLightbox = (index: number) => {
+    setLightboxIndex(index);
+    setLightboxOpen(true);
+  };
 
   useEffect(() => {
     const el = scrollRef.current;
@@ -50,7 +58,12 @@ export default function WorkCaseStudyCarousel({ images }: { images: CaseStudyIma
             key={i}
             className="flex-shrink-0 w-full snap-start snap-always"
           >
-            <div className="relative rounded-xl border border-gray-200 dark:border-gray-800 overflow-hidden bg-gray-50 dark:bg-gray-900/30">
+            <button
+              type="button"
+              onClick={() => openLightbox(i)}
+              className="w-full text-left rounded-xl border border-gray-200 dark:border-gray-800 overflow-hidden bg-gray-50 dark:bg-gray-900/30 cursor-zoom-in hover:opacity-95 transition-opacity focus:outline-none focus:ring-2 focus:ring-[#006eff] focus:ring-offset-2"
+              aria-label={`View image ${i + 1} in lightbox`}
+            >
               <div className="relative aspect-video w-full max-h-[70vh] min-h-[288px]">
                 <Image
                   src={slide.src}
@@ -61,7 +74,7 @@ export default function WorkCaseStudyCarousel({ images }: { images: CaseStudyIma
                   priority={i === 0}
                 />
               </div>
-            </div>
+            </button>
           </div>
         ))}
       </div>
@@ -90,6 +103,14 @@ export default function WorkCaseStudyCarousel({ images }: { images: CaseStudyIma
           {currentIndex + 1} / {total} — {img.caption}
         </p>
       )}
+
+      <Lightbox
+        images={images}
+        currentIndex={lightboxIndex}
+        isOpen={lightboxOpen}
+        onClose={() => setLightboxOpen(false)}
+        onNavigate={setLightboxIndex}
+      />
     </div>
   );
 }

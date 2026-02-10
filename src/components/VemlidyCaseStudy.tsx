@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import ScrollProgressBar from '@/components/ScrollProgressBar';
+import LightboxTrigger from '@/components/LightboxTrigger';
 import SectionNav, { type SectionNavItem } from '@/components/SectionNav';
 import WorkCaseStudyCarousel from '@/components/WorkCaseStudyCarousel';
 
@@ -159,27 +160,34 @@ export default function VemlidyCaseStudy({
         </section>
 
         {/* Sitemap */}
-        <section id="sitemap" className="mt-16 mb-16 text-center scroll-mt-24">
-          <p className="text-black dark:text-white leading-relaxed text-center mb-8 max-w-3xl mx-auto">
-            I led design strategy and established the UX practices that shaped this engagement. My first move was reworking the information architecture, creating a sitemap that clarified how users flowed through the site. This reduced friction for both patients and clinicians and gave the product a scalable foundation.
-          </p>
-          <h2 className="text-2xl font-medium text-black dark:text-white mb-8">
+        <section id="sitemap" className="mt-16 mb-16 scroll-mt-24">
+          <h2 className="text-2xl font-medium text-black dark:text-white mb-8 text-center">
             Sitemap
           </h2>
-          <div className="relative w-full rounded-lg border border-gray-200 dark:border-gray-800 overflow-hidden bg-gray-100 dark:bg-gray-900 max-w-4xl mx-auto">
-            <div className="relative w-full aspect-[4/3] min-h-[280px]">
-              <Image
-                src="/images/work/vemlidy/vemlidy-sitemap.png"
-                alt="Vemlidy HCP site sitemap — Site Map | Vemlidy - HCP Site Update 2025"
-                fill
-                className="object-contain"
-                sizes="(max-width: 896px) 100vw, 896px"
-              />
+          <div className="flex flex-col md:flex-row md:items-center gap-8 md:gap-12">
+            <LightboxTrigger
+              images={[{ src: '/images/work/vemlidy/vemlidy-sitemap.png', alt: 'Vemlidy HCP site sitemap — Site Map | Vemlidy - HCP Site Update 2025' }]}
+              className="relative w-full md:w-[55%] md:flex-shrink-0"
+            >
+              <div className="relative w-full aspect-[4/3] min-h-[280px] rounded-lg border border-gray-200 dark:border-gray-800 overflow-hidden bg-gray-100 dark:bg-gray-900">
+                <Image
+                  src="/images/work/vemlidy/vemlidy-sitemap.png"
+                  alt="Vemlidy HCP site sitemap — Site Map | Vemlidy - HCP Site Update 2025"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 896px) 100vw, 55vw"
+                />
+              </div>
+            </LightboxTrigger>
+            <div className="flex-1 min-w-0 flex flex-col gap-6">
+              <p className="text-black dark:text-white leading-relaxed md:text-left text-center">
+                I led design strategy and established the UX practices that shaped this engagement. My first move was reworking the information architecture, creating a sitemap that clarified how users flowed through the site. This reduced friction for both patients and clinicians and gave the product a scalable foundation.
+              </p>
+              <p className="text-black dark:text-white leading-relaxed md:text-left text-center">
+                That structure influenced everything downstream: what users could find, how quickly they could act, and how the experience could expand across audiences. After launch, users completed key tasks 20% faster.
+              </p>
             </div>
           </div>
-          <p className="text-black dark:text-white leading-relaxed text-center mt-8 max-w-3xl mx-auto">
-            That structure influenced everything downstream: what users could find, how quickly they could act, and how the experience could expand across audiences. After launch, users completed key tasks 20% faster.
-          </p>
         </section>
 
         {/* Low-fi wireframes — single carousel with all wireframe images */}

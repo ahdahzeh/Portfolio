@@ -60,7 +60,7 @@ export default function Header() {
       'New York': [40.7128, -74.006],
     };
     const [lat, lon] = coords[loc] || [40.7128, -74.006];
-    fetch(`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current=temperature_2m`)
+    fetch(`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current=temperature_2m&temperature_unit=fahrenheit`)
       .then((r) => r.json())
       .then((d) => {
         const temp = d?.current?.temperature_2m;
@@ -83,7 +83,7 @@ export default function Header() {
           {/* Mobile: time & weather on left | Desktop: nav on left */}
           <span className="text-sm sm:text-base font-normal text-black dark:text-white flex-shrink-0 truncate max-w-[180px] sm:max-w-none whitespace-nowrap order-first md:order-last" suppressHydrationWarning>
             {personalInfo.location}
-            {mounted && temperature !== null && ` · ${temperature}°`}
+            {mounted && temperature !== null && ` · ${temperature}°F`}
             {mounted && ` · ${currentTime || '...'}`}
             {!mounted && ' · —'}
           </span>
