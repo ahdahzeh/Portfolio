@@ -33,9 +33,11 @@ export default function VideoWithFallback({
   return (
     <video
       src={src}
-      controls
-      preload="metadata"
+      autoPlay
+      muted
+      loop
       playsInline
+      preload="auto"
       className={`box-content bg-black ${className}`}
       onError={() => setError(true)}
     >

@@ -1,0 +1,670 @@
+/* CHT Platform — matches HTML reference exactly */
+.cht-platform {
+  --cht-bg: #ffffff;
+  --cht-bg-elevated: #f5f5f5;
+  --cht-bg-card: #f0f0f0;
+  --cht-text: #000000;
+  --cht-gray: #666666;
+  --cht-gray-dim: #999999;
+  --cht-accent: #2CB5A0;
+  --cht-page-padding: 96px;
+  font-family: var(--font-dm-sans), 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  background: var(--cht-bg);
+  color: var(--cht-text);
+}
+
+.dark .cht-platform {
+  --cht-bg: #0a0a0a;
+  --cht-bg-elevated: #1a1a1a;
+  --cht-bg-card: #262626;
+  --cht-text: #fafafa;
+  --cht-gray: #a3a3a3;
+  --cht-gray-dim: #737373;
+}
+
+@media (max-width: 1024px) {
+  .cht-platform { --cht-page-padding: 48px; }
+}
+
+@media (max-width: 768px) {
+  .cht-platform { --cht-page-padding: 24px; }
+}
+
+.cht-platform .cht-back-wrapper {
+  padding: 24px var(--cht-page-padding) 0;
+}
+
+.cht-platform .cht-hero {
+  padding: 140px var(--cht-page-padding) 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 48px;
+}
+
+.cht-platform .cht-hero-title {
+  font-size: clamp(52px, 7.25vw, 108px);
+  font-weight: 500;
+  letter-spacing: -0.03em;
+  line-height: 1;
+  white-space: normal;
+  overflow-wrap: normal;
+  max-width: min(18ch, 55vw);
+}
+
+.cht-platform .cht-hero-subtitle {
+  font-size: 20px;
+  font-weight: 400;
+  color: var(--cht-gray);
+  line-height: 1.3;
+  max-width: 320px;
+  letter-spacing: -0.2px;
+}
+
+.cht-platform .cht-hero-image {
+  margin-top: 64px;
+  padding: 0 var(--cht-page-padding);
+}
+
+.cht-platform .cht-hero-image-wrapper {
+  width: 100%;
+  border-radius: 12px;
+  overflow: hidden;
+  background: linear-gradient(160deg, #e8f4f8 0%, #d4eef5 40%, #e0f0f4 100%);
+  position: relative;
+}
+
+.cht-platform .cht-hero-image-wrapper img {
+  width: 100%;
+  height: auto;
+  display: block;
+  vertical-align: top;
+}
+
+.dark .cht-platform .cht-hero-image-wrapper {
+  background: linear-gradient(160deg, #1a2a2e 0%, #0f1f24 40%, #152a30 100%);
+}
+
+.cht-platform .cht-metadata {
+  padding: 80px var(--cht-page-padding);
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+
+.cht-platform .cht-meta-label {
+  font-size: 24px;
+  font-weight: 500;
+  letter-spacing: -0.24px;
+  line-height: 1.3;
+  margin-bottom: 12px;
+}
+
+.cht-platform .cht-meta-value {
+  font-size: 16px;
+  font-weight: 400;
+  color: var(--cht-gray);
+  line-height: 1.3;
+  letter-spacing: -0.16px;
+}
+
+.cht-platform .cht-meta-multiline {
+  white-space: pre-line;
+}
+
+/* Overview — two-column: label left, content slightly off right middle */
+.cht-platform .cht-overview {
+  padding: 40px var(--cht-page-padding) 100px;
+  display: grid;
+  grid-template-columns: minmax(600px, 1fr) minmax(360px, 746px);
+  gap: 64px;
+  align-items: center;
+}
+
+.cht-platform .cht-overview-label {
+  font-size: clamp(48px, 6vw, 80px);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  color: var(--cht-text);
+  position: sticky;
+  top: 120px;
+}
+
+.cht-platform .cht-overview-content {
+  min-width: 0;
+  max-width: 100%;
+  margin-left: 0;
+}
+
+.cht-platform .cht-overview-lead {
+  font-size: 30px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  line-height: 1.3;
+  color: var(--cht-text);
+  margin-bottom: 1rem;
+}
+
+.cht-platform .cht-overview-text {
+  font-size: 20px;
+  font-weight: 400;
+  color: var(--cht-gray);
+  line-height: 1.5;
+  letter-spacing: -0.2px;
+}
+
+.cht-platform .cht-statement {
+  padding: 80px var(--cht-page-padding) 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.cht-platform .cht-statement h2 {
+  font-size: clamp(36px, 4.5vw, 60px);
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  line-height: 1;
+  max-width: 660px;
+  text-align: center;
+}
+
+/* Four-up grid — EXACT match to HTML */
+.cht-platform .cht-four-up {
+  padding: 0 var(--cht-page-padding) 100px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+.cht-platform .cht-four-up-item {
+  border-radius: 12px;
+  overflow: hidden;
+  background: var(--cht-bg-elevated);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.dark .cht-platform .cht-four-up-item {
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+/* Uniform tile height — matches typical CHT exports (e.g. 1024×561); short screenshots letterbox with card bg */
+.cht-platform .cht-four-up-media {
+  aspect-ratio: 1024 / 561;
+  width: 100%;
+}
+
+.cht-platform .cht-four-up-caption {
+  padding: 16px 20px;
+  font-size: 15px;
+  color: var(--cht-gray);
+  letter-spacing: -0.15px;
+  line-height: 1.4;
+}
+
+.cht-platform .cht-four-up-caption strong {
+  color: var(--cht-text);
+  font-weight: 500;
+}
+
+/* Browser frame */
+.cht-platform .cht-browser-frame {
+  background: var(--cht-bg-elevated);
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06), 0 1px 4px rgba(0, 0, 0, 0.04);
+}
+
+.dark .cht-platform .cht-browser-frame {
+  border-color: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.3), 0 1px 4px rgba(0, 0, 0, 0.2);
+}
+
+.cht-platform .cht-browser-chrome {
+  height: 36px;
+  background: #e8e8e8;
+  display: flex;
+  align-items: center;
+  padding: 0 14px;
+  gap: 8px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.dark .cht-platform .cht-browser-chrome {
+  background: #2a2a2a;
+  border-bottom-color: rgba(255, 255, 255, 0.08);
+}
+
+.cht-platform .cht-browser-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #ccc;
+}
+
+.dark .cht-platform .cht-browser-dot {
+  background: #525252;
+}
+
+.cht-platform .cht-browser-bar {
+  flex: 1;
+  height: 20px;
+  background: #ddd;
+  border-radius: 4px;
+  margin-left: 16px;
+}
+
+.dark .cht-platform .cht-browser-bar {
+  background: #404040;
+}
+
+/* Browser content area height follows the image (intrinsic aspect ratio). */
+.cht-platform .cht-browser-content {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Video walkthrough keeps a stable frame; no intrinsic dimensions like images. */
+.cht-platform .cht-browser-content-video {
+  aspect-ratio: 16 / 9;
+  min-height: 0;
+}
+
+/* Solution (and similar) clips: frame hugs video intrinsic width (centered, max full row). */
+.cht-platform .cht-browser-frame:has(.cht-browser-content-solution-video) {
+  width: fit-content;
+  max-width: 100%;
+  margin-inline: auto;
+}
+
+.cht-platform .cht-browser-content-solution-video {
+  aspect-ratio: unset;
+  width: fit-content;
+  max-width: 100%;
+  background: #0a0a0a;
+}
+
+.cht-platform .cht-browser-content-solution-video video {
+  display: block;
+  width: auto;
+  max-width: 100%;
+  height: auto;
+  max-height: min(85vh, 1200px);
+  object-fit: contain;
+  object-position: top center;
+}
+
+.cht-platform .cht-browser-content-solution-video-fallback {
+  padding: 20px 24px;
+  font-size: 15px;
+  line-height: 1.5;
+  color: var(--cht-gray);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.cht-platform .cht-browser-content-solution-video-fallback a {
+  color: var(--cht-accent);
+  font-weight: 500;
+  text-decoration: underline;
+}
+
+.cht-platform .cht-browser-content img {
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  object-fit: contain;
+  object-position: top center;
+  display: block;
+  vertical-align: top;
+}
+
+.cht-platform .cht-screenshot-section {
+  padding: 0 var(--cht-page-padding) 100px;
+}
+
+/* Problem sections (HTML) */
+.cht-platform .cht-problem {
+  padding: 60px var(--cht-page-padding) 0;
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  gap: 48px;
+  align-items: center;
+}
+
+.cht-platform .cht-problem-left {
+  position: sticky;
+  top: 120px;
+}
+
+.cht-platform .cht-problem-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  border-radius: 100px;
+  background: rgba(184, 134, 11, 0.08);
+  border: 1px solid rgba(184, 134, 11, 0.2);
+  color: #b8860b;
+  font-size: 14px;
+  font-weight: 500;
+  margin-bottom: 28px;
+}
+
+.cht-platform .cht-problem h3 {
+  font-size: clamp(28px, 3.5vw, 40px);
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+
+.cht-platform .cht-problem-right p {
+  font-size: 20px;
+  font-weight: 400;
+  color: var(--cht-gray);
+  line-height: 1.5;
+  letter-spacing: -0.2px;
+}
+
+.cht-platform .cht-problem-image {
+  padding: 48px var(--cht-page-padding) 80px;
+}
+
+/* Solution sections (HTML) */
+.cht-platform .cht-solution {
+  padding: 80px var(--cht-page-padding) 0;
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  gap: 48px;
+  align-items: center;
+}
+
+.cht-platform .cht-solution-left {
+  position: sticky;
+  top: 120px;
+}
+
+.cht-platform .cht-solution h3 {
+  font-size: clamp(28px, 3.5vw, 40px);
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+
+.cht-platform .cht-solution-right p {
+  font-size: 20px;
+  font-weight: 400;
+  color: var(--cht-gray);
+  line-height: 1.5;
+  letter-spacing: -0.2px;
+}
+
+.cht-platform .cht-solution-image {
+  padding: 48px var(--cht-page-padding) 80px;
+}
+
+/* Two-up screenshots */
+.cht-platform .cht-two-up {
+  padding: 0 var(--cht-page-padding) 100px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  align-items: start;
+}
+
+.cht-platform .cht-two-up > div {
+  min-width: 0;
+}
+
+/* Same viewport for both panes — matches cropped featured tile (cht-two-up-featured-videos.png, 982×557) */
+.cht-platform .cht-two-up .cht-browser-content-two-up {
+  aspect-ratio: 982 / 557;
+  width: 100%;
+  position: relative;
+  background: var(--cht-bg-elevated);
+}
+
+/* First two-up, left: marketing homepage — ~5% zoom (cropped by overflow) */
+.cht-platform .cht-two-up .cht-browser-content-two-up-zoom {
+  overflow: hidden;
+}
+
+.cht-platform .cht-two-up .cht-browser-content-two-up-zoom .cht-two-up-zoomed-img {
+  transform: scale(1.05);
+  transform-origin: top center;
+}
+
+.cht-platform .cht-screenshot-caption {
+  font-size: 16px;
+  color: var(--cht-gray-dim);
+  margin-top: 16px;
+  letter-spacing: -0.16px;
+}
+
+/* Outcomes (HTML) */
+.cht-platform .cht-outcomes {
+  padding: 80px var(--cht-page-padding) 120px;
+}
+
+.cht-platform .cht-outcomes-label {
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--cht-gray-dim);
+  margin-bottom: 12px;
+  font-weight: 500;
+}
+
+.cht-platform .cht-outcomes h2 {
+  font-size: 32px;
+  font-weight: 500;
+  letter-spacing: -0.32px;
+  margin-bottom: 48px;
+}
+
+.cht-platform .cht-outcomes-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.cht-platform .cht-outcome-card {
+  background: var(--cht-bg-card);
+  border: 1px solid var(--cht-accent);
+  border-radius: 16px;
+  padding: 36px 28px;
+}
+
+.cht-platform .cht-outcome-card h4 {
+  font-size: 20px;
+  font-weight: 500;
+  letter-spacing: -0.2px;
+  margin-bottom: 8px;
+}
+
+.cht-platform .cht-outcome-card p {
+  font-size: 16px;
+  color: var(--cht-gray);
+  line-height: 1.4;
+  letter-spacing: -0.16px;
+}
+
+/* Tools (HTML) */
+.cht-platform .cht-tools {
+  padding: 0 var(--cht-page-padding) 100px;
+}
+
+.cht-platform .cht-tools-label {
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--cht-gray-dim);
+  margin-bottom: 20px;
+  font-weight: 500;
+}
+
+.cht-platform .cht-tools-row {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.cht-platform .cht-tool-pill {
+  padding: 10px 18px;
+  background: var(--cht-bg-card);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  border-radius: 8px;
+  font-size: 15px;
+  color: var(--cht-gray);
+  letter-spacing: -0.15px;
+}
+
+.dark .cht-platform .cht-tool-pill {
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+/* Tablet (1024px) — prevent overflow, stack key sections */
+@media (max-width: 1200px) {
+  .cht-platform .cht-overview {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  .cht-platform .cht-overview-label {
+    position: static;
+  }
+}
+
+@media (max-width: 1024px) {
+  .cht-platform .cht-metadata {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 32px;
+  }
+  .cht-platform .cht-problem {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  .cht-platform .cht-problem-left {
+    position: static;
+  }
+  .cht-platform .cht-solution {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  .cht-platform .cht-solution-left {
+    position: static;
+  }
+  .cht-platform .cht-outcomes-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Mobile (768px) */
+@media (max-width: 768px) {
+  .cht-platform .cht-hero-title {
+    white-space: normal;
+    font-size: clamp(40px, 10vw, 64px);
+  }
+  .cht-platform .cht-hero {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 24px;
+    padding-top: 80px;
+  }
+  .cht-platform .cht-hero-subtitle {
+    max-width: 100%;
+    font-size: 18px;
+  }
+  .cht-platform .cht-metadata {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  .cht-platform .cht-overview {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    padding-top: 48px;
+    padding-bottom: 60px;
+  }
+  .cht-platform .cht-overview-lead {
+    font-size: 24px;
+  }
+  .cht-platform .cht-overview-text {
+    font-size: 18px;
+  }
+  .cht-platform .cht-statement {
+    padding: 48px var(--cht-page-padding) 60px;
+  }
+  .cht-platform .cht-statement h2 {
+    max-width: 100%;
+    font-size: clamp(28px, 6vw, 36px);
+  }
+  .cht-platform .cht-four-up {
+    grid-template-columns: 1fr;
+    padding-bottom: 60px;
+  }
+  .cht-platform .cht-problem {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    padding-top: 40px;
+  }
+  .cht-platform .cht-problem h3 {
+    font-size: clamp(22px, 5vw, 28px);
+  }
+  .cht-platform .cht-problem-right p,
+  .cht-platform .cht-solution-right p {
+    font-size: 18px;
+  }
+  .cht-platform .cht-solution {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    padding-top: 48px;
+  }
+  .cht-platform .cht-solution h3 {
+    font-size: clamp(22px, 5vw, 28px);
+  }
+  .cht-platform .cht-problem-image,
+  .cht-platform .cht-solution-image {
+    padding: 32px var(--cht-page-padding) 48px;
+  }
+  .cht-platform .cht-two-up {
+    grid-template-columns: 1fr;
+    padding-bottom: 60px;
+  }
+  .cht-platform .cht-outcomes {
+    padding: 48px var(--cht-page-padding) 80px;
+  }
+  .cht-platform .cht-outcomes h2 {
+    font-size: 28px;
+    margin-bottom: 32px;
+  }
+  .cht-platform .cht-outcomes-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  .cht-platform .cht-outcome-card {
+    padding: 24px 20px;
+  }
+  .cht-platform .cht-outcome-card h4 {
+    font-size: 18px;
+  }
+  .cht-platform .cht-outcome-card p {
+    font-size: 15px;
+  }
+  .cht-platform .cht-tools {
+    padding-bottom: 60px;
+  }
+}
+
+/* Small mobile (480px) */
+@media (max-width: 480px) {
+  .cht-platform .cht-hero-title {
+    font-size: clamp(32px, 12vw, 48px);
+  }
+  .cht-platform .cht-meta-label {
+    font-size: 20px;
+  }
+  .cht-platform .cht-meta-value {
+    font-size: 15px;
+  }
+}

@@ -10,12 +10,14 @@ import WorkInProgress from '@/components/WorkInProgress';
 import WeChipnCaseStudy from '@/components/WeChipnCaseStudy';
 import VemlidyCaseStudy from '@/components/VemlidyCaseStudy';
 import AmazonCaseStudy from '@/components/AmazonCaseStudy';
+import CommunityHealthCaseStudy from '@/components/CommunityHealthCaseStudy';
+import BackToHomeButton from '@/components/BackToHomeButton';
 import ScrollProgressBar from '@/components/ScrollProgressBar';
 import SectionNav from '@/components/SectionNav';
 
 export default function WorkPage({ params }: { params: Promise<{ slug: string }> }) {
   return (
-    <main className="min-h-screen bg-white dark:bg-black">
+    <main className="min-h-screen bg-white dark:bg-black overflow-x-hidden">
       <Header />
       <WorkContent params={params} />
       <Footer />
@@ -39,6 +41,7 @@ async function WorkContent({ params }: { params: Promise<{ slug: string }> }) {
             ? { slug: nextItem.slug, label: nextItem.company }
             : undefined
         }
+        prototypeLink={item.link}
       />
     );
   }
@@ -134,6 +137,61 @@ async function WorkContent({ params }: { params: Promise<{ slug: string }> }) {
     );
   }
 
+  if (slug === 'community-health-media' && study && study.sections != null) {
+    return (
+      <>
+        <CommunityHealthCaseStudy
+          title={study.title ?? item.company}
+          subtitle={study.subtitle}
+          roleDisplay={study.roleDisplay}
+          timeline={study.timeline}
+          link={item.link}
+          heroIntro={study.heroIntro}
+          sections={study.sections}
+          images={study.images ?? []}
+          fourUpItems={study.fourUpItems}
+          team={study.team}
+          problemStatement={study.problemStatement}
+          industry={study.industry}
+          browserFrameVideo={study.browserFrameVideo}
+          overviewLead={study.overviewLead}
+          chtProblems={study.chtProblems}
+          chtSolutions={study.chtSolutions}
+          chtTwoUpPairs={study.chtTwoUpPairs}
+          chtOutcomes={study.chtOutcomes}
+          chtTools={study.chtTools}
+        />
+        <nav
+          className="max-w-[1200px] mx-auto px-4 sm:px-6 md:px-8 mt-[10px] mb-[10px] pt-8 border-t border-gray-200 dark:border-gray-800 flex flex-wrap items-center justify-between gap-6"
+          aria-label="Project navigation"
+        >
+          {itemIndex > 0 ? (
+            <Link
+              href={`/work/${workHistory[itemIndex - 1].slug}`}
+              className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-2xl border border-[#0060d9] bg-white hover:bg-gray-100 text-[#0060d9] font-medium transition-colors dark:bg-black dark:border-[#0060d9] dark:text-[#0060d9] dark:hover:bg-gray-900"
+            >
+              <span aria-hidden>←</span>
+              {workHistory[itemIndex - 1].company}
+            </Link>
+          ) : (
+            <span />
+          )}
+          {itemIndex < workHistory.length - 1 ? (
+            <Link
+              href={`/work/${workHistory[itemIndex + 1].slug}`}
+              className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-2xl border border-[#0060d9] bg-white hover:bg-gray-100 text-[#0060d9] font-medium transition-colors dark:bg-black dark:border-[#0060d9] dark:text-[#0060d9] dark:hover:bg-gray-900 ml-auto"
+            >
+              {workHistory[itemIndex + 1].company}
+              <span aria-hidden>→</span>
+            </Link>
+          ) : (
+            <span />
+          )}
+        </nav>
+      </>
+    );
+  }
+
   if (slug === 'amazon' && study) {
     return (
       <>
@@ -183,7 +241,7 @@ async function WorkContent({ params }: { params: Promise<{ slug: string }> }) {
     ...(hasIntroOverview ? [] : [{ id: 'overview', label: 'Overview' }]),
     ...(slug === 'block-equity-group' ? [{ id: 'wireframes', label: 'Wireframes' }] : []),
     ...(hasIntroOverview ? [{ id: 'content', label: 'Content' }] : []),
-    ...(study?.images != null && study.images.length > 0 && slug !== 'wechipn' ? [{ id: 'gallery', label: 'Gallery' }] : []),
+    ...(study?.images != null && study.images.length > 0 && slug !== 'wechipn' && slug !== 'community-health-media' ? [{ id: 'gallery', label: 'Gallery' }] : []),
     ...(study?.launchedSiteNarrative != null ? [{ id: 'launched-site', label: 'Launched site' }] : []),
   ];
 
@@ -192,9 +250,7 @@ async function WorkContent({ params }: { params: Promise<{ slug: string }> }) {
       <ScrollProgressBar />
       <article className="min-h-screen bg-white dark:bg-black text-black dark:text-white">
         <div className="max-w-[1200px] mx-auto px-4 sm:px-6 md:px-8 py-3.5">
-          <Link href="/" className="text-gray-500 hover:text-gray-700 dark:hover:text-gray-300 text-sm mb-12 inline-block">
-            ← Back
-          </Link>
+          <BackToHomeButton className="mb-12" />
           <header className="mb-16">
             <h1 className="text-[85px] font-normal text-black dark:text-white tracking-tight mb-8 text-center leading-tight">
               {study?.title ?? item.company}
@@ -263,10 +319,11 @@ async function WorkContent({ params }: { params: Promise<{ slug: string }> }) {
                       ) : (
                         <video
                           src={study.videoUrl}
-                          controls
-                          preload="metadata"
-                          playsInline
+                          autoPlay
                           muted
+                          loop
+                          playsInline
+                          preload="auto"
                           className="absolute inset-0 w-full h-full object-contain"
                         >
                           Your browser does not support the video tag.
@@ -358,7 +415,7 @@ async function WorkContent({ params }: { params: Promise<{ slug: string }> }) {
               </section>
             )
           )}
-          {study?.images != null && study.images.length > 0 && slug !== 'wechipn' && (
+          {study?.images != null && study.images.length > 0 && slug !== 'wechipn' && slug !== 'community-health-media' && (
             <section id="gallery" className="scroll-mt-24">
               <h2 className="text-3xl md:text-4xl font-semibold tracking-tight text-gray-900 dark:text-white mb-8">
                 Gallery

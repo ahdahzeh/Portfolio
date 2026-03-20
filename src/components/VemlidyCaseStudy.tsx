@@ -1,5 +1,6 @@
 'use client';
 
+import BackToHomeButton from '@/components/BackToHomeButton';
 import Link from 'next/link';
 import Image from 'next/image';
 import ScrollProgressBar from '@/components/ScrollProgressBar';
@@ -72,12 +73,7 @@ export default function VemlidyCaseStudy({
   return (
     <article className="max-w-[1200px] mx-auto px-4 sm:px-6 md:px-8 py-3">
       <ScrollProgressBar />
-      <Link
-        href="/"
-        className="text-gray-500 hover:text-gray-700 dark:hover:text-gray-300 text-sm mb-12 inline-block"
-      >
-        ← Back
-      </Link>
+      <BackToHomeButton className="mb-12" />
 
       <header className="mb-[30px]">
         <h1 className="text-[85px] font-normal text-black dark:text-white tracking-tight mb-8 text-center leading-tight">
@@ -144,10 +140,11 @@ export default function VemlidyCaseStudy({
                 ) : (
                   <video
                     src={launchedSiteVideoUrl}
-                    controls
-                    preload="metadata"
-                    playsInline
+                    autoPlay
                     muted
+                    loop
+                    playsInline
+                    preload="auto"
                     onVolumeChange={keepVideoMuted}
                     className="absolute inset-0 w-full h-full object-contain"
                   >
@@ -235,10 +232,11 @@ export default function VemlidyCaseStudy({
               ) : (
                 <video
                   src={launchedSiteVideoUrl}
-                  controls
-                  preload="metadata"
-                  playsInline
+                  autoPlay
                   muted
+                  loop
+                  playsInline
+                  preload="auto"
                   onVolumeChange={keepVideoMuted}
                   className="absolute inset-0 w-full h-full object-contain"
                 >

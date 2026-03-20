@@ -1,5 +1,6 @@
 'use client';
 
+import BackToHomeButton from '@/components/BackToHomeButton';
 import Link from 'next/link';
 import Image from 'next/image';
 import ScrollProgressBar from '@/components/ScrollProgressBar';
@@ -59,12 +60,7 @@ export default function WeChipnCaseStudy({
     <article className="max-w-[1200px] mx-auto px-6 py-16 md:py-24">
       <ScrollProgressBar />
       <SectionNav sections={WECHIPN_SECTIONS} />
-      <Link
-        href="/"
-        className="text-gray-500 hover:text-gray-700 dark:text-gray-300 text-sm mb-8 inline-block"
-      >
-        ← Back
-      </Link>
+      <BackToHomeButton className="mb-8" />
 
       {/* Hero */}
       <section id="overview" className="mb-16 text-center w-full max-w-[1200px] mx-auto scroll-mt-24">

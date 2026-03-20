@@ -1,5 +1,6 @@
 'use client';
 
+import BackToHomeButton from '@/components/BackToHomeButton';
 import Link from 'next/link';
 import Image from 'next/image';
 import ScrollProgressBar from '@/components/ScrollProgressBar';
@@ -49,12 +50,7 @@ export default function AmazonCaseStudy({
     <article className="min-h-screen bg-white dark:bg-black text-black dark:text-white">
       <ScrollProgressBar />
       <div className="max-w-[1200px] mx-auto px-4 sm:px-6 md:px-8 py-3.5">
-        <Link
-          href="/"
-          className="text-gray-500 hover:text-gray-700 dark:hover:text-gray-300 text-sm mb-12 inline-block"
-        >
-          ← Back
-        </Link>
+        <BackToHomeButton className="mb-12" />
 
         <header className="mb-16">
           <h1 className="text-[85px] font-normal text-black dark:text-white tracking-tight mb-8 text-center leading-tight">

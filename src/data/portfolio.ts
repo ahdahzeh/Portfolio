@@ -53,6 +53,8 @@ export interface WorkItem {
     roleDisplay?: string;
     /** Optional hero line (e.g. "Q1 2024") */
     timeline?: string;
+    /** Short intro under hero (e.g. Solstice-style deep dive) */
+    heroIntro?: string;
     narrative: string;
     /** When set, narrative is split: part1 + optional middle content (e.g. wireframes) + part2 */
     narrativePart1?: string;
@@ -73,6 +75,40 @@ export interface WorkItem {
     mobileViewVideoUrl?: string;
     /** Optional sections for rich case studies (e.g. Amazon): title, content, and images per section */
     sections?: { title?: string; content?: string; images?: { src: string; alt: string; caption?: string }[] }[];
+    /** Houzz-style meta block: Team, Tools, Year, Role */
+    team?: string;
+    tools?: string;
+    /** Problem/opportunity framing (e.g. "How can we...?") */
+    problemStatement?: string;
+    /** Takeaways section: learnings at end of case study */
+    takeaways?: { title: string; content: string }[];
+    /** Optional 4-up grid items (e.g. Featured Videos, Content Library) for CHT case study */
+    fourUpItems?: { src: string; alt: string; caption: string; /** e.g. 1.05 = 5% zoom in tile */ imageScale?: number }[];
+    /** Industry label for metadata (e.g. "Healthcare & Pharma Tech") */
+    industry?: string;
+    /** Video for CHT browser frame section (replaces hero image in frame) */
+    browserFrameVideo?: string;
+    /** CHT overview: bold lead sentence (Framer-style, ~30px) */
+    overviewLead?: string;
+    /** CHT HTML: Problem sections (badge, title, content, image) */
+    chtProblems?: { badge: string; title: string; content: string; image: string; imageAlt: string }[];
+    /** CHT HTML: Solution sections — use `video` for a browser-frame walkthrough, or `image` for a still */
+    chtSolutions?: {
+      title: string;
+      content: string;
+      imageAlt: string;
+      image?: string;
+      /** Optional .mov/.mp4 path under /public (e.g. /videos/.../file.mov) */
+      video?: string;
+      /** Optional H.264 .mp4 (same clip); browsers that can't play .mov will use this first */
+      videoMp4?: string;
+    }[];
+    /** CHT HTML: Two-up screenshot pairs */
+    chtTwoUpPairs?: { left: { src: string; alt: string; caption: string }; right: { src: string; alt: string; caption: string } }[];
+    /** CHT HTML: Outcome/impact cards */
+    chtOutcomes?: { title: string; content: string }[];
+    /** CHT HTML: Tools used (e.g. Figma, Cursor) */
+    chtTools?: string[];
   };
 }
 
@@ -103,11 +139,80 @@ export const workHistory: WorkItem[] = [
     description: "Product design for community health platform",
     image: "/images/work/cht.png",
     color: "#10b981",
-    wip: true,
+    wip: false,
+    link: "https://testapp.communityhealth.media/home",
     caseStudy: {
-      title: "COMMUNITY HEALTH MEDIA",
-      subtitle: "Health Communication Platform",
-      narrative: `Working as a Product Designer at Community Health Media (CHT), designing digital products that help connect communities with vital health information and resources.`
+      title: "Community Health\u00a0Media",
+      subtitle: "Designing a digital platform that transforms how pharma educates and engages healthcare professionals.",
+      roleDisplay: "Product Design\nDesign Engineering",
+      timeline: "Dec 2025 – Mar 2026",
+      team: "AO, DE",
+      problemStatement: "Designing the future of healthcare education with no roadmap to follow",
+      /** Short intro under the hero - matches HTML reference */
+      heroIntro: "Community Health Technologies is redefining how pharma reaches healthcare audiences. I joined as the sole designer and built the platform from the ground up. I designed every screen in Figma and shipped the frontend with Cursor, Next.js, and AWS. Partnering with one engineer, we replaced a fully analog workflow of emails and Zoom calls with an automated, data-driven content platform.",
+      /** Bold lead sentence for overview (Framer-style) */
+      overviewLead: "Community Health Technologies is redefining how pharma reaches healthcare audiences.",
+      narrative: `At Community Health Media (CHT), I work as a Product Designer on the HCP (Healthcare Professional) Content Platform, a digital product that helps connect healthcare providers and communities with vital health information and resources.
+
+The platform centers on the idea of innovating the next frontier of health care through information. It offers a content hub with featured videos, biomarker playlists (e.g., HER2+, HR+, HIV+), disease-specific sections (Breast Cancer, Triple Negative, High Risk), and curated resources. Healthcare professionals can browse webinars, surveys, and educational content through a clear, consistent interface.
+
+My work spans the end-to-end experience: the main content hub and landing experience, topic-specific content pages (e.g., Breast Cancer, HIV+), webinar and survey catalogues with detail and watch views, and administrative tools including an analytics dashboard (page views, active users, engagement rate), content upload flows, webinar scheduling, and survey creation. I established a shared design system with card-based layouts, clear typography, and a consistent top bar and sidebar so HCPs can move from discovery to deeper learning without friction.`,
+      sections: [
+        {
+          title: "Overview",
+          content: "",
+          images: [
+            {
+              src: "/images/work/community-health-media/hero-mockup.png",
+              alt: "CHT marketing homepage shown on laptop and mobile against a teal backdrop",
+              caption: "",
+            },
+          ],
+        },
+      ],
+      images: [],
+      fourUpItems: [
+        { src: "/images/work/community-health-media/fourup-featured-videos-crop20l.png", alt: "Featured Videos", caption: "Curated content series for HCPs organized by specialty", imageScale: 1.05 },
+        { src: "/images/work/community-health-media/fourup-conversations-playlist.png", alt: "CHT Conversations", caption: "Live and recorded webinars with leading physicians" },
+        { src: "/images/work/community-health-media/fourup-content-library-catalogue.png", alt: "Content Library", caption: "Topic and biomarker-based paths—how HCPs find structured education in the product" },
+        { src: "/images/work/community-health-media/fourup-data-earnings-v3.png", alt: "Data & Reporting", caption: "Analytics dashboard tracking engagement metrics" },
+      ],
+      industry: "Healthcare &\nPharma Tech",
+      /** Video walkthrough for browser frame section (replaces hero image) */
+      browserFrameVideo: "/videos/work/community-health-media/site-walkthrough.mov",
+      chtProblems: [
+        { badge: "Problem 01", title: "No precedent for this platform", content: "There was no real precedent for a platform that lets doctors and healthcare professionals consume medical education the way CHT envisioned. Traditional CME platforms and conference tools don’t match how HCPs engage with content in daily workflows, so I designed the experience from first principles and translated product strategy into clear, usable screens.", image: "/images/work/community-health-media/fourup-content-library-catalogue.png", imageAlt: "In-product topic and biomarker content experience" },
+        { badge: "Problem 02", title: "The business ran on email and Zoom", content: "Before the platform, every interaction between pharma companies, HCPs, and content was coordinated manually through email threads, calendar invites, and Zoom recordings. There was no data layer, no analytics, and no scalable way to understand performance. I shaped a system that could host content, automate the core workflows, and make engagement measurable.", image: "/images/work/community-health-media/cht-problem-02-education-landing.png", imageAlt: "Clinical education landing — catalogue, search, and workflow-focused messaging" },
+      ],
+      chtSolutions: [
+        { title: "Designed for how doctors actually find information", content: "Instead of guessing at information architecture, I designed around real HCP behaviors. Doctors don’t browse; they search by biomarker, condition, and treatment. I organized the platform around biomarker playlists and curated series so physicians can quickly find what they need, the same way they think about patient care.", image: "/images/work/community-health-media/cht-solution-01-webinars.png", imageAlt: "Webinars page — upcoming live sessions with registration" },
+        {
+          title: "Built a visual system that scales",
+          content: "To make the product feel credible and easy to use, I defined the visual system while the UI was being built. The result is a clean, clinical aesthetic that balances authority with clarity, anchored by a strong navigation and a content-forward layout that works across dashboards, libraries, and detail views.",
+          imageAlt: "Brand identity walkthrough",
+          image: "/images/work/community-health-media/screen-1.png",
+          video: "/videos/work/community-health-media/brand-identity-walkthrough.mov",
+          videoMp4: "/videos/work/community-health-media/brand-identity-walkthrough.mp4",
+        },
+        {
+          title: "Turned manual workflows into a measurable platform",
+          content:
+            "Behind the HCP-facing experience is an internal admin dashboard where CHT runs day-to-day operations: content libraries, webinar and survey programs, uploads, and scheduling. I designed these tools so admins get a single, consistent surface for publishing and governance—backed by analytics on views, active users, and engagement instead of one-off spreadsheets and inbox threads.",
+          imageAlt: "Admin dashboard and operations walkthrough",
+          video: "/videos/work/community-health-media/admin-dashboard-walkthrough.mov",
+          videoMp4: "/videos/work/community-health-media/admin-dashboard-walkthrough.mp4",
+        },
+      ],
+      chtTwoUpPairs: [
+        { left: { src: "/images/work/community-health-media/cht-marketing-homepage-hero.png", alt: "Marketing homepage", caption: "Full-width homepage — hero, navigation, and primary messaging" }, right: { src: "/images/work/community-health-media/cht-two-up-featured-videos.png", alt: "Featured content", caption: "Featured video cards and content discovery" } },
+        { left: { src: "/images/work/community-health-media/cht-two-up-about-us.png", alt: "About page", caption: "About page: company mission and team" }, right: { src: "/images/work/community-health-media/cht-two-up-contact.png", alt: "Contact page", caption: "Contact page: streamlined inquiry flow" } },
+      ],
+      chtOutcomes: [
+        { title: "Fully Automated", content: "Replaced an entirely analog process of emails, Zoom calls, and manual coordination with a centralized digital platform." },
+        { title: "Data-Driven Insights", content: "For the first time, CHT can see how HCPs engage with content, which enables smarter decisions about what to produce and promote." },
+        { title: "New Product Category", content: "Created a new kind of platform for healthcare education, one that didn’t exist before in the pharma marketing space." },
+      ],
+      chtTools: ["Figma", "Cursor", "AWS", "Next.js"],
     }
   },
   {

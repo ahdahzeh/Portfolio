@@ -1,0 +1,39 @@
+---
+description: Never claim a fix is done without verifying it actually works
+alwaysApply: true
+---
+
+# Verification Before Claim
+
+## Rule
+
+**Never say you fixed something until you have verified it actually works.**
+
+## Requirements
+
+1. **Read the code first** — Before claiming any fix, read the relevant files to confirm the current state. Do not rely on conversation summaries or assumptions.
+
+2. **Verify edits took effect** — After making edits, re-read the file or run the app to confirm the change is present and behaves as intended.
+
+3. **View a screenshot for UI changes** — For layout, styling, or visual fixes, capture and view a screenshot of the page to confirm the fix actually works. Do not claim a UI fix is done without seeing it rendered.
+
+4. **Distinguish intent from outcome** — Say "I'm applying a fix" or "I've made this change" — not "I fixed it" — until you've confirmed the problem is resolved.
+
+5. **Don't trust summaries blindly** — If a summary says something was done, verify in the codebase before repeating it. Summaries can be wrong or out of date.
+
+6. **Be explicit about uncertainty** — If you're unsure whether a fix worked, say so. Prefer "I've applied this change; please verify it fixes the issue" over "Fixed."
+
+## Anti-patterns
+
+- ❌ "I fixed the overlap" (without verifying)
+- ❌ Repeating what a summary said without checking the code
+- ❌ Claiming a fix is complete after a single edit without testing or re-reading
+- ❌ Using estimated values (e.g., `top-[5.5rem]`) and stating the problem is solved without confirmation
+- ❌ Claiming a UI/layout fix works without viewing a screenshot of the rendered page
+
+## Correct pattern
+
+- ✅ Make the edit → Re-read the file → Run/build if needed → For UI changes: view a screenshot → Then state what was done and whether it should resolve the issue
+- ✅ "I've removed the fixed positioning so the Back button flows below the header. It should no longer overlap — please confirm."
+- ✅ When uncertain: "I've applied this change. Can you check if the overlap is gone?"
+- ✅ For UI fixes: Use the browser MCP or similar to capture a screenshot, verify the fix visually, then report.

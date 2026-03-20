@@ -217,4 +217,18 @@ nextjs-portal {
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
 }
 
+/* Bevel-style scroll reveal: fade up and in when element enters viewport */
+[data-scroll-reveal] {
+  opacity: 0;
+  transform: translateY(32px);
+  transition:
+    opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+[data-scroll-reveal][data-revealed="true"] {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 
