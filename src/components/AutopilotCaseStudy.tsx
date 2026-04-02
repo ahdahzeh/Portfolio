@@ -4,6 +4,7 @@ import Image from 'next/image';
 import BackToHomeButton from '@/components/BackToHomeButton';
 import ScrollProgressBar from '@/components/ScrollProgressBar';
 import SectionNav, { type SectionNavItem } from '@/components/SectionNav';
+import { AutopilotDashboard } from '@/components/AutopilotDashboard';
 
 const SECTIONS: SectionNavItem[] = [
   { id: 'overview', label: 'Overview' },
@@ -14,6 +15,7 @@ const SECTIONS: SectionNavItem[] = [
   { id: 'results', label: 'Results' },
   { id: 'gtm', label: 'Go-To-Market' },
   { id: 'decisions', label: 'Technical Decisions' },
+  { id: 'dashboard', label: 'Dashboard' },
 ];
 
 const PURPLE = '#534AB7';
@@ -364,7 +366,7 @@ export default function AutopilotCaseStudy({
             {[
               { title: 'Core', items: 'Python 3.12, Playwright (async), Anthropic API (Claude Sonnet)' },
               { title: 'PDF Generation', items: 'ReportLab — pixel-precise two-column layout matching Figma template' },
-              { title: 'Dashboard', items: 'Notion API (Kanban), Gmail API (OAuth2), httpx (async HTTP)' },
+              { title: 'Dashboard', items: 'Native Kanban (React/Next.js), Gmail API (OAuth2), httpx (async HTTP)' },
               { title: 'Infrastructure', items: 'macOS cron (daily 8 AM), loguru (structured logs), python-dotenv' },
             ].map((stack) => (
               <div key={stack.title} className="rounded-2xl border-2 border-amber-500/40 dark:border-amber-400/30 bg-amber-50/50 dark:bg-amber-950/20 p-6 md:p-8">
@@ -396,11 +398,22 @@ export default function AutopilotCaseStudy({
           </div>
         </section>
 
+        {/* DASHBOARD */}
+        <section id="dashboard" className="scroll-mt-24">
+          <h2 className="text-3xl md:text-4xl font-semibold tracking-tight text-gray-900 dark:text-white mb-4">
+            Native Dashboard
+          </h2>
+          <p className="text-lg text-gray-600 dark:text-gray-400 leading-relaxed max-w-3xl mb-10">
+            The pipeline originally pushed everything to Notion — functional, but impersonal. I built a native web dashboard to replace it: a Kanban board showing every job scraped, matched, applied to, and tracked. Match scores, resume and cover letter links, Gmail sync status, and pipeline stats all in one place.
+          </p>
+          <AutopilotDashboard />
+        </section>
+
         {/* CLOSING */}
         <section className="scroll-mt-24 py-[15px]">
           <div className="rounded-2xl border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-900/50 p-8 md:p-12 text-center">
             <p className="text-lg text-gray-700 dark:text-gray-300 leading-relaxed max-w-3xl mx-auto">
-              Building Autopilot taught me that the most impactful design engineering happens when you own the problem end-to-end — from the first wireframe to the last cron job. The system is still running daily and evolving. Next up: a web-based dashboard to replace Notion and open the pipeline to other job seekers.
+              Building Autopilot taught me that the most impactful design engineering happens when you own the problem end-to-end — from the first wireframe to the last cron job. The system runs daily, the dashboard surfaces everything in one view, and the pipeline is designed to scale to any job function.
             </p>
           </div>
         </section>
