@@ -41,6 +41,7 @@ export interface WorkItem {
   link?: string;
   color?: string;
   coverStyle?: boolean;
+  coverVideo?: string;
   coverImages?: { desktop: string; mobile: string };
   /** When true, shows a WIP (work in progress) page instead of the full case study */
   wip?: boolean;
@@ -113,6 +114,55 @@ export interface WorkItem {
 }
 
 export const workHistory: WorkItem[] = [
+  {
+    id: "11",
+    slug: "scour",
+    company: "Scour",
+    role: "Design Engineer",
+    period: "2025–2026",
+    description: "AI shopping agent for luxury and streetwear secondary market",
+    image: "/images/work/scour/hero.png",
+    coverVideo: "/videos/work/scour/iphone-mockup.mp4",
+    color: "#00FF66",
+    link: "https://scour-app.vercel.app",
+    caseStudy: {
+      title: "SCOUR",
+      subtitle: "AI Shopping Agent — Luxury & Streetwear",
+      roleDisplay: "Design Engineer",
+      timeline: "2025–2026",
+      videoUrl: "/videos/work/scour/promo.mp4",
+      narrative: `Scour is a personal project I designed and built from scratch—an AI-powered shopping agent for the luxury and streetwear secondary market. The idea came from my own frustration: finding the best price on a pair of Margiela Replicas or a Bottega bag means checking Grailed, GOAT, StockX, eBay, Vestiaire, and dozens of Shopify stores one by one. Scour aggregates 30+ sources into a single search, scores every listing, and tells you whether you're overpaying—before you buy.
+
+I own every layer of this product: product strategy, UX/UI design, design system, frontend engineering, backend architecture, and deployment. Built with Next.js, TypeScript, Tailwind CSS, Supabase, Vercel AI SDK, and Claude API. Deployed on Vercel as a mobile-first PWA.
+
+The design language sits at the intersection of SSense's editorial brutalism (stark white, product-as-hero, restrained typography) and StockX's financial data motifs (deal scores, sparklines, price ranges). The core design challenge was balancing data density with editorial appeal—each listing carries 7+ data points that need to be legible at a glance without overwhelming the browsing experience.
+
+I prototyped four distinct card system directions—Editorial Cards, Data-Forward Cards, Minimal Object, and a hybrid Carousel + Cards approach—before landing on the final direction. This systematic exploration was how I compensated for designing without a team: multiple directions, honest evaluation, then commit.`,
+    }
+  },
+  {
+    id: "12",
+    slug: "autopilot",
+    company: "Job Pilot Automation",
+    role: "Design Engineer",
+    period: "2025",
+    description: "AI-powered job application pipeline that automates discovery, qualification, resume tailoring, and submission",
+    image: "/images/work/autopilot/cover.png",
+    coverVideo: "/videos/work/autopilot/cover.mp4",
+    color: "#534AB7",
+    caseStudy: {
+      title: "JOB PILOT",
+      subtitle: "AI Job Application Automation",
+      roleDisplay: "Design Engineer",
+      timeline: "2025",
+      videoUrl: "/videos/work/autopilot/promo.mp4",
+      narrative: `Job Pilot Automation is a personal tool I built to solve a real problem: the modern job search is broken. Applying to 50+ roles a week means hours of repetitive work—finding listings, checking qualifications, tailoring resumes, writing cover letters. I built an end-to-end AI pipeline that automates the entire workflow while maintaining quality that passes human review.
+
+The system runs a 4-stage pipeline: Discovery (scraping job boards), Qualification (AI scoring against my profile), Tailoring (Claude-powered resume and cover letter generation), and Submission (automated form filling). Each stage has guardrails, fallbacks, and human-in-the-loop checkpoints.
+
+Built with TypeScript, Puppeteer, Claude API, and a custom orchestration layer. The AI tailoring engine uses structured prompts with anti-hallucination guardrails—it can only use experiences that actually exist in my master resume, rearranging and emphasizing rather than fabricating.`
+    }
+  },
   {
     id: "1",
     slug: "morton-salt",
@@ -554,6 +604,8 @@ export interface ArchiveProject {
 }
 
 export const archiveProjects: ArchiveProject[] = [
+  { id: "31", name: "Job Pilot Automation", role: "Design Engineer", year: "2025", link: "/work/autopilot" },
+  { id: "30", name: "Scour", role: "Design Engineer", year: "2025–2026", link: "/work/scour" },
   { id: "29", name: "Morton Salt", role: "UX Design", year: "2026", link: "/work/morton-salt" },
   { id: "1", name: "Patients and Purpose", role: "UX Design", year: "2025" },
   { id: "2", name: "Block Equity Group", role: "UX Design", year: "2024", link: "/work/block-equity-group" },

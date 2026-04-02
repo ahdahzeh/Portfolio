@@ -69,8 +69,7 @@ export default function WeChipnCaseStudy({
         </h1>
         <div className="flex flex-wrap justify-center gap-4 md:gap-8 text-[20px] text-black dark:text-black mb-8" style={{ letterSpacing: '0px' }}>
           {timeline != null && <span>Timeline: {timeline}</span>}
-          {roleDisplay != null && <span>Title: {roleDisplay}</span>}
-          <span>Project: {title}</span>
+          {roleDisplay != null && <span>Role: {roleDisplay}</span>}
         </div>
         <div className="relative w-full aspect-video rounded-2xl overflow-hidden border-2 border-gray-200 dark:border-gray-600 bg-[#F3F3F3]">
           {videoUrl ? (

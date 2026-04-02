@@ -5,6 +5,26 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { workHistory } from '@/data/portfolio';
 
+function CoverVideo({ src, alt }: { src: string; alt: string }) {
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  return (
+    <div className="relative w-full h-full overflow-hidden bg-[#f0f0f0] dark:bg-[#f0f0f0]">
+      <video
+        ref={videoRef}
+        src={src}
+        autoPlay
+        muted
+        loop
+        playsInline
+        preload="auto"
+        aria-label={alt}
+        className="w-full h-full object-cover"
+      />
+    </div>
+  );
+}
+
 function WorkCardImage({ item, priority = false }: { item: (typeof workHistory)[0]; priority?: boolean }) {
   const images = item.caseStudy?.images ?? [];
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -18,6 +38,10 @@ function WorkCardImage({ item, priority = false }: { item: (typeof workHistory)[
   }, [images.length]);
 
   const coverImages = item.coverImages;
+
+  if (item.coverVideo) {
+    return <CoverVideo src={item.coverVideo} alt={item.company} />;
+  }
 
   if (coverImages) {
     return (

@@ -61,8 +61,7 @@ export default function AmazonCaseStudy({
           )}
           <div className="flex flex-wrap justify-center gap-6 md:gap-8 text-[20px] text-black dark:text-black mt-8 mb-8" style={{ letterSpacing: '0px' }}>
             {timeline != null && <span>Timeline: {timeline}</span>}
-            {roleDisplay != null && <span>Title: {roleDisplay}</span>}
-            <span>Project: {title}</span>
+            {roleDisplay != null && <span>Role: {roleDisplay}</span>}
           </div>
           {(link != null || videoUrl != null) && (
             <div className="flex flex-wrap justify-center gap-4 mt-8">
