@@ -188,6 +188,7 @@ Built with TypeScript, Puppeteer, Claude API, and a custom orchestration layer. 
     period: "2026",
     description: "Product design for community health platform",
     image: "/images/work/cht.png",
+    coverVideo: "/videos/cht-macbook.mp4",
     color: "#10b981",
     wip: false,
     link: "https://testapp.communityhealth.media/home",
