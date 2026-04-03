@@ -4,7 +4,6 @@ import Image from 'next/image';
 import BackToHomeButton from '@/components/BackToHomeButton';
 import ScrollProgressBar from '@/components/ScrollProgressBar';
 import SectionNav, { type SectionNavItem } from '@/components/SectionNav';
-import { AutopilotDashboard } from '@/components/AutopilotDashboard';
 
 const SECTIONS: SectionNavItem[] = [
   { id: 'overview', label: 'Overview' },
@@ -16,6 +15,7 @@ const SECTIONS: SectionNavItem[] = [
   { id: 'gtm', label: 'Go-To-Market' },
   { id: 'decisions', label: 'Technical Decisions' },
   { id: 'dashboard', label: 'Dashboard' },
+  { id: 'whats-next', label: "What's Next" },
 ];
 
 const PURPLE = '#534AB7';
@@ -74,7 +74,7 @@ export default function AutopilotCaseStudy({
         </div>
 
         <p className="text-black dark:text-white text-lg leading-relaxed text-center max-w-[811px] mx-auto mb-16">
-          The job market is brutal — AI screens out resumes before a human ever sees them, and hundreds of applicants compete for every role. So I flipped the script: if AI is making it harder to get hired, I&apos;ll build my own AI to fight back.
+          The job market is brutal. AI screens out resumes before a human ever sees them, and hundreds of applicants compete for every role. So I flipped the script: if AI is making it harder to get hired, I&apos;ll build my own AI to fight back.
         </p>
       </div>
 
@@ -88,7 +88,7 @@ export default function AutopilotCaseStudy({
           </h2>
           <div className="rounded-2xl border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-900/50 p-6 md:p-8 mb-10">
             <p className="text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
-              I designed and built this entire product solo — the setup wizard UX (prototyped as interactive HTML/CSS), the pipeline architecture, and every line of Python underneath. The system scrapes Product Design roles from LinkedIn and BuiltIn, uses the Anthropic API (Claude Sonnet) to tailor resumes and cover letters per role, generates pixel-precise PDFs via ReportLab, and pushes everything to a Notion Kanban dashboard. Runs daily at 8 AM via cron. Gmail integration auto-tracks interview invitations, rejections, and manually-applied jobs.
+              I designed and built this entire product solo: the setup wizard UX (prototyped as interactive HTML/CSS), the pipeline architecture, and every line of Python underneath. The system scrapes Product Design roles from LinkedIn and BuiltIn, uses the Anthropic API (Claude Sonnet) to tailor resumes and cover letters per role, generates pixel-precise PDFs via ReportLab, and pushes everything to a Notion Kanban dashboard. Runs daily at 8 AM via cron. Gmail integration auto-tracks interview invitations, rejections, and manually-applied jobs.
             </p>
           </div>
           <div className="grid md:grid-cols-2 gap-6 md:gap-8">
@@ -101,7 +101,7 @@ export default function AutopilotCaseStudy({
             <div className="rounded-2xl border border-gray-200 dark:border-gray-800 p-6 md:p-8">
               <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-3">AI Tailoring</h3>
               <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
-                Claude Sonnet generates tailored resume copy, cover letters with a 100-combination variation engine, pre-filled application responses, and match scores — all constrained by a system prompt with hard anti-hallucination guardrails.
+                Claude Sonnet generates tailored resume copy, cover letters with a 100-combination variation engine, pre-filled application responses, and match scores, all constrained by a system prompt with hard anti-hallucination guardrails.
               </p>
             </div>
           </div>
@@ -117,7 +117,7 @@ export default function AutopilotCaseStudy({
               I was spending 2-3 hours per day on my job search: scrolling LinkedIn, copying job descriptions, manually rewriting resume bullets to match each JD, writing cover letters from scratch, and tracking everything in a spreadsheet.
             </p>
             <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
-              <strong className="text-gray-900 dark:text-white">The insight:</strong> Most of that work was repetitive pattern-matching — exactly what an LLM is good at. The goal was to reduce daily effort to ~15-20 minutes of review and final submission while maintaining or improving the quality of application materials. The system handles discovery, filtering, tailoring, and tracking automatically so I can focus on evaluating company fit, tweaking tone, and hitting submit.
+              <strong className="text-gray-900 dark:text-white">The insight:</strong> Most of that work was repetitive pattern-matching , exactly what an LLM is good at. The goal was to reduce daily effort to ~15-20 minutes of review and final submission while maintaining or improving the quality of application materials. The system handles discovery, filtering, tailoring, and tracking automatically so I can focus on evaluating company fit, tweaking tone, and hitting submit.
             </p>
           </div>
         </section>
@@ -166,7 +166,7 @@ export default function AutopilotCaseStudy({
             Setup Wizard
           </h2>
           <p className="text-lg text-gray-600 dark:text-gray-400 leading-relaxed max-w-3xl mb-12">
-            An 8-step onboarding flow that configures the entire pipeline. Everything stays local — your data is saved to a config file on your machine and only sent to the Claude API when generating tailored materials.
+            An 8-step onboarding flow that configures the entire pipeline. Everything stays local. Your data is saved to a config file on your machine and only sent to the Claude API when generating tailored materials.
           </p>
 
           {/* Wizard walkthrough video */}
@@ -208,7 +208,7 @@ export default function AutopilotCaseStudy({
             How It Works
           </h2>
           <p className="text-gray-500 dark:text-gray-400 mb-12">
-            Six scripts, one daily cron job — from raw listings to tailored applications
+            Six scripts, one daily cron job, from raw listings to tailored applications
           </p>
 
           <div className="space-y-8 mb-16">
@@ -219,7 +219,7 @@ export default function AutopilotCaseStudy({
                 <h3 className="text-lg font-semibold text-gray-900 dark:text-white">Scraping</h3>
               </div>
               <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
-                Playwright-powered headless browsers scrape LinkedIn (public guest search across 8 cities) and BuiltIn (9 search combinations across city subdomains). V1 used authenticated browsing — LinkedIn&apos;s bot detection served wrong results, so V2 switched to public guest pages. Detail fetches capped at 5 per city to keep runtime under 15 minutes.
+                Playwright-powered headless browsers scrape LinkedIn (public guest search across 8 cities) and BuiltIn (9 search combinations across city subdomains). V1 used authenticated browsing. LinkedIn&apos;s bot detection served wrong results, so V2 switched to public guest pages. Detail fetches capped at 5 per city to keep runtime under 15 minutes.
               </p>
             </div>
 
@@ -241,7 +241,7 @@ export default function AutopilotCaseStudy({
                 <h3 className="text-lg font-semibold text-gray-900 dark:text-white">AI Tailoring Engine</h3>
               </div>
               <p className="text-gray-600 dark:text-gray-400 leading-relaxed mb-4">
-                Uses the Anthropic API (Claude Sonnet) to generate per-job tailored summaries, experience bullets (STAR format, real metrics), ATS keywords, match scores, cover letters via a 100-combination variation engine, and pre-filled application responses — all constrained by a system prompt with hard anti-hallucination guardrails.
+                Uses the Anthropic API (Claude Sonnet) to generate per-job tailored summaries, experience bullets (STAR format, real metrics), ATS keywords, match scores, cover letters via a 100-combination variation engine, and pre-filled application responses, all constrained by a system prompt with hard anti-hallucination guardrails.
               </p>
               <div className="grid md:grid-cols-2 gap-4 mt-4">
                 <div className="rounded-xl bg-gray-50 dark:bg-gray-900/50 p-4">
@@ -314,10 +314,10 @@ export default function AutopilotCaseStudy({
             Go-To-Market
           </h2>
           <p className="text-lg text-gray-600 dark:text-gray-400 leading-relaxed max-w-3xl mb-4">
-            Autopilot isn&apos;t locked to one job title. I designed it as a multi-persona platform — the pipeline accepts a <code className="text-sm bg-gray-100 dark:bg-gray-800 px-1.5 py-0.5 rounded">--role</code> flag that reconfigures scraping queries, filtering logic, and tailoring prompts for any job function.
+            Autopilot isn&apos;t locked to one job title. I designed it as a multi-persona platform; the pipeline accepts a <code className="text-sm bg-gray-100 dark:bg-gray-800 px-1.5 py-0.5 rounded">--role</code> flag that reconfigures scraping queries, filtering logic, and tailoring prompts for any job function.
           </p>
           <p className="text-gray-600 dark:text-gray-400 leading-relaxed max-w-3xl mb-12">
-            To validate market breadth, I ran the full pipeline for 10 different roles and captured the results. Each card shows real scrape volumes, match counts, and tailored outputs — demonstrating that the system scales across industries and seniority levels.
+            To validate market breadth, I ran the full pipeline for 10 different roles and captured the results. Each card shows real scrape volumes, match counts, and tailored outputs, demonstrating that the system scales across industries and seniority levels.
           </p>
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-5">
@@ -351,7 +351,7 @@ export default function AutopilotCaseStudy({
           <div className="rounded-2xl border-2 border-amber-500/30 dark:border-amber-400/30 bg-amber-50/50 dark:bg-amber-950/20 p-6 md:p-8 mt-10">
             <p className="text-sm font-medium uppercase tracking-wider text-amber-700 dark:text-amber-400 mb-3">Market Insight</p>
             <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
-              Volume scales with market size — Software Engineer and Product Manager roles return 300+ listings per run, while niche roles like Brand Designer and Content Strategist return 50–90. The pipeline adapts: smaller pools get higher tailoring ratios so every viable match gets a custom application.
+              Volume scales with market size. Software Engineer and Product Manager roles return 300+ listings per run, while niche roles like Brand Designer and Content Strategist return 50–90. The pipeline adapts: smaller pools get higher tailoring ratios so every viable match gets a custom application.
             </p>
           </div>
         </section>
@@ -365,7 +365,7 @@ export default function AutopilotCaseStudy({
           <div className="grid sm:grid-cols-2 gap-6 md:gap-8 mb-10">
             {[
               { title: 'Core', items: 'Python 3.12, Playwright (async), Anthropic API (Claude Sonnet)' },
-              { title: 'PDF Generation', items: 'ReportLab — pixel-precise two-column layout matching Figma template' },
+              { title: 'PDF Generation', items: 'ReportLab, pixel-precise two-column layout matching Figma template' },
               { title: 'Dashboard', items: 'Native Kanban (React/Next.js), Gmail API (OAuth2), httpx (async HTTP)' },
               { title: 'Infrastructure', items: 'macOS cron (daily 8 AM), loguru (structured logs), python-dotenv' },
             ].map((stack) => (
@@ -404,16 +404,69 @@ export default function AutopilotCaseStudy({
             Native Dashboard
           </h2>
           <p className="text-lg text-gray-600 dark:text-gray-400 leading-relaxed max-w-3xl mb-10">
-            The pipeline originally pushed everything to Notion — functional, but impersonal. I built a native web dashboard to replace it: a Kanban board showing every job scraped, matched, applied to, and tracked. Match scores, resume and cover letter links, Gmail sync status, and pipeline stats all in one place.
+            The pipeline originally pushed everything to Notion, functional but impersonal. I built a native web dashboard to replace it: a Kanban board showing every job scraped, matched, applied to, and tracked. Match scores, resume and cover letter links, Gmail sync status, and pipeline stats all in one place.
           </p>
-          <AutopilotDashboard />
+          <div className="rounded-2xl overflow-hidden border border-gray-200 dark:border-gray-700 shadow-lg">
+            <video
+              autoPlay
+              muted
+              loop
+              playsInline
+              preload="auto"
+              className="w-full h-auto"
+            >
+              <source src="/videos/work/autopilot/dashboard.mp4" type="video/mp4" />
+            </video>
+          </div>
+        </section>
+
+        {/* WHAT'S NEXT */}
+        <section id="whats-next" className="scroll-mt-24">
+          <h2 className="text-3xl md:text-4xl font-semibold tracking-tight text-gray-900 dark:text-white mb-4">
+            What&apos;s Next
+          </h2>
+          <p className="text-lg text-gray-600 dark:text-gray-400 leading-relaxed max-w-3xl mb-10">
+            The core pipeline is running and proving itself daily. Here&apos;s what I&apos;d build next if I kept pushing.
+          </p>
+          <div className="grid sm:grid-cols-2 gap-6 md:gap-8 mb-10">
+            {[
+              {
+                title: 'Multi-user SaaS',
+                color: PURPLE,
+                description: 'The config-based architecture is already multi-persona. The next step is turning it into a product with auth, per-user pipeline configs, and a shared job database. Pricing would follow a usage model: pay per tailored application.',
+              },
+              {
+                title: 'Richer match scoring',
+                color: TEAL,
+                description: 'Current scores are generated per-job at tailoring time. A better system would embed your resume and all job descriptions into a vector store, enabling semantic similarity search and ranking before any LLM call, faster, cheaper, and more accurate.',
+              },
+              {
+                title: 'Outreach automation',
+                color: CORAL,
+                description: 'The system knows which companies are hiring and which roles are strong matches. A natural extension: auto-draft personalized outreach messages to hiring managers at high-score companies, with the same variation engine used for cover letters.',
+              },
+              {
+                title: 'Interview prep loop',
+                color: AMBER,
+                description: 'Once a role moves to Interview status, the pipeline could generate a company research brief, predict likely questions from the JD, and produce tailored STAR-format answers using your actual experience, all before your first call.',
+              },
+            ].map((item) => (
+              <div key={item.title} className="rounded-2xl border border-gray-200 dark:border-gray-800 p-6 md:p-8 hover:border-gray-400 dark:hover:border-gray-600 transition-colors">
+                <div className="flex items-center gap-3 mb-4">
+                  <span className="w-2.5 h-2.5 rounded-full flex-shrink-0" style={{ background: item.color }} />
+                  <h3 className="text-lg font-semibold text-gray-900 dark:text-white">{item.title}</h3>
+                </div>
+                <p className="text-gray-600 dark:text-gray-400 leading-relaxed text-sm">{item.description}</p>
+              </div>
+            ))}
+          </div>
         </section>
 
         {/* CLOSING */}
         <section className="scroll-mt-24 py-[15px]">
           <div className="rounded-2xl border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-900/50 p-8 md:p-12 text-center">
             <p className="text-lg text-gray-700 dark:text-gray-300 leading-relaxed max-w-3xl mx-auto">
-              Building Autopilot taught me that the most impactful design engineering happens when you own the problem end-to-end — from the first wireframe to the last cron job. The system runs daily, the dashboard surfaces everything in one view, and the pipeline is designed to scale to any job function.
+              Building Autopilot taught me that the most impactful design engineering happens when you own the problem end-to-end, from the first wireframe to the last cron job. The system runs daily, the dashboard surfaces everything in one view, and the pipeline is designed to scale to any job function.
             </p>
           </div>
         </section>

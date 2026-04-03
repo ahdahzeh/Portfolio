@@ -82,7 +82,7 @@ interface ScourCaseStudyProps {
 
 export default function ScourCaseStudy({
   title = 'SCOUR',
-  subtitle = 'AI Shopping Agent — Luxury & Streetwear',
+  subtitle = 'AI Shopping Agent, Luxury & Streetwear',
   roleDisplay,
   timeline,
   link,
@@ -110,13 +110,13 @@ export default function ScourCaseStudy({
 
         {/* Hook — short, no detail overlap with Overview */}
         <p className="text-black dark:text-white text-lg leading-relaxed text-center max-w-[811px] mx-auto mb-16">
-          Finding the best price on luxury and streetwear resale means checking platform after platform, one by one. I built an AI agent that does it in seconds — one search, every source, every deal scored.
+          Finding the best price on luxury and streetwear resale means checking platform after platform, one by one. I built an AI agent that does it in seconds: one search, every source, every deal scored.
         </p>
 
         {/* Globe landing video as hero */}
         <div className="flex justify-center mb-16">
           <div className="w-[280px]">
-            <PhoneFrameVideo src="/videos/work/scour/2-globe-landing.mp4" label="Scour — globe landing experience" />
+            <PhoneFrameVideo src="/videos/work/scour/2-globe-landing.mp4" label="Scour, Globe Landing Experience" />
           </div>
         </div>
       </div>
@@ -131,7 +131,7 @@ export default function ScourCaseStudy({
           </h2>
           <div className="rounded-2xl border border-black/10 dark:border-white/10 p-6 md:p-8 mb-10">
             <p className="text-lg text-black/80 dark:text-white/80 leading-relaxed">
-              Scour is a mobile-first shopping agent for the secondary luxury and streetwear market — currently live as a web app, architected from day one for native iOS. It searches across 30+ resale platforms in real time, normalizes product data across sources, and surfaces the best deals using a proprietary scoring system. I designed and built the entire product solo: UX, visual system, frontend, backend, data infrastructure, and AI integration.
+              Scour is a mobile-first shopping agent for the secondary luxury and streetwear market, currently live as a web app, architected from day one for native iOS. It searches across 30+ resale platforms in real time, normalizes product data across sources, and surfaces the best deals using a proprietary scoring system. I designed and built the entire product solo: UX, visual system, frontend, backend, data infrastructure, and AI integration.
             </p>
           </div>
           <div className="grid md:grid-cols-2 gap-6 md:gap-8">
@@ -149,7 +149,7 @@ export default function ScourCaseStudy({
             <div className="rounded-2xl border border-black/10 dark:border-white/10 p-6 md:p-8">
               <h3 className="text-lg font-semibold text-black dark:text-white mb-3">Conversational AI</h3>
               <p className="text-gray-500 dark:text-gray-400 leading-relaxed mb-4">
-                Beyond keyword search — Scour understands intent. Ask it to find alternatives, compare across brands, or narrow by condition and size. Natural language gets translated into structured queries across every connected source.
+                Beyond keyword search. Scour understands intent. Ask it to find alternatives, compare across brands, or narrow by condition and size. Natural language gets translated into structured queries across every connected source.
               </p>
               <div className="flex justify-center mt-4">
                 <div className="w-[180px]">
@@ -167,7 +167,7 @@ export default function ScourCaseStudy({
               Problem Statement
             </p>
             <p className="text-xl md:text-2xl font-semibold text-black dark:text-white leading-snug mb-6">
-              Shopping the secondary luxury market means manually checking platform after platform for every single item — with no way to compare prices, verify deals, or know if you&apos;re overpaying.
+              Shopping the secondary luxury market means manually checking platform after platform for every single item, with no way to compare prices, verify deals, or know if you&apos;re overpaying.
             </p>
             <p className="text-gray-500 dark:text-gray-400 leading-relaxed">
               <strong className="text-black dark:text-white">The workflow is broken:</strong> A shopper opens dozens of resale platforms in separate tabs. They compare prices manually with no historical context, no deal scoring, and no way to know if the same item is available cheaper somewhere they haven&apos;t checked. The process is slow, incomplete, and buyers routinely overpay.
@@ -202,7 +202,7 @@ export default function ScourCaseStudy({
                 </div>
               </div>
               <p className="text-sm font-semibold text-black dark:text-white">Filter Sheet</p>
-              <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">Bottom sheet with haptic feedback — narrow by source, price, condition, and size.</p>
+              <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">Bottom sheet with haptic feedback, narrow by source, price, condition, and size.</p>
             </div>
           </div>
         </section>
@@ -217,7 +217,7 @@ export default function ScourCaseStudy({
           </p>
 
           <p className="text-gray-500 dark:text-gray-400 leading-relaxed max-w-3xl mb-12">
-            The core design question was how to display product listings that carry significantly more data than a typical e-commerce card. Each item needs to communicate brand, product name, price, source count, deal score, price range, and trend direction — without overwhelming the user. I explored four distinct directions, each testing a different balance of editorial appeal vs. data density.
+            The core design question was how to display product listings that carry significantly more data than a typical e-commerce card. Each item needs to communicate brand, product name, price, source count, deal score, price range, and trend direction, without overwhelming the user. I explored four distinct directions, each testing a different balance of editorial appeal vs. data density.
           </p>
 
           {/* Exploration A */}
@@ -227,22 +227,22 @@ export default function ScourCaseStudy({
               <ul className="space-y-4 text-gray-500 dark:text-gray-400">
                 <li className="flex items-start gap-3">
                   <span className="text-gray-300 dark:text-gray-600 mt-1">•</span>
-                  <span><strong className="text-black dark:text-white">Hero + grid layout</strong> — Lead item as a full-width editorial card with overlaid text, followed by a 2-column grid</span>
+                  <span><strong className="text-black dark:text-white">Hero + grid layout</strong>: Lead item as a full-width editorial card with overlaid text, followed by a 2-column grid</span>
                 </li>
                 <li className="flex items-start gap-3">
                   <span className="text-gray-300 dark:text-gray-600 mt-1">•</span>
-                  <span><strong className="text-black dark:text-white">Minimal data</strong> — Brand, name, price, and source count only. Prioritizes visual impact over information density</span>
+                  <span><strong className="text-black dark:text-white">Minimal data</strong>: Brand, name, price, and source count only. Prioritizes visual impact over information density</span>
                 </li>
                 <li className="flex items-start gap-3">
                   <span className="text-gray-300 dark:text-gray-600 mt-1">•</span>
-                  <span><strong className="text-black dark:text-white">SSense-inspired</strong> — Clean product photography with monospace pricing, editorial feel</span>
+                  <span><strong className="text-black dark:text-white">SSense-inspired</strong>: Clean product photography with monospace pricing, editorial feel</span>
                 </li>
               </ul>
             </div>
             <div>
               <PhoneFrameVideo
                 src="/videos/work/scour/cards-a-editorial.mov"
-                label="Card exploration A — Editorial Cards"
+                label="Card exploration A, Editorial Cards"
                 cropScreenRecording
               />
               <p className="text-xs text-gray-500 dark:text-gray-400 text-center mt-3">Landing + Onboarding</p>
@@ -256,22 +256,22 @@ export default function ScourCaseStudy({
               <ul className="space-y-4 text-gray-500 dark:text-gray-400">
                 <li className="flex items-start gap-3">
                   <span className="text-gray-300 dark:text-gray-600 mt-1">•</span>
-                  <span><strong className="text-black dark:text-white">Full-width list cards</strong> — Each item gets a horizontal card showing thumbnail, brand, name, deal score, price, range, sparkline, and source count</span>
+                  <span><strong className="text-black dark:text-white">Full-width list cards</strong>: Each item gets a horizontal card showing thumbnail, brand, name, deal score, price, range, sparkline, and source count</span>
                 </li>
                 <li className="flex items-start gap-3">
                   <span className="text-gray-300 dark:text-gray-600 mt-1">•</span>
-                  <span><strong className="text-black dark:text-white">Data-driven density</strong> — Green/red price change indicators, circular deal score badges, price range bars</span>
+                  <span><strong className="text-black dark:text-white">Data-driven density</strong>: Green/red price change indicators, circular deal score badges, price range bars</span>
                 </li>
                 <li className="flex items-start gap-3">
                   <span className="text-gray-300 dark:text-gray-600 mt-1">•</span>
-                  <span><strong className="text-black dark:text-white">Maximum information</strong> — Every data point visible without tapping into detail view</span>
+                  <span><strong className="text-black dark:text-white">Maximum information</strong>: Every data point visible without tapping into detail view</span>
                 </li>
               </ul>
             </div>
             <div>
               <PhoneFrameVideo
                 src="/videos/work/scour/cards-b-dataforward.mov"
-                label="Card exploration B — Data-Forward Cards"
+                label="Card exploration B, Data-Forward Cards"
                 cropScreenRecording
               />
               <p className="text-xs text-gray-500 dark:text-gray-400 text-center mt-3">AI Search + Results</p>
@@ -285,22 +285,22 @@ export default function ScourCaseStudy({
               <ul className="space-y-4 text-gray-500 dark:text-gray-400">
                 <li className="flex items-start gap-3">
                   <span className="text-gray-300 dark:text-gray-600 mt-1">•</span>
-                  <span><strong className="text-black dark:text-white">Single-item focus</strong> — One large product image per card, full-width, with text below</span>
+                  <span><strong className="text-black dark:text-white">Single-item focus</strong>: One large product image per card, full-width, with text below</span>
                 </li>
                 <li className="flex items-start gap-3">
                   <span className="text-gray-300 dark:text-gray-600 mt-1">•</span>
-                  <span><strong className="text-black dark:text-white">Section headers</strong> — &quot;Trending Now&quot; label with clean separation between content zones</span>
+                  <span><strong className="text-black dark:text-white">Section headers</strong>: &quot;Trending Now&quot; label with clean separation between content zones</span>
                 </li>
                 <li className="flex items-start gap-3">
                   <span className="text-gray-300 dark:text-gray-600 mt-1">•</span>
-                  <span><strong className="text-black dark:text-white">Gallery feel</strong> — Treats each product as an object to be appreciated, not just data to be scanned</span>
+                  <span><strong className="text-black dark:text-white">Gallery feel</strong>: Treats each product as an object to be appreciated, not just data to be scanned</span>
                 </li>
               </ul>
             </div>
             <div>
               <PhoneFrameVideo
                 src="/videos/work/scour/cards-c-minimal.mov"
-                label="Card exploration C — Minimal Object"
+                label="Card exploration C, Minimal Object"
                 cropScreenRecording
               />
               <p className="text-xs text-gray-500 dark:text-gray-400 text-center mt-3">Home Feed + Browse</p>
@@ -310,26 +310,26 @@ export default function ScourCaseStudy({
           {/* Exploration B+C */}
           <div className="grid md:grid-cols-[1fr_260px] gap-8 md:gap-16 items-center mb-8">
             <div className="max-w-lg">
-              <h3 className="text-xl font-semibold text-black dark:text-white mb-6">B+C v2 — Carousel + Cards (Final Direction)</h3>
+              <h3 className="text-xl font-semibold text-black dark:text-white mb-6">B+C v2: Carousel + Cards (Final Direction)</h3>
               <ul className="space-y-4 text-gray-500 dark:text-gray-400">
                 <li className="flex items-start gap-3">
                   <span className="text-gray-300 dark:text-gray-600 mt-1">•</span>
-                  <span><strong className="text-black dark:text-white">Hybrid approach</strong> — Horizontal carousel for trending items (editorial feel) + card grid for personalized picks (data density)</span>
+                  <span><strong className="text-black dark:text-white">Hybrid approach</strong>: Horizontal carousel for trending items (editorial feel) + card grid for personalized picks (data density)</span>
                 </li>
                 <li className="flex items-start gap-3">
                   <span className="text-gray-300 dark:text-gray-600 mt-1">•</span>
-                  <span><strong className="text-black dark:text-white">Selective data</strong> — Sparklines and deal scores appear on cards where they add value, not everywhere</span>
+                  <span><strong className="text-black dark:text-white">Selective data</strong>: Sparklines and deal scores appear on cards where they add value, not everywhere</span>
                 </li>
                 <li className="flex items-start gap-3">
                   <span className="text-gray-300 dark:text-gray-600 mt-1">•</span>
-                  <span><strong className="text-black dark:text-white">Section-based feed</strong> — &quot;Trending Now&quot; and &quot;For You&quot; sections create a discovery-first experience while keeping source counts and scores accessible</span>
+                  <span><strong className="text-black dark:text-white">Section-based feed</strong>: &quot;Trending Now&quot; and &quot;For You&quot; sections create a discovery-first experience while keeping source counts and scores accessible</span>
                 </li>
               </ul>
             </div>
             <div>
               <PhoneFrameVideo
                 src="/videos/work/scour/cards-bc-v2.mov"
-                label="Card exploration B+C v2 — Carousel + Cards"
+                label="Card exploration B+C v2: Carousel + Cards"
                 cropScreenRecording
               />
               <p className="text-xs text-gray-500 dark:text-gray-400 text-center mt-3">Search + Discovery Feed</p>
@@ -355,7 +355,7 @@ export default function ScourCaseStudy({
             <div className="rounded-2xl border border-black/10 dark:border-white/10 p-6 md:p-8 hover:border-black/30 dark:hover:border-white/30 transition-colors">
               <h3 className="text-lg font-semibold text-black dark:text-white mb-3">Typography</h3>
               <p className="text-gray-500 dark:text-gray-400 text-sm leading-relaxed">
-                Monospace for all numerical data — prices, scores, percentages, source counts. Sans-serif for brand names and product titles. The split makes financial data instantly scannable while product info reads naturally.
+                Monospace for all numerical data: prices, scores, percentages, source counts. Sans-serif for brand names and product titles. The split makes financial data instantly scannable while product info reads naturally.
               </p>
             </div>
             <div className="rounded-2xl border border-black/10 dark:border-white/10 p-6 md:p-8 hover:border-black/30 dark:hover:border-white/30 transition-colors">
@@ -394,12 +394,12 @@ export default function ScourCaseStudy({
             Product Walkthrough
           </h2>
           <p className="text-gray-500 dark:text-gray-400 leading-relaxed max-w-3xl mb-12">
-            Scour is live and in active development. The MVP launched with real-time search across multiple resale platforms. Here&apos;s the full flow — from landing to purchase decision.
+            Scour is live and in active development. The MVP launched with real-time search across multiple resale platforms. Here&apos;s the full flow, from landing to purchase decision.
           </p>
 
           <div className="grid md:grid-cols-3 gap-8">
             {[
-              { src: '/videos/work/scour/3-onboarding-flow.mp4', label: '1. Onboarding', desc: 'Set brands, sizes, budget — AI personalizes from first search' },
+              { src: '/videos/work/scour/3-onboarding-flow.mp4', label: '1. Onboarding', desc: 'Set brands, sizes, budget. AI personalizes from first search' },
               { src: '/videos/work/scour/5-conversational-ai.mp4', label: '2. AI Search', desc: 'Natural language queries across 30+ sources' },
               { src: '/videos/work/scour/4-card-press-heart.mp4', label: '3. Browse + Save', desc: 'Preview details, save favorites, compare prices' },
             ].map((item) => (
@@ -422,7 +422,7 @@ export default function ScourCaseStudy({
             Results
           </h2>
           <p className="text-gray-500 dark:text-gray-400 leading-relaxed max-w-3xl mb-12">
-            Live and deployed — currently web, native iOS via Capacitor is next. The numbers below reflect the current state of the product.
+            Live and deployed, currently web, native iOS via Capacitor is next. The numbers below reflect the current state of the product.
           </p>
           <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-6">
             {[
@@ -486,7 +486,7 @@ export default function ScourCaseStudy({
         <section className="scroll-mt-24 py-[15px]">
           <div className="rounded-2xl border border-black/10 dark:border-white/10 p-8 md:p-12 text-center">
             <p className="text-lg text-black/80 dark:text-white/80 leading-relaxed max-w-3xl mx-auto">
-              Scour started as a personal frustration and became a full product — design system, data infrastructure, AI search, and a live app architected for native iOS. The biggest lesson: when you own every layer, the design decisions and the engineering decisions become the same conversation. Next: shipping to the App Store and scaling the platform.
+              Scour started as a personal frustration and became a full product: design system, data infrastructure, AI search, and a live app architected for native iOS. The biggest lesson: when you own every layer, the design decisions and the engineering decisions become the same conversation. Next: shipping to the App Store and scaling the platform.
             </p>
           </div>
         </section>
