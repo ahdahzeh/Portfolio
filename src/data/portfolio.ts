@@ -188,7 +188,7 @@ Built with TypeScript, Puppeteer, Claude API, and a custom orchestration layer. 
     period: "2026",
     description: "Product design for community health platform",
     image: "/images/work/cht.png",
-    coverVideo: "/videos/cht-macbook.mp4",
+    coverVideo: "/videos/work/community-health-media/site-walkthrough.mp4",
     color: "#10b981",
     wip: false,
     link: "https://testapp.communityhealth.media/home",
@@ -230,7 +230,7 @@ My work spans the end-to-end experience: the main content hub and landing experi
       ],
       industry: "Healthcare &\nPharma Tech",
       /** Video walkthrough for browser frame section (replaces hero image) */
-      browserFrameVideo: "/videos/work/community-health-media/site-walkthrough.mp4",
+      browserFrameVideo: "/videos/work/community-health-media/site-walkthrough.mov",
       chtProblems: [
         { badge: "Problem 01", title: "No precedent for this platform", content: "There was no real precedent for a platform that lets doctors and healthcare professionals consume medical education the way CHT envisioned. Traditional CME platforms and conference tools don’t match how HCPs engage with content in daily workflows, so I designed the experience from first principles and translated product strategy into clear, usable screens.", image: "/images/work/community-health-media/fourup-content-library-catalogue.png", imageAlt: "In-product topic and biomarker content experience" },
         { badge: "Problem 02", title: "The business ran on email and Zoom", content: "Before the platform, every interaction between pharma companies, HCPs, and content was coordinated manually through email threads, calendar invites, and Zoom recordings. There was no data layer, no analytics, and no scalable way to understand performance. I shaped a system that could host content, automate the core workflows, and make engagement measurable.", image: "/images/work/community-health-media/cht-problem-02-education-landing.png", imageAlt: "Clinical education landing — catalogue, search, and workflow-focused messaging" },
