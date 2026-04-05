@@ -195,7 +195,7 @@ export default function WTVCaseStudy({
         {/* Hero screenshot */}
         <div className="flex justify-center mb-16">
           <div className="w-[280px]">
-            <PhoneFrameVideo src="/videos/work/wtv/feed.png" label="WTV feed overview" />
+            <PhoneFrameVideo src="/videos/work/wtv/feed.mp4" label="WTV feed overview" />
           </div>
         </div>
       </div>
@@ -223,19 +223,19 @@ export default function WTVCaseStudy({
               {
                 title: 'Block Report',
                 desc: 'A curated intelligence card for your block: vibe summary, events, food grades, transit status, and street conditions. Personalized to your location and interests.',
-                src:   '/videos/work/wtv/block-report.png',
+                src:   '/videos/work/wtv/block-report.mp4',
                 label: 'WTV Block Report',
               },
               {
                 title: 'Live Feed',
                 desc:  'A swipeable home feed of spots, eats, events, and transit — filtered by your neighborhood and categorized with haptic-driven card interactions.',
-                src:   '/videos/work/wtv/feed.png',
+                src:   '/videos/work/wtv/feed.mp4',
                 label: 'WTV Feed',
               },
               {
                 title: 'Map Layer',
                 desc:  'An interactive SwiftUI Map with a sliding bottom tray: spot, food, event, and transit carousels with live annotations and direct detail sheets.',
-                src:   '/videos/work/wtv/map-tray.png',
+                src:   '/videos/work/wtv/map.mp4',
                 label: 'WTV Map',
               },
             ].map((card) => (
@@ -335,10 +335,10 @@ export default function WTVCaseStudy({
           <h3 className="text-xl font-semibold text-black dark:text-white mb-6">Card System</h3>
           <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
             {[
-              { src: '/videos/work/wtv/card-spot.png',    label: 'Spot Card',    desc: 'Rating, category badge, vibe tags' },
-              { src: '/videos/work/wtv/card-food.png',    label: 'Food Card',    desc: 'DOH grade, cuisine, neighborhood' },
-              { src: '/videos/work/wtv/card-event.png',   label: 'Event Card',   desc: 'Type, time, price, location' },
-              { src: '/videos/work/wtv/card-transit.png', label: 'Transit Card', desc: 'Lines, crowding level, walk time' },
+              { src: '/videos/work/wtv/card-spot.mp4',    label: 'Spot Card',    desc: 'Rating, category badge, vibe tags' },
+              { src: '/videos/work/wtv/card-food.mp4',    label: 'Food Card',    desc: 'DOH grade, cuisine, neighborhood' },
+              { src: '/videos/work/wtv/card-event.mp4',   label: 'Event Card',   desc: 'Type, time, price, location' },
+              { src: '/videos/work/wtv/card-transit.mp4', label: 'Transit Card', desc: 'Lines, crowding level, walk time' },
             ].map((card) => (
               <div key={card.label} className="text-center">
                 <div className="flex justify-center mb-3">
@@ -387,7 +387,7 @@ export default function WTVCaseStudy({
               </ul>
             </div>
             <div>
-              <PhoneFrameVideo src="/videos/work/wtv/feed.png" label="WTV Home Feed" cropScreenRecording />
+              <PhoneFrameVideo src="/videos/work/wtv/feed.mp4" label="WTV Home Feed" cropScreenRecording />
               <p className="text-xs text-gray-500 dark:text-gray-400 text-center mt-3">Home Feed — Personalized, Layered</p>
             </div>
           </div>
@@ -417,7 +417,7 @@ export default function WTVCaseStudy({
               </ul>
             </div>
             <div>
-              <PhoneFrameVideo src="/videos/work/wtv/map-tray.png" label="WTV Map with Tray" cropScreenRecording />
+              <PhoneFrameVideo src="/videos/work/wtv/map.mp4" label="WTV Map with Tray" cropScreenRecording />
               <p className="text-xs text-gray-500 dark:text-gray-400 text-center mt-3">Map — Tray, Annotations, Carousels</p>
             </div>
           </div>
@@ -447,7 +447,7 @@ export default function WTVCaseStudy({
               </ul>
             </div>
             <div>
-              <PhoneFrameVideo src="/videos/work/wtv/block-report.png" label="WTV Block Report" cropScreenRecording />
+              <PhoneFrameVideo src="/videos/work/wtv/block-report.mp4" label="WTV Block Report" cropScreenRecording />
               <p className="text-xs text-gray-500 dark:text-gray-400 text-center mt-3">Block Report — Personalized, Contextual</p>
             </div>
           </div>
@@ -473,7 +473,7 @@ export default function WTVCaseStudy({
               </ul>
             </div>
             <div>
-              <PhoneFrameVideo src="/videos/work/wtv/search.png" label="WTV Search" cropScreenRecording />
+              <PhoneFrameVideo src="/videos/work/wtv/search.mp4" label="WTV Search" cropScreenRecording />
               <p className="text-xs text-gray-500 dark:text-gray-400 text-center mt-3">Search — Intent-Driven, Cross-Entity</p>
             </div>
           </div>
@@ -513,7 +513,7 @@ export default function WTVCaseStudy({
             <div className="text-center">
               <div className="flex justify-center mb-4">
                 <div className="w-[220px]">
-                  <PhoneFrameVideo src="/videos/work/wtv/onboarding-step4-selected.png" label="WTV Onboarding Flow" />
+                  <PhoneFrameVideo src="/videos/work/wtv/onboarding.mp4" label="WTV Onboarding Flow" />
                 </div>
               </div>
               <p className="text-sm font-semibold text-black dark:text-white">5-Step Onboarding</p>
@@ -524,7 +524,7 @@ export default function WTVCaseStudy({
             <div className="text-center">
               <div className="flex justify-center mb-4">
                 <div className="w-[220px]">
-                  <PhoneFrameVideo src="/videos/work/wtv/block-change.png" label="WTV Block Location Change" />
+                  <PhoneFrameVideo src="/videos/work/wtv/block-change.mp4" label="WTV Block Location Change" />
                 </div>
               </div>
               <p className="text-sm font-semibold text-black dark:text-white">Block Picker</p>
