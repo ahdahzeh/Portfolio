@@ -115,6 +115,22 @@ export interface WorkItem {
 
 export const workHistory: WorkItem[] = [
   {
+    id: "12",
+    slug: "wtv",
+    company: "WTV",
+    role: "Design Engineer",
+    period: "2026",
+    description: "NYC block intelligence — native iOS app for hyperlocal city data",
+    coverVideo: "/videos/work/wtv/hero.mp4",
+    color: "#E85D3A",
+    caseStudy: {
+      title: "WTV",
+      subtitle: "NYC Block Intelligence — Native iOS",
+      roleDisplay: "Design Engineer",
+      timeline: "2026",
+    },
+  },
+  {
     id: "11",
     slug: "scour",
     company: "Scour",
@@ -138,46 +154,6 @@ I own every layer of this product: product strategy, UX/UI design, design system
 The design language sits at the intersection of SSense's editorial brutalism (stark white, product-as-hero, restrained typography) and StockX's financial data motifs (deal scores, sparklines, price ranges). The core design challenge was balancing data density with editorial appeal—each listing carries 7+ data points that need to be legible at a glance without overwhelming the browsing experience.
 
 I prototyped four distinct card system directions—Editorial Cards, Data-Forward Cards, Minimal Object, and a hybrid Carousel + Cards approach—before landing on the final direction. This systematic exploration was how I compensated for designing without a team: multiple directions, honest evaluation, then commit.`,
-    }
-  },
-  {
-    id: "12",
-    slug: "autopilot",
-    company: "Job Pilot Automation",
-    role: "Design Engineer",
-    period: "2025",
-    description: "AI-powered job application pipeline that automates discovery, qualification, resume tailoring, and submission",
-    image: "/images/work/autopilot/cover.png",
-    coverVideo: "/videos/work/autopilot/cover.mp4",
-    color: "#534AB7",
-    caseStudy: {
-      title: "JOB PILOT",
-      subtitle: "AI Job Application Automation",
-      roleDisplay: "Design Engineer",
-      timeline: "2025",
-      videoUrl: "/videos/work/autopilot/promo.mp4",
-      narrative: `Job Pilot Automation is a personal tool I built to solve a real problem: the modern job search is broken. Applying to 50+ roles a week means hours of repetitive work—finding listings, checking qualifications, tailoring resumes, writing cover letters. I built an end-to-end AI pipeline that automates the entire workflow while maintaining quality that passes human review.
-
-The system runs a 4-stage pipeline: Discovery (scraping job boards), Qualification (AI scoring against my profile), Tailoring (Claude-powered resume and cover letter generation), and Submission (automated form filling). Each stage has guardrails, fallbacks, and human-in-the-loop checkpoints.
-
-Built with TypeScript, Puppeteer, Claude API, and a custom orchestration layer. The AI tailoring engine uses structured prompts with anti-hallucination guardrails—it can only use experiences that actually exist in my master resume, rearranging and emphasizing rather than fabricating.`
-    }
-  },
-  {
-    id: "1",
-    slug: "morton-salt",
-    company: "Morton Salt",
-    role: "UX Designer",
-    period: "2026",
-    description: "UX design for Morton Salt digital experiences",
-    image: "/images/work/morton-salt.png",
-    color: "#fbbf24",
-    wip: true,
-    archived: true,
-    caseStudy: {
-      title: "MORTON SALT",
-      subtitle: "Digital Experience Design",
-      narrative: `Currently working as a UX Designer on Morton Salt's digital initiatives, creating user-centered experiences for one of America's most iconic brands.`
     }
   },
   {
@@ -232,11 +208,11 @@ My work spans the end-to-end experience: the main content hub and landing experi
       /** Video walkthrough for browser frame section (replaces hero image) */
       browserFrameVideo: "/videos/work/community-health-media/site-walkthrough.mov",
       chtProblems: [
-        { badge: "Problem 01", title: "No precedent for this platform", content: "There was no real precedent for a platform that lets doctors and healthcare professionals consume medical education the way CHT envisioned. Traditional CME platforms and conference tools don’t match how HCPs engage with content in daily workflows, so I designed the experience from first principles and translated product strategy into clear, usable screens.", image: "/images/work/community-health-media/fourup-content-library-catalogue.png", imageAlt: "In-product topic and biomarker content experience" },
+        { badge: "Problem 01", title: "No precedent for this platform", content: "There was no real precedent for a platform that lets doctors and healthcare professionals consume medical education the way CHT envisioned. Traditional CME platforms and conference tools don't match how HCPs engage with content in daily workflows, so I designed the experience from first principles and translated product strategy into clear, usable screens.", image: "/images/work/community-health-media/fourup-content-library-catalogue.png", imageAlt: "In-product topic and biomarker content experience" },
         { badge: "Problem 02", title: "The business ran on email and Zoom", content: "Before the platform, every interaction between pharma companies, HCPs, and content was coordinated manually through email threads, calendar invites, and Zoom recordings. There was no data layer, no analytics, and no scalable way to understand performance. I shaped a system that could host content, automate the core workflows, and make engagement measurable.", image: "/images/work/community-health-media/cht-problem-02-education-landing.png", imageAlt: "Clinical education landing — catalogue, search, and workflow-focused messaging" },
       ],
       chtSolutions: [
-        { title: "Designed for how doctors actually find information", content: "Instead of guessing at information architecture, I designed around real HCP behaviors. Doctors don’t browse; they search by biomarker, condition, and treatment. I organized the platform around biomarker playlists and curated series so physicians can quickly find what they need, the same way they think about patient care.", image: "/images/work/community-health-media/cht-solution-01-webinars.png", imageAlt: "Webinars page — upcoming live sessions with registration" },
+        { title: "Designed for how doctors actually find information", content: "Instead of guessing at information architecture, I designed around real HCP behaviors. Doctors don't browse; they search by biomarker, condition, and treatment. I organized the platform around biomarker playlists and curated series so physicians can quickly find what they need, the same way they think about patient care.", image: "/images/work/community-health-media/cht-solution-01-webinars.png", imageAlt: "Webinars page — upcoming live sessions with registration" },
         {
           title: "Built a visual system that scales",
           content: "To make the product feel credible and easy to use, I defined the visual system while the UI was being built. The result is a clean, clinical aesthetic that balances authority with clarity, anchored by a strong navigation and a content-forward layout that works across dashboards, libraries, and detail views.",
@@ -261,9 +237,66 @@ My work spans the end-to-end experience: the main content hub and landing experi
       chtOutcomes: [
         { title: "Fully Automated", content: "Replaced an entirely analog process of emails, Zoom calls, and manual coordination with a centralized digital platform." },
         { title: "Data-Driven Insights", content: "For the first time, CHT can see how HCPs engage with content, which enables smarter decisions about what to produce and promote." },
-        { title: "New Product Category", content: "Created a new kind of platform for healthcare education, one that didn’t exist before in the pharma marketing space." },
+        { title: "New Product Category", content: "Created a new kind of platform for healthcare education, one that didn't exist before in the pharma marketing space." },
       ],
       chtTools: ["Figma", "Cursor", "AWS", "Next.js"],
+    }
+  },
+  {
+    id: "13",
+    slug: "lockdin",
+    company: "LOCKDIN",
+    role: "Design Engineer",
+    period: "2026",
+    description: "Native iOS ADHD management app — Dynamic Island coaching, AI brain dump, focus mode with procedural ambient audio",
+    coverVideo: "/videos/work/lockdin/cover-padlock.mp4",
+    color: "#6741D9",
+    caseStudy: {
+      title: "LOCKDIN",
+      subtitle: "ADHD Productivity App",
+      roleDisplay: "Product Designer / iOS Developer",
+      timeline: "2026",
+      narrative: "Native iOS ADHD management app built in Swift 6/SwiftUI. Dynamic Island coaching, AI brain dump with lane sorting, Focus mode with procedural ambient audio and CoreHaptics breathing patterns. First Swift project, shipped in under 24 hours using Claude as a coding partner.",
+    }
+  },
+  {
+    id: "12",
+    slug: "autopilot",
+    company: "Job Pilot Automation",
+    role: "Design Engineer",
+    period: "2025",
+    description: "AI-powered job application pipeline that automates discovery, qualification, resume tailoring, and submission",
+    image: "/images/work/autopilot/cover.png",
+    coverVideo: "/videos/work/autopilot/cover.mp4",
+    color: "#534AB7",
+    caseStudy: {
+      title: "JOB PILOT",
+      subtitle: "AI Job Application Automation",
+      roleDisplay: "Design Engineer",
+      timeline: "2025",
+      videoUrl: "/videos/work/autopilot/promo.mp4",
+      narrative: `Job Pilot Automation is a personal tool I built to solve a real problem: the modern job search is broken. Applying to 50+ roles a week means hours of repetitive work—finding listings, checking qualifications, tailoring resumes, writing cover letters. I built an end-to-end AI pipeline that automates the entire workflow while maintaining quality that passes human review.
+
+The system runs a 4-stage pipeline: Discovery (scraping job boards), Qualification (AI scoring against my profile), Tailoring (Claude-powered resume and cover letter generation), and Submission (automated form filling). Each stage has guardrails, fallbacks, and human-in-the-loop checkpoints.
+
+Built with TypeScript, Puppeteer, Claude API, and a custom orchestration layer. The AI tailoring engine uses structured prompts with anti-hallucination guardrails—it can only use experiences that actually exist in my master resume, rearranging and emphasizing rather than fabricating.`
+    }
+  },
+  {
+    id: "1",
+    slug: "morton-salt",
+    company: "Morton Salt",
+    role: "UX Designer",
+    period: "2026",
+    description: "UX design for Morton Salt digital experiences",
+    image: "/images/work/morton-salt.png",
+    color: "#fbbf24",
+    wip: true,
+    archived: true,
+    caseStudy: {
+      title: "MORTON SALT",
+      subtitle: "Digital Experience Design",
+      narrative: `Currently working as a UX Designer on Morton Salt's digital initiatives, creating user-centered experiences for one of America's most iconic brands.`
     }
   },
   {
@@ -386,6 +419,7 @@ The platform launched successfully. Block Equity Group continues to help small b
     role: "Product Designer",
     period: "2024",
     description: "Product design for collaborative platform",
+    archived: true,
     color: "#14b8a6",
     coverImages: {
       desktop: "/images/work/wechipn/desktop.png",
@@ -508,6 +542,7 @@ The work reached over 50,000 festival attendees and drove significant social med
     color: "#14b8a6",
     image: "/images/work/eki-express/cover.png",
     coverStyle: true,
+    archived: true,
     caseStudy: {
       title: "EKI EXPRESS",
       subtitle: "African Marketplace E-commerce",
