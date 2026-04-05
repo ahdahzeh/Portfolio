@@ -128,6 +128,7 @@ export const workHistory: WorkItem[] = [
       subtitle: "NYC Block Intelligence — Native iOS",
       roleDisplay: "Design Engineer",
       timeline: "2026",
+      narrative: "WTV is a native iOS app built in SwiftUI that gives New Yorkers a live block-level intelligence layer: curated spots, restaurant grades, live events, transit crowding, traffic incidents, rat activity, and pothole conditions. One app, every layer of the block.",
     },
   },
   {
