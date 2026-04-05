@@ -162,7 +162,7 @@ export default function ScourCaseStudy({
 
         {/* PROBLEM STATEMENT */}
         <section id="problem" className="scroll-mt-24">
-          <div className="rounded-2xl border border-black/10 dark:border-white/10 border-l-[3px] border-l-black dark:border-l-white p-8 md:p-12">
+          <div className="rounded-2xl border border-black/10 dark:border-white/10 p-8 md:p-12">
             <p className="text-sm font-medium uppercase tracking-wider text-gray-400 dark:text-gray-500 mb-4 font-mono">
               Problem Statement
             </p>

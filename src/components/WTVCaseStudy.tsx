@@ -35,7 +35,7 @@ const SECTIONS: SectionNavItem[] = [
   { id: 'future',      label: 'Future Plans' },
 ];
 
-// Phone frame video — same contract as ScourCaseStudy
+// Phone frame — renders a static screenshot OR a looping video
 function PhoneFrameVideo({
   src,
   label,
@@ -49,8 +49,10 @@ function PhoneFrameVideo({
 }) {
   const [decodeError, setDecodeError] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
+  const isImage = /\.(png|jpe?g|gif|webp)$/i.test(src);
 
   useEffect(() => {
+    if (isImage) return;
     const video = videoRef.current;
     if (!video) return;
     const observer = new IntersectionObserver(
@@ -66,7 +68,26 @@ function PhoneFrameVideo({
     );
     observer.observe(video);
     return () => observer.disconnect();
-  }, []);
+  }, [isImage]);
+
+  const frameStyle: React.CSSProperties = {
+    border: '6px solid #1A1A1A',
+    background: WTV.bgWarm,
+  };
+
+  const mediaStyle: React.CSSProperties = cropScreenRecording
+    ? { position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', transform: 'scale(1.4) translateY(-10px)', transformOrigin: 'center center' }
+    : { position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' };
+
+  // Static screenshot path
+  if (isImage) {
+    return (
+      <div className="relative w-full aspect-[9/19.5] rounded-[2rem] overflow-hidden shadow-xl" style={frameStyle}>
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img src={src} alt={label} style={mediaStyle} />
+      </div>
+    );
+  }
 
   if (decodeError) {
     return (
@@ -80,10 +101,7 @@ function PhoneFrameVideo({
   }
 
   return (
-    <div
-      className="relative w-full aspect-[9/19.5] rounded-[2rem] overflow-hidden shadow-xl"
-      style={{ border: '6px solid #1A1A1A', background: WTV.bgWarm }}
-    >
+    <div className="relative w-full aspect-[9/19.5] rounded-[2rem] overflow-hidden shadow-xl" style={frameStyle}>
       <video
         ref={videoRef}
         playsInline
@@ -92,18 +110,7 @@ function PhoneFrameVideo({
         preload="none"
         autoPlay
         poster={poster}
-        className="absolute w-full object-cover"
-        style={cropScreenRecording ? {
-          inset: '0',
-          width: '100%',
-          height: '100%',
-          objectFit: 'cover' as const,
-          transform: 'scale(1.4) translateY(-10px)',
-          transformOrigin: 'center center',
-        } : {
-          inset: '0',
-          height: '100%',
-        }}
+        style={mediaStyle}
         aria-label={label}
         onError={() => setDecodeError(true)}
       >
@@ -185,10 +192,10 @@ export default function WTVCaseStudy({
           New York City runs on local knowledge. WTV is a native iOS app that puts a live block-level intelligence layer on top of the city: what&apos;s happening, what to eat, where to go, and what to avoid. One app, every layer of the block.
         </p>
 
-        {/* Hero video */}
+        {/* Hero screenshot */}
         <div className="flex justify-center mb-16">
           <div className="w-[280px]">
-            <PhoneFrameVideo src="/videos/work/wtv/hero.mp4" label="WTV feed overview" />
+            <PhoneFrameVideo src="/videos/work/wtv/feed.png" label="WTV feed overview" />
           </div>
         </div>
       </div>
@@ -216,19 +223,19 @@ export default function WTVCaseStudy({
               {
                 title: 'Block Report',
                 desc: 'A curated intelligence card for your block: vibe summary, events, food grades, transit status, and street conditions. Personalized to your location and interests.',
-                src:   '/videos/work/wtv/block-report.mp4',
+                src:   '/videos/work/wtv/block-report.png',
                 label: 'WTV Block Report',
               },
               {
                 title: 'Live Feed',
                 desc:  'A swipeable home feed of spots, eats, events, and transit — filtered by your neighborhood and categorized with haptic-driven card interactions.',
-                src:   '/videos/work/wtv/feed.mp4',
+                src:   '/videos/work/wtv/feed.png',
                 label: 'WTV Feed',
               },
               {
                 title: 'Map Layer',
                 desc:  'An interactive SwiftUI Map with a sliding bottom tray: spot, food, event, and transit carousels with live annotations and direct detail sheets.',
-                src:   '/videos/work/wtv/map.mp4',
+                src:   '/videos/work/wtv/map-tray.png',
                 label: 'WTV Map',
               },
             ].map((card) => (
@@ -250,10 +257,7 @@ export default function WTVCaseStudy({
 
         {/* ─── PROBLEM ─── */}
         <section id="problem" className="scroll-mt-24">
-          <div
-            className="rounded-2xl p-8 md:p-12"
-            style={{ border: `1px solid rgba(0,0,0,0.1)`, borderLeft: `3px solid ${WTV.accent}` }}
-          >
+          <div className="rounded-2xl border border-black/10 dark:border-white/10 p-8 md:p-12">
             <p className="text-sm font-medium uppercase tracking-wider text-gray-400 dark:text-gray-500 mb-4 font-mono">
               Problem Statement
             </p>
@@ -331,10 +335,10 @@ export default function WTVCaseStudy({
           <h3 className="text-xl font-semibold text-black dark:text-white mb-6">Card System</h3>
           <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
             {[
-              { src: '/videos/work/wtv/card-spot.mp4',    label: 'Spot Card',    desc: 'Rating, category badge, vibe tags' },
-              { src: '/videos/work/wtv/card-food.mp4',    label: 'Food Card',    desc: 'DOH grade, cuisine, neighborhood' },
-              { src: '/videos/work/wtv/card-event.mp4',   label: 'Event Card',   desc: 'Type, time, price, location' },
-              { src: '/videos/work/wtv/card-transit.mp4', label: 'Transit Card', desc: 'Lines, crowding level, walk time' },
+              { src: '/videos/work/wtv/card-spot.png',    label: 'Spot Card',    desc: 'Rating, category badge, vibe tags' },
+              { src: '/videos/work/wtv/card-food.png',    label: 'Food Card',    desc: 'DOH grade, cuisine, neighborhood' },
+              { src: '/videos/work/wtv/card-event.png',   label: 'Event Card',   desc: 'Type, time, price, location' },
+              { src: '/videos/work/wtv/card-transit.png', label: 'Transit Card', desc: 'Lines, crowding level, walk time' },
             ].map((card) => (
               <div key={card.label} className="text-center">
                 <div className="flex justify-center mb-3">
@@ -383,7 +387,7 @@ export default function WTVCaseStudy({
               </ul>
             </div>
             <div>
-              <PhoneFrameVideo src="/videos/work/wtv/feed.mp4" label="WTV Home Feed" cropScreenRecording />
+              <PhoneFrameVideo src="/videos/work/wtv/feed.png" label="WTV Home Feed" cropScreenRecording />
               <p className="text-xs text-gray-500 dark:text-gray-400 text-center mt-3">Home Feed — Personalized, Layered</p>
             </div>
           </div>
@@ -413,7 +417,7 @@ export default function WTVCaseStudy({
               </ul>
             </div>
             <div>
-              <PhoneFrameVideo src="/videos/work/wtv/map.mp4" label="WTV Map with Tray" cropScreenRecording />
+              <PhoneFrameVideo src="/videos/work/wtv/map-tray.png" label="WTV Map with Tray" cropScreenRecording />
               <p className="text-xs text-gray-500 dark:text-gray-400 text-center mt-3">Map — Tray, Annotations, Carousels</p>
             </div>
           </div>
@@ -443,7 +447,7 @@ export default function WTVCaseStudy({
               </ul>
             </div>
             <div>
-              <PhoneFrameVideo src="/videos/work/wtv/block-report.mp4" label="WTV Block Report" cropScreenRecording />
+              <PhoneFrameVideo src="/videos/work/wtv/block-report.png" label="WTV Block Report" cropScreenRecording />
               <p className="text-xs text-gray-500 dark:text-gray-400 text-center mt-3">Block Report — Personalized, Contextual</p>
             </div>
           </div>
@@ -469,7 +473,7 @@ export default function WTVCaseStudy({
               </ul>
             </div>
             <div>
-              <PhoneFrameVideo src="/videos/work/wtv/search.mp4" label="WTV Search" cropScreenRecording />
+              <PhoneFrameVideo src="/videos/work/wtv/search.png" label="WTV Search" cropScreenRecording />
               <p className="text-xs text-gray-500 dark:text-gray-400 text-center mt-3">Search — Intent-Driven, Cross-Entity</p>
             </div>
           </div>
@@ -509,7 +513,7 @@ export default function WTVCaseStudy({
             <div className="text-center">
               <div className="flex justify-center mb-4">
                 <div className="w-[220px]">
-                  <PhoneFrameVideo src="/videos/work/wtv/onboarding.mp4" label="WTV Onboarding Flow" />
+                  <PhoneFrameVideo src="/videos/work/wtv/onboarding-step4-selected.png" label="WTV Onboarding Flow" />
                 </div>
               </div>
               <p className="text-sm font-semibold text-black dark:text-white">5-Step Onboarding</p>
@@ -520,7 +524,7 @@ export default function WTVCaseStudy({
             <div className="text-center">
               <div className="flex justify-center mb-4">
                 <div className="w-[220px]">
-                  <PhoneFrameVideo src="/videos/work/wtv/block-change.mp4" label="WTV Block Location Change" />
+                  <PhoneFrameVideo src="/videos/work/wtv/block-change.png" label="WTV Block Location Change" />
                 </div>
               </div>
               <p className="text-sm font-semibold text-black dark:text-white">Block Picker</p>
@@ -543,7 +547,7 @@ export default function WTVCaseStudy({
               { title: 'UI Framework',    items: 'SwiftUI (iOS 16+), @StateObject, @AppStorage, @FocusState' },
               { title: 'Map Layer',       items: 'MapKit (SwiftUI Map API), MKLocalSearch, MKCoordinateRegion, custom @MapContentBuilder annotations' },
               { title: 'Navigation',      items: 'Custom tab bar in ContentView ZStack, modal sheets with PresentationDetent, overlay tray (not sheet) for map' },
-              { title: 'Data',           items: 'MockDataProvider with NYC-realistic data, NYC Open Data shapes (MTA, DOH, 311), AppStorage for user preferences' },
+              { title: 'Data',           items: 'NYC Open Data (Socrata) for events, restaurant inspections, 311 potholes, and rodent activity. Swift actor-based NYCDataService with 1-hour in-memory cache. AppStorage for user preferences.' },
             ].map((s) => (
               <div key={s.title} className="rounded-2xl border border-black/10 dark:border-white/10 p-6 md:p-8">
                 <p className="text-lg font-semibold text-black dark:text-white mb-2">{s.title}</p>
@@ -603,12 +607,12 @@ export default function WTVCaseStudy({
 
           <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6 md:gap-8 mb-12">
             {[
-              { tag: 'Live Data',     title: 'NYC Open Data Integration',   body: 'Replace MockDataProvider with live NYC 311, MTA GTFS-RT, NYC DOH inspection, and NYC Open Restaurant data. Real rat sightings. Real transit crowding. Real grade data.' },
+              { tag: 'Live Data',     title: 'MTA + Transit Real-Time',     body: 'GTFS-RT integration for real subway crowding, delay minutes, and service alerts by line. The transit layer currently uses interpolated data — live feeds are next.' },
               { tag: 'Social',        title: 'Crowd Reports',               body: 'User-submitted block updates: "It\'s packed right now", "Smells like something died on Halsey". Layered on top of official data as a community signal.' },
               { tag: 'Intelligence',  title: 'WTV AI Layer',                body: 'A Claude-powered natural language interface for the Block Report. Ask "what\'s good for a night out in Bed-Stuy tonight?" and get a real answer from real data.' },
-              { tag: 'Distribution', title: 'App Store',                   body: 'Currently device-deployed via devicectl. Signing and TestFlight are next, then App Store submission once live data sources are wired.' },
+              { tag: 'Distribution', title: 'App Store Submission',        body: 'On TestFlight now. App Store submission is next — assets, review guidelines, and privacy nutrition labels are in progress.' },
               { tag: 'Expansion',    title: 'Saved Tab',                   body: 'Bookmark spots, events, and restaurants. View them offline, get reminders for upcoming saved events, and share lists with friends.' },
-              { tag: 'Polish',       title: 'Animations + Transitions',    body: 'Snap transitions between tabs using matched geometry, skeleton loading for live data, and pull-to-refresh with a custom WTV branded animation.' },
+              { tag: 'Polish',       title: 'Animations + Transitions',    body: 'Matched geometry for tab transitions, skeleton loading states for live API fetches, and pull-to-refresh with a custom WTV branded animation.' },
             ].map((item) => (
               <div
                 key={item.title}
@@ -650,7 +654,7 @@ export default function WTVCaseStudy({
             style={{ border: `1px solid rgba(232,93,58,0.2)`, background: 'rgba(232,93,58,0.04)' }}
           >
             <p className="text-lg text-black/80 dark:text-white/80 leading-relaxed max-w-3xl mx-auto">
-              WTV started as a personal question: why is there no single app that tells me what&apos;s actually happening on my block? A week of building in Swift later, there is. The hardest parts weren&apos;t the features — they were the architecture decisions that let all five tabs coexist without stepping on each other. Next: live data, the App Store, and crowd reports.
+              WTV started as a personal question: why is there no single app that tells me what&apos;s actually happening on my block? A week of building in Swift later, there is — pulling live data from NYC Open Data, DOH inspections, 311, and rodent reports in real time. The hardest parts weren&apos;t the features, they were the architecture decisions that let all five tabs coexist without stepping on each other. Next: MTA GTFS-RT, App Store submission, and crowd reports.
             </p>
           </div>
         </section>
