@@ -633,10 +633,21 @@ export interface BlogPost {
 export const blogPosts: BlogPost[] = [
   {
     id: '1',
-    title: 'Your First Substack Article',
+    title: 'Becoming',
     date: '2025',
-    link: 'https://substack.com',
-    excerpt: 'Update this with your real Substack article title and link.',
+    link: 'https://substack.com/@ahdahzeh/note/p-194946004',
+  },
+  {
+    id: '2',
+    title: 'Well Engineered Samples',
+    date: '2025',
+    link: 'https://substack.com/@ahdahzeh/note/c-249076448',
+  },
+  {
+    id: '3',
+    title: 'Self Awareness as Guidance',
+    date: '2025',
+    link: 'https://substack.com/@ahdahzeh/note/p-195472337',
   },
 ];
 
