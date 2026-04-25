@@ -6,6 +6,7 @@ import ScrollProgressBar from '@/components/ScrollProgressBar';
 import SectionNav from '@/components/SectionNav';
 
 const WorkCarousel = dynamic(() => import('@/components/WorkCarousel'), { ssr: true });
+const ThoughtsSection = dynamic(() => import('@/components/ThoughtsSection'), { ssr: true });
 const WritingSection = dynamic(() => import('@/components/WritingSection'), { ssr: true });
 const Archive = dynamic(() => import('@/components/Archive'), { ssr: true });
 const Contact = dynamic(() => import('@/components/Contact'), { ssr: true });
@@ -13,6 +14,7 @@ const Contact = dynamic(() => import('@/components/Contact'), { ssr: true });
 const HOME_SECTIONS = [
   { id: 'intro', label: 'Intro' },
   { id: 'past-work', label: 'Past Work' },
+  { id: 'thoughts-notions', label: 'Thoughts and Notions' },
   { id: 'design-videos', label: 'Design Videos' },
   { id: 'archive', label: 'Archive' },
   { id: 'contact', label: 'Talk to Me' },
@@ -38,6 +40,9 @@ export default function Home() {
       </section>
 
       <div className="max-w-[1200px] mx-auto px-4 sm:px-6 md:px-8 pt-[35px] pb-[35px] space-y-24 md:space-y-32">
+        <section id="thoughts-notions" className="scroll-mt-24">
+          <ThoughtsSection />
+        </section>
         <section id="design-videos" className="scroll-mt-24">
           <WritingSection />
         </section>

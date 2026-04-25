@@ -630,7 +630,15 @@ export interface BlogPost {
   excerpt?: string;
 }
 
-export const blogPosts: BlogPost[] = [];
+export const blogPosts: BlogPost[] = [
+  {
+    id: '1',
+    title: 'Your First Substack Article',
+    date: '2025',
+    link: 'https://substack.com',
+    excerpt: 'Update this with your real Substack article title and link.',
+  },
+];
 
 export interface ArchiveProject {
   id: string;
