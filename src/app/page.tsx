@@ -4,6 +4,8 @@ import Hero from '@/components/Hero';
 import Footer from '@/components/Footer';
 import ScrollProgressBar from '@/components/ScrollProgressBar';
 import SectionNav from '@/components/SectionNav';
+import CursorDot from '@/components/CursorDot';
+import RevealOnScroll from '@/components/RevealOnScroll';
 
 const WorkCarousel = dynamic(() => import('@/components/WorkCarousel'), { ssr: true });
 const ThoughtsSection = dynamic(() => import('@/components/ThoughtsSection'), { ssr: true });
@@ -14,7 +16,7 @@ const Contact = dynamic(() => import('@/components/Contact'), { ssr: true });
 const HOME_SECTIONS = [
   { id: 'intro', label: 'Intro' },
   { id: 'past-work', label: 'Past Work' },
-  { id: 'thoughts-notions', label: 'Thoughts and Notions' },
+  { id: 'thoughts-notions', label: 'Thoughts & Notions' },
   { id: 'design-videos', label: 'Design Videos' },
   { id: 'archive', label: 'Archive' },
   { id: 'contact', label: 'Talk to Me' },
@@ -22,10 +24,12 @@ const HOME_SECTIONS = [
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-white dark:bg-black overflow-x-hidden pb-24 md:pb-0">
+    <>
+      <CursorDot />
       <ScrollProgressBar />
       <SectionNav sections={HOME_SECTIONS} />
       <Header />
+      <main className="min-h-screen bg-white dark:bg-black overflow-x-hidden pb-24 md:pb-0">
 
       <section id="intro" className="scroll-mt-24">
         <div className="w-full max-w-[1200px] mx-auto px-4 sm:px-6 md:px-8">
@@ -41,20 +45,29 @@ export default function Home() {
 
       <div className="max-w-[1200px] mx-auto px-4 sm:px-6 md:px-8 pt-[35px] pb-[35px] space-y-24 md:space-y-32">
         <section id="thoughts-notions" className="scroll-mt-24">
-          <ThoughtsSection />
+          <RevealOnScroll>
+            <ThoughtsSection />
+          </RevealOnScroll>
         </section>
         <section id="design-videos" className="scroll-mt-24">
-          <WritingSection />
+          <RevealOnScroll>
+            <WritingSection />
+          </RevealOnScroll>
         </section>
         <section id="archive" className="scroll-mt-24">
-          <Archive />
+          <RevealOnScroll delay={100}>
+            <Archive />
+          </RevealOnScroll>
         </section>
         <section id="contact" className="scroll-mt-24">
-          <Contact />
+          <RevealOnScroll delay={100}>
+            <Contact />
+          </RevealOnScroll>
         </section>
       </div>
 
       <Footer />
     </main>
+    </>
   );
 }

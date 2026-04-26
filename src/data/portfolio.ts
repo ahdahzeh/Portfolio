@@ -653,6 +653,50 @@ export const blogPosts: BlogPost[] = [
   },
 ];
 
+export interface Thought {
+  id: string;
+  /** "post" = a full Substack article, "note" = a short Substack Note. */
+  kind: "post" | "note";
+  title: string;
+  excerpt: string;
+  date: string;
+  link: string;
+}
+
+/** Substack articles + notes — "Thoughts and Notions" section on the home page. */
+export const thoughts: Thought[] = [
+  {
+    id: "self-awareness-is-guidance",
+    kind: "post",
+    title: "Self Awareness is Guidance",
+    excerpt:
+      "Without self-awareness, it's hard to live with any intentionality. You can set an intention, make a plan, but if it has no real context of your life, you'll always fail.",
+    date: "Apr 25, 2026",
+    link: "https://ahdahzeh.substack.com/p/self-awareness-is-guidance",
+  },
+  {
+    id: "becoming",
+    kind: "post",
+    title: "Becoming",
+    excerpt:
+      "On the transformative journey that started with an unfulfilling design job, ran through a layoff, and turned into a commitment to growth — landing real design clients and shipping multiple apps along the way.",
+    date: "Apr 21, 2026",
+    link: "https://ahdahzeh.substack.com/p/becoming",
+  },
+  {
+    id: "wellengineered-jewelry-sample",
+    kind: "note",
+    title: "Sampling jewelry for wellengineered.co",
+    excerpt: "Some new jewelry I'm sampling for wellengineered.co.",
+    date: "Apr 25, 2026",
+    link: "https://substack.com/@ahdahzeh/note/c-249076448",
+  },
+];
+
+/** Substack publication name + URL — the masthead and "see all" link target. */
+export const SUBSTACK_NAME = "Groundwork";
+export const SUBSTACK_URL = "https://ahdahzeh.substack.com";
+
 export interface ArchiveProject {
   id: string;
   name: string;
