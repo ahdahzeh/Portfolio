@@ -113,7 +113,7 @@ export default function Hero({ animationDelayMs = 0 }: HeroProps) {
             </div>
             {/* Intro paragraph */}
             <p className="text-base sm:text-[17px] font-normal text-black dark:text-white leading-[1.6] mt-4 md:mt-6 md:max-w-[560px]">
-              I design digital experiences that help people do meaningful things, whether that&apos;s accessing healthcare or making confident purchases online. These are industries where getting it wrong has real consequences. I&apos;ve worked across startups and enterprise teams at{' '}
+              I design and build products in industries where getting it wrong has real consequences. Healthcare access. ADHD productivity. Confident online purchases. I&apos;ve worked across startups and enterprise teams at{' '}
               <Link href="/work/amazon" className="relative inline-block px-1 -mx-1 font-medium tracking-tight text-black dark:text-white group">
                 <span aria-hidden className="absolute left-0 right-0 bottom-0 h-[60%] bg-yellow-200 dark:bg-yellow-300/40 -z-0 origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-[500ms] ease-[cubic-bezier(0.65,0,0.35,1)]" />
                 <span className="relative z-10">Amazon</span>
@@ -128,7 +128,7 @@ export default function Hero({ animationDelayMs = 0 }: HeroProps) {
                 <span aria-hidden className="absolute left-0 right-0 bottom-0 h-[60%] bg-yellow-200 dark:bg-yellow-300/40 -z-0 origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-[500ms] ease-[cubic-bezier(0.65,0,0.35,1)]" />
                 <span className="relative z-10">Omnicom</span>
               </a>
-              , shipping solutions that improve outcomes, not just metrics.
+              . Now Cerebral, my studio in New York.
             </p>
           </div>
           {/* Right - Profile image */}
