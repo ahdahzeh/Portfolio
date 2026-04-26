@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { personalInfo, socialLinks } from '@/data/portfolio';
@@ -15,6 +15,7 @@ export default function Hero({ animationDelayMs = 0 }: HeroProps) {
   const [displayedLastName, setDisplayedLastName] = useState('');
   const [showCursor, setShowCursor] = useState(true);
   const [animationStarted, setAnimationStarted] = useState(animationDelayMs <= 0);
+  const imageRef = useRef<HTMLDivElement>(null);
 
   const nameParts = (personalInfo.name || 'Adaze Oviawe').split(/\s+(.+)/).filter(Boolean);
   const firstName = nameParts[0] || 'Adaze';
@@ -64,16 +65,26 @@ export default function Hero({ animationDelayMs = 0 }: HeroProps) {
     return () => clearTimeout(t);
   }, [animationDelayMs]);
 
+  useEffect(() => {
+    const onScroll = () => {
+      if (imageRef.current) {
+        imageRef.current.style.transform = `translateY(${window.scrollY * 0.08}px)`;
+      }
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+
+
   return (
-    <section className="w-full mt-0 sm:mt-1 md:mt-[80px] mb-[27px] relative min-h-[400px] md:min-h-[350px] bg-white dark:bg-black">
+    <section className="w-full mt-0 sm:mt-1 md:mt-[30px] mb-[27px] relative bg-white dark:bg-black">
       <div className="max-w-[1200px] mx-auto relative">
-        <div className="flex flex-col md:flex-row md:gap-[80px] gap-8 items-start relative z-40 pt-[52px] pb-[52px] min-h-0 md:min-h-[336px]">
-          {/* Left - Name with typewriter animation */}
-          <div className="flex flex-col gap-2 md:gap-4 order-2 md:order-1 w-full md:w-auto md:min-w-0 md:flex-1" aria-label={`Name: ${personalInfo.name || 'Adaze Oviawe'}`}>
+        <div className="flex flex-col md:flex-row md:gap-[80px] gap-6 items-start relative z-40 pt-[40px] pb-[20px]">
+          {/* Left - Name + intro */}
+          <div className="flex flex-col gap-2 md:gap-3 order-2 md:order-1 w-full md:min-w-0 md:flex-1" aria-label={`Name: ${personalInfo.name || 'Adaze Oviawe'}`}>
             <span className="sr-only">{personalInfo.name || 'Adaze Oviawe'}</span>
             <div className="flex items-center gap-2 md:gap-3 flex-nowrap relative min-w-0">
               <h1 className="text-[48px] sm:text-[56px] md:text-[clamp(3rem,10vw,7rem)] font-normal leading-[0.9] text-black dark:text-white tracking-[-2px] md:tracking-[-4px] shrink-0 relative overflow-hidden">
-                {/* Hidden full name to reserve space and prevent layout shifts */}
                 <span className="invisible block" aria-hidden>{firstName}</span>
                 <span className="absolute left-0 top-0">
                   {displayedFirstName}
@@ -88,7 +99,6 @@ export default function Hero({ animationDelayMs = 0 }: HeroProps) {
             </div>
             <div className="flex items-center gap-2 md:gap-3 flex-nowrap relative min-w-0">
               <h1 className="text-[48px] sm:text-[56px] md:text-[clamp(3rem,10vw,7rem)] font-normal leading-[0.9] text-black dark:text-white tracking-[-2px] md:tracking-[-4px] shrink-0 relative overflow-hidden">
-                {/* Hidden full name to reserve space and prevent layout shifts */}
                 <span className="invisible block" aria-hidden>{lastName}</span>
                 <span className="absolute left-0 top-0">
                   {displayedLastName}
@@ -101,28 +111,38 @@ export default function Hero({ animationDelayMs = 0 }: HeroProps) {
                 <span className="text-sm sm:text-base md:text-lg font-normal text-gray-400 whitespace-nowrap shrink-0 translate-y-2.5 py-0">{lastPron}</span>
               )}
             </div>
+            {/* Intro paragraph */}
+            <p className="text-base sm:text-[17px] font-normal text-black dark:text-white leading-[1.6] mt-4 md:mt-6 md:max-w-[560px]">
+              I design digital experiences that help people do meaningful things, whether that&apos;s accessing healthcare or making confident purchases online. These are industries where getting it wrong has real consequences. I&apos;ve worked across startups and enterprise teams at{' '}
+              <Link href="/work/amazon" className="relative inline-block px-1 -mx-1 font-medium tracking-tight text-black dark:text-white group">
+                <span aria-hidden className="absolute left-0 right-0 bottom-0 h-[60%] bg-yellow-200 dark:bg-yellow-300/40 -z-0 origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-[500ms] ease-[cubic-bezier(0.65,0,0.35,1)]" />
+                <span className="relative z-10">Amazon</span>
+              </Link>
+              ,{' '}
+              <Link href="/work/block-equity-group" className="relative inline-block px-1 -mx-1 font-medium tracking-tight text-black dark:text-white group">
+                <span aria-hidden className="absolute left-0 right-0 bottom-0 h-[60%] bg-yellow-200 dark:bg-yellow-300/40 -z-0 origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-[500ms] ease-[cubic-bezier(0.65,0,0.35,1)]" />
+                <span className="relative z-10">Block Equity Group</span>
+              </Link>
+              , and{' '}
+              <a href="https://www.omc.com/capabilities/capability-health/" target="_blank" rel="noopener noreferrer" className="relative inline-block px-1 -mx-1 font-medium tracking-tight text-black dark:text-white group">
+                <span aria-hidden className="absolute left-0 right-0 bottom-0 h-[60%] bg-yellow-200 dark:bg-yellow-300/40 -z-0 origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-[500ms] ease-[cubic-bezier(0.65,0,0.35,1)]" />
+                <span className="relative z-10">Omnicom</span>
+              </a>
+              , shipping solutions that improve outcomes, not just metrics.
+            </p>
           </div>
-          {/* Right - Profile image (desktop: right of name; mobile: above name) */}
-          <div className="relative w-full max-w-[280px] mx-auto md:mx-0 md:max-w-none md:w-[360px] md:min-w-[360px] md:h-[364px] flex-shrink-0 order-1 md:order-2 min-h-[280px] md:min-h-[364px]">
+          {/* Right - Profile image */}
+          <div ref={imageRef} className="relative w-full max-w-[240px] mx-auto md:mx-0 md:max-w-none md:w-[300px] md:min-w-[300px] flex-shrink-0 order-1 md:order-2" style={{ willChange: 'transform' }}>
             <Image
               src="/images/profile.png"
               alt={`${personalInfo.name} headshot`}
-              width={360}
-              height={364}
-              className="w-full h-[339px] object-contain"
+              width={300}
+              height={304}
+              className="w-full h-auto object-contain"
               priority={true}
             />
           </div>
         </div>
-        <p className="text-base sm:text-[17px] font-normal text-black dark:text-white text-center max-w-[1200px] leading-[1.6] mx-auto mt-2 sm:mt-4 md:pt-2">
-          I design digital experiences that help people do meaningful things, whether that&apos;s accessing healthcare or making confident purchases online. These are industries where getting it wrong has real consequences. I&apos;ve worked across startups and enterprise teams at{' '}
-          <Link href="/work/amazon" className="font-semibold italic text-[#006eff] underline underline-offset-2 hover:text-[#0060d9]">Amazon</Link>
-          ,{' '}
-          <Link href="/work/block-equity-group" className="font-semibold italic text-[#006eff] underline underline-offset-2 hover:text-[#0060d9]">Block Equity Group</Link>
-          , and{' '}
-          <a href="https://www.omc.com/capabilities/capability-health/" target="_blank" rel="noopener noreferrer" className="font-semibold italic text-[#006eff] underline underline-offset-2 hover:text-[#0060d9]">Omnicom</a>
-          , shipping solutions that improve outcomes, not just metrics.
-        </p>
       </div>
     </section>
   );
