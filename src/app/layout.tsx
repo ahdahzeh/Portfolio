@@ -10,22 +10,69 @@ const baseUrl = process.env.VERCEL_URL
 
 export const metadata: Metadata = {
   metadataBase: new URL(baseUrl),
-  title: 'Portfolio | Adaze Oviawe',
-  description: 'UX Designer - Building user-centered digital experiences',
-  keywords: ['portfolio', 'UX designer', 'product design', 'Amazon', 'Omnicom'],
-  authors: [{ name: 'Adaze Oviawe' }],
+  title: {
+    default: 'Adaze Oviawe — Designer and engineer at Cerebral, NYC',
+    template: '%s — Adaze Oviawe',
+  },
+  description:
+    'I design and build products in industries where the interface has consequences. Healthcare, fintech, ADHD productivity, luxury resale. Cerebral, NYC.',
+  keywords: [
+    'Adaze Oviawe',
+    'ahdahzeh',
+    'design engineer',
+    'product designer',
+    'NYC designer',
+    'Cerebral studio',
+    'LOCKDIN',
+    'Scour',
+    'iOS designer',
+    'Next.js designer',
+    'SwiftUI designer',
+    'Amazon',
+    'Block Equity Group',
+    'Omnicom',
+    'ADHD app design',
+  ],
+  authors: [{ name: 'Adaze Oviawe', url: 'https://ahdahzeh.com' }],
+  creator: 'Adaze Oviawe',
+  publisher: 'Adaze Oviawe',
+  alternates: {
+    canonical: 'https://ahdahzeh.com',
+  },
   openGraph: {
-    title: 'Portfolio | Adaze Oviawe',
-    description: 'UX Designer - Building user-centered digital experiences',
+    title: 'Adaze Oviawe — Designer and engineer at Cerebral, NYC',
+    description:
+      'I design and build products in industries where the interface has consequences. Healthcare, fintech, ADHD productivity, luxury resale.',
     url: 'https://ahdahzeh.com',
-    siteName: 'Adaze Oviawe Portfolio',
+    siteName: 'Adaze Oviawe',
     type: 'website',
-    images: [{ url: '/images/profile.png', width: 480, height: 480, alt: 'Adaze Oviawe' }],
+    locale: 'en_US',
+    images: [
+      {
+        url: '/images/profile.png',
+        width: 636,
+        height: 987,
+        alt: 'Adaze Oviawe — pencil drawing of a designer holding a phone',
+      },
+    ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Portfolio | Adaze Oviawe',
-    description: 'UX Designer - Building user-centered digital experiences',
+    title: 'Adaze Oviawe — Designer and engineer at Cerebral, NYC',
+    description:
+      'I design and build products in industries where the interface has consequences. Healthcare, fintech, ADHD productivity, luxury resale.',
+    creator: '@ahdahzeh',
+    images: ['/images/profile.png'],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
   },
 };
 
