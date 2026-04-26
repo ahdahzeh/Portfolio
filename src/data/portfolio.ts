@@ -663,17 +663,12 @@ export interface Thought {
   link: string;
 }
 
-/** Substack articles + notes — "Thoughts and Notions" section on the home page. */
+/**
+ * Substack articles + notes — "Thoughts and Notions" section on the home page.
+ * The first item is the FEATURED essay rendered as the large card on the
+ * left; the rest render as the editorial index on the right.
+ */
 export const thoughts: Thought[] = [
-  {
-    id: "self-awareness-is-guidance",
-    kind: "post",
-    title: "Self Awareness is Guidance",
-    excerpt:
-      "Without self-awareness, it's hard to live with any intentionality. You can set an intention, make a plan, but if it has no real context of your life, you'll always fail.",
-    date: "Apr 25, 2026",
-    link: "https://ahdahzeh.substack.com/p/self-awareness-is-guidance",
-  },
   {
     id: "becoming",
     kind: "post",
@@ -682,6 +677,15 @@ export const thoughts: Thought[] = [
       "On the transformative journey that started with an unfulfilling design job, ran through a layoff, and turned into a commitment to growth — landing real design clients and shipping multiple apps along the way.",
     date: "Apr 21, 2026",
     link: "https://ahdahzeh.substack.com/p/becoming",
+  },
+  {
+    id: "self-awareness-is-guidance",
+    kind: "post",
+    title: "Self Awareness is Guidance",
+    excerpt:
+      "Without self-awareness, it's hard to live with any intentionality. You can set an intention, make a plan, but if it has no real context of your life, you'll always fail.",
+    date: "Apr 25, 2026",
+    link: "https://ahdahzeh.substack.com/p/self-awareness-is-guidance",
   },
   {
     id: "wellengineered-jewelry-sample",
