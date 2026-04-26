@@ -49,10 +49,10 @@ export const metadata: Metadata = {
     locale: 'en_US',
     images: [
       {
-        url: '/images/profile.png',
-        width: 636,
-        height: 987,
-        alt: 'Adaze Oviawe — pencil drawing of a designer holding a phone',
+        url: '/og-image.png',
+        width: 1200,
+        height: 630,
+        alt: 'Adaze Oviawe — Designer and engineer at Cerebral, NYC. Past: Amazon, Block Equity Group, Omnicom.',
       },
     ],
   },
@@ -62,7 +62,7 @@ export const metadata: Metadata = {
     description:
       'I design and build products in industries where the interface has consequences. Healthcare, fintech, ADHD productivity, luxury resale.',
     creator: '@ahdahzeh',
-    images: ['/images/profile.png'],
+    images: ['/og-image.png'],
   },
   robots: {
     index: true,
