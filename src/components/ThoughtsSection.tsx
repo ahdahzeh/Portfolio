@@ -7,11 +7,11 @@ export default function ThoughtsSection() {
     <section className="w-full" aria-labelledby="thoughts-heading">
       <h2
         id="thoughts-heading"
-        className="text-3xl md:text-4xl font-semibold tracking-tight text-gray-900 dark:text-white mb-2"
+        className="text-3xl md:text-4xl font-semibold tracking-tight text-gray-900 dark:text-white mb-6"
       >
         Thoughts and Notions
       </h2>
-      <p className="text-sm text-gray-400 dark:text-gray-500 mb-6">Substack</p>
+
       <div className="flex flex-col">
         {blogPosts.map((post) => (
           <a
