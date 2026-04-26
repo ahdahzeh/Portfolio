@@ -4,9 +4,10 @@ import './globals.css';
 
 const dmSans = DM_Sans({ subsets: ['latin'], variable: '--font-dm-sans' });
 
-const baseUrl = process.env.VERCEL_URL
-  ? `https://${process.env.VERCEL_URL}`
-  : process.env.NEXT_PUBLIC_SITE_URL ?? 'http://localhost:3000';
+// Always use the production domain for metadata URLs. VERCEL_URL would
+// rotate per deployment and leak preview URLs into og:image / canonical.
+const baseUrl =
+  process.env.NEXT_PUBLIC_SITE_URL ?? 'https://ahdahzeh.com';
 
 export const metadata: Metadata = {
   metadataBase: new URL(baseUrl),
