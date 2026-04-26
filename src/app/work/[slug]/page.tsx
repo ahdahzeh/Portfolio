@@ -1,3 +1,4 @@
+import type { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
 import { workHistory } from '@/data/portfolio';
@@ -18,14 +19,89 @@ import LockdinCaseStudy from '@/components/LockdinCaseStudy';
 import BackToHomeButton from '@/components/BackToHomeButton';
 import ScrollProgressBar from '@/components/ScrollProgressBar';
 import SectionNav from '@/components/SectionNav';
+import { JsonLdCreativeWork, JsonLdBreadcrumbs } from '@/components/JsonLd';
+
+const SITE_URL = 'https://ahdahzeh.com';
+
+export async function generateStaticParams() {
+  return workHistory.map((w) => ({ slug: w.slug }));
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+  const { slug } = await params;
+  const item = workHistory.find((w) => w.slug === slug);
+  if (!item) {
+    return { title: 'Not found' };
+  }
+
+  const study = item.caseStudy;
+  const title = study?.title ?? item.company;
+  const description =
+    study?.subtitle ??
+    item.description ??
+    `${item.role} at ${item.company} (${item.period}).`;
+
+  // Pick best image: case-study cover image -> coverVideo poster -> coverImages.desktop
+  let image = item.image;
+  if (!image && item.coverVideo) {
+    image = item.coverVideo
+      .replace('/videos/', '/images/')
+      .replace(/\.mp4$/, '-poster.jpg');
+  }
+  if (!image && item.coverImages?.desktop) {
+    image = item.coverImages.desktop;
+  }
+
+  const ogTitle = `${title} — Adaze Oviawe`;
+  const url = `${SITE_URL}/work/${slug}`;
+
+  return {
+    title,
+    description,
+    alternates: { canonical: url },
+    openGraph: {
+      title: ogTitle,
+      description,
+      url,
+      type: 'article',
+      siteName: 'Adaze Oviawe',
+      images: image
+        ? [{ url: image, alt: `${title} — ${item.role}` }]
+        : undefined,
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: ogTitle,
+      description,
+      images: image ? [image] : undefined,
+    },
+  };
+}
 
 export default function WorkPage({ params }: { params: Promise<{ slug: string }> }) {
   return (
     <main className="min-h-screen bg-white dark:bg-black overflow-x-hidden">
       <Header />
+      <WorkSchema params={params} />
       <WorkContent params={params} />
       <Footer />
     </main>
+  );
+}
+
+async function WorkSchema({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  const item = workHistory.find((w) => w.slug === slug);
+  if (!item) return null;
+  return (
+    <>
+      <JsonLdCreativeWork item={item} />
+      <JsonLdBreadcrumbs item={item} />
+    </>
   );
 }
 

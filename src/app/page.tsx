@@ -6,6 +6,7 @@ import ScrollProgressBar from '@/components/ScrollProgressBar';
 import SectionNav from '@/components/SectionNav';
 import CursorDot from '@/components/CursorDot';
 import RevealOnScroll from '@/components/RevealOnScroll';
+import { JsonLdPerson, JsonLdWebSite, JsonLdWorkList } from '@/components/JsonLd';
 
 const WorkCarousel = dynamic(() => import('@/components/WorkCarousel'), { ssr: true });
 const ThoughtsSection = dynamic(() => import('@/components/ThoughtsSection'), { ssr: true });
@@ -25,6 +26,9 @@ const HOME_SECTIONS = [
 export default function Home() {
   return (
     <>
+      <JsonLdPerson />
+      <JsonLdWebSite />
+      <JsonLdWorkList />
       <CursorDot />
       <ScrollProgressBar />
       <SectionNav sections={HOME_SECTIONS} />
