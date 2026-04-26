@@ -8,6 +8,7 @@ import {
   LinkImageCursor,
   LinkBracketFrame,
   LinkLetterCascade,
+  LinkAlbumCover,
 } from '@/components/InlineLinkVariants';
 
 interface VariantConfig {
@@ -74,6 +75,13 @@ const VARIANTS: VariantConfig[] = [
     label: '08 — Letter cascade',
     desc: 'Each letter nudges up 2px on a staggered delay (18ms each). A static underline holds the baseline. Playful without being cute.',
     Wrap: LinkLetterCascade,
+  },
+  {
+    id: 'album-cover',
+    label: '09 — Album cover (the actual reboot.studio move)',
+    desc: 'A small rounded thumbnail (sized to line height) sits inline at rest, baseline-aligned next to the word, with reboot\'s exact 5-layer stacked shadow. The link itself stays quiet — the thumbnail does the work. Reboot doesn\'t actually animate inline links on hover; their secret is that the brands they reference get a literal mini-avatar inline. This variant uses your case study covers as the thumbnails.',
+    Wrap: LinkAlbumCover,
+    imageMode: true,
   },
 ];
 

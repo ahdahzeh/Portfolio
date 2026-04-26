@@ -211,6 +211,40 @@ export function LinkBracketFrame({ href, external, children }: InlineLinkProps) 
 }
 
 /* ---------------------------------------------------------------------- */
+/* 9. Album cover (reboot.studio) — inline thumbnail pinned next to word  */
+/*    Heavy stacked shadow, baseline-aligned, sized to text. On hover, a  */
+/*    pill pops up below with the brand name.                             */
+
+export function LinkAlbumCover({ href, external, children, image }: InlineLinkProps) {
+  return (
+    <span className="group relative inline-flex items-baseline align-baseline">
+      {image && (
+        <span
+          aria-hidden
+          className="relative inline-flex items-center justify-center align-text-bottom mr-1.5 h-[1.2em] w-[1.2em] sm:h-[1.5em] sm:w-[1.5em] rounded-[6px] sm:rounded-[8px] overflow-hidden bg-white"
+          style={{
+            // Stacked shadow — exact recipe from reboot.studio
+            boxShadow:
+              '0 1px 1px -0.5px rgba(0,0,0,0.06),0 3px 3px -1.5px rgba(0,0,0,0.06),0 6px 6px -3px rgba(0,0,0,0.05),0 12px 12px -6px rgba(0,0,0,0.04),0 24px 24px -12px rgba(0,0,0,0.04)',
+            transform: 'translateY(0.18em)',
+          }}
+        >
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src={image} alt="" className="w-full h-full object-cover" />
+        </span>
+      )}
+      <A
+        href={href}
+        external={external}
+        className="font-medium tracking-tight text-black dark:text-white underline decoration-1 underline-offset-[5px] decoration-current/40 hover:decoration-current transition-[text-decoration-color] duration-300"
+      >
+        {children}
+      </A>
+    </span>
+  );
+}
+
+/* ---------------------------------------------------------------------- */
 /* 8. Letter cascade — each letter shifts up slightly, staggered          */
 
 export function LinkLetterCascade({ href, external, children }: InlineLinkProps) {
