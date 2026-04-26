@@ -5,11 +5,21 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { workHistory } from '@/data/portfolio';
 
-function CoverVideo({ src, alt }: { src: string; alt: string }) {
+function CoverVideo({ src, alt, poster }: { src: string; alt: string; poster?: string }) {
   const videoRef = useRef<HTMLVideoElement>(null);
 
   return (
     <div className="relative w-full h-full overflow-hidden bg-[#f0f0f0] dark:bg-[#f0f0f0]">
+      {poster && (
+        <Image
+          src={poster}
+          alt={alt}
+          fill
+          sizes="(max-width: 640px) 260px, 300px"
+          className="absolute inset-0 w-full h-full object-cover"
+          priority
+        />
+      )}
       <video
         ref={videoRef}
         src={src}
@@ -18,8 +28,9 @@ function CoverVideo({ src, alt }: { src: string; alt: string }) {
         loop
         playsInline
         preload="auto"
+        poster={poster}
         aria-label={alt}
-        className="w-full h-full object-cover"
+        className="relative w-full h-full object-cover"
       />
     </div>
   );
@@ -40,7 +51,7 @@ function WorkCardImage({ item, priority = false }: { item: (typeof workHistory)[
   const coverImages = item.coverImages;
 
   if (item.coverVideo) {
-    return <CoverVideo src={item.coverVideo} alt={item.company} />;
+    return <CoverVideo src={item.coverVideo} alt={item.company} poster={item.image} />;
   }
 
   if (coverImages) {
@@ -181,7 +192,7 @@ export default function WorkCarousel() {
           <div key={`${item.id}-${index}`} className="flex-shrink-0">
             <Link
               href={`/work/${item.slug}`}
-              className="group flex flex-col gap-2 p-4 rounded-xl hover:bg-gray-50 dark:hover:bg-gray-900 transition-colors min-w-[200px] text-black dark:text-white"
+              className="group flex flex-col gap-2 p-4 rounded-xl hover:bg-gray-50 dark:hover:bg-gray-900 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-xl dark:hover:shadow-black/30 min-w-[200px] text-black dark:text-white"
             >
               <div
                 className={`w-[260px] h-[260px] md:w-[300px] md:h-[300px] rounded-lg overflow-hidden ${

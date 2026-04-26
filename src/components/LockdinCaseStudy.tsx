@@ -26,6 +26,11 @@ function LockdinVideo({
   const videoRef = useRef<HTMLVideoElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
 
+  // Derive poster path from video path. e.g. /videos/work/lockdin/today-view.mp4 -> /images/work/lockdin/today-view-poster.jpg
+  const poster = src
+    .replace('/videos/', '/images/')
+    .replace(/\.mp4$/, '-poster.jpg');
+
   useEffect(() => {
     const container = containerRef.current;
     const video = videoRef.current;
@@ -48,12 +53,20 @@ function LockdinVideo({
   }, []);
 
   return (
-    <div ref={containerRef} className="relative w-full aspect-[9/19.5] bg-white rounded-[2rem] overflow-hidden border-[6px] border-gray-900 dark:border-gray-700 shadow-xl">
+    <div ref={containerRef} className="relative w-full aspect-[9/19.5] bg-[#F2F2F7] rounded-[2rem] overflow-hidden border-[6px] border-gray-900 dark:border-gray-700 shadow-xl">
+      {/* Poster fallback so frames are never empty if videos fail to load */}
+      <img
+        src={poster}
+        alt=""
+        aria-hidden="true"
+        className="absolute inset-0 w-full h-full object-cover"
+      />
       <video
         ref={videoRef}
         playsInline
         muted
-        preload="none"
+        preload="metadata"
+        poster={poster}
         className="absolute inset-0 w-full h-full object-cover"
         aria-label={label}
       >
