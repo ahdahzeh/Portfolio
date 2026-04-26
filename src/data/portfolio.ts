@@ -123,6 +123,7 @@ export const workHistory: WorkItem[] = [
     description: "NYC block intelligence — native iOS app for hyperlocal city data",
     coverVideo: "/videos/work/wtv/hero.mp4",
     color: "#E85D3A",
+    archived: true,
     caseStudy: {
       title: "WTV",
       subtitle: "NYC Block Intelligence — Native iOS",
@@ -660,6 +661,7 @@ export interface ArchiveProject {
 }
 
 export const archiveProjects: ArchiveProject[] = [
+  { id: "32", name: "WTV", role: "Design Engineer", year: "2026", link: "/work/wtv" },
   { id: "31", name: "Job Pilot Automation", role: "Design Engineer", year: "2025", link: "/work/autopilot" },
   { id: "30", name: "Scour", role: "Design Engineer", year: "2025–2026", link: "/work/scour" },
   { id: "29", name: "Morton Salt", role: "UX Design", year: "2026", link: "/work/morton-salt" },
