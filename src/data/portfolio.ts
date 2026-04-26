@@ -635,19 +635,19 @@ export const blogPosts: BlogPost[] = [
     id: '1',
     title: 'Becoming',
     date: '2025',
-    link: 'https://substack.com/@ahdahzeh/note/p-194946004',
+    link: 'https://open.substack.com/pub/ahdahzeh/p/becoming',
   },
   {
     id: '2',
     title: 'Well Engineered Samples',
     date: '2025',
-    link: 'https://substack.com/@ahdahzeh/note/c-249076448',
+    link: 'https://substack.com/@ahdahzeh/note/c-249076448?utm_source=notes-share-action&r=18j0k6',
   },
   {
     id: '3',
     title: 'Self Awareness as Guidance',
     date: '2025',
-    link: 'https://substack.com/@ahdahzeh/note/p-195472337',
+    link: 'https://open.substack.com/pub/ahdahzeh/p/self-awareness-is-guidance',
   },
 ];
 
