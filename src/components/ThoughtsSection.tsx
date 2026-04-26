@@ -20,8 +20,8 @@ export default function ThoughtsSection() {
           >
             Thoughts &amp; Notions
           </h2>
-          <p className="text-sm text-gray-400 dark:text-gray-500 mt-2">
-            Substack writing from <span className="text-gray-500 dark:text-gray-400">{SUBSTACK_NAME}</span>.
+          <p className="text-sm text-gray-400 dark:text-gray-500 mt-2 max-w-[640px] leading-[1.55]">
+            Documenting the <span className="text-gray-500 dark:text-gray-400">{SUBSTACK_NAME}</span>: reflections, inspirations, and the work behind the work.
           </p>
         </div>
       </div>
