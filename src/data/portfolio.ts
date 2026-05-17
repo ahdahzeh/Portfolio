@@ -192,8 +192,8 @@ My work spans the end-to-end experience: the main content hub and landing experi
           content: "",
           images: [
             {
-              src: "/images/work/community-health-media/hero-mockup.png",
-              alt: "Community Health Technologies — marketing homepage and clinician-focused layout",
+              src: "/images/work/community-health-media/chm-homepage-hero.png",
+              alt: "Community Health Technologies — marketing homepage hero and featured video section",
               caption: "",
             },
           ],

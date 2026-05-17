@@ -11,6 +11,32 @@ import ScrollReveal from '@/components/ScrollReveal';
 const CHT_IMG_W = 1920;
 const CHT_IMG_H = 1080;
 
+function MacWindowFrame({ children, title }: { children: React.ReactNode; title?: string }) {
+  return (
+    <div
+      className="rounded-xl overflow-hidden w-full"
+      style={{ boxShadow: '0 20px 60px rgba(0,0,0,0.18), 0 4px 16px rgba(0,0,0,0.10)', border: '1px solid rgba(0,0,0,0.12)' }}
+    >
+      <div
+        className="flex items-center px-4 relative"
+        style={{ background: '#E8E8E8', borderBottom: '1px solid #D0D0D0', height: 38 }}
+      >
+        <div className="flex gap-2 shrink-0 z-10">
+          <div className="w-3 h-3 rounded-full" style={{ background: '#FF5F57', border: '0.5px solid rgba(0,0,0,0.12)' }} />
+          <div className="w-3 h-3 rounded-full" style={{ background: '#FEBC2E', border: '0.5px solid rgba(0,0,0,0.12)' }} />
+          <div className="w-3 h-3 rounded-full" style={{ background: '#28C840', border: '0.5px solid rgba(0,0,0,0.12)' }} />
+        </div>
+        {title && (
+          <span className="absolute left-0 right-0 text-center text-xs font-medium pointer-events-none" style={{ color: '#6B7280' }}>
+            {title}
+          </span>
+        )}
+      </div>
+      <div className="w-full overflow-hidden">{children}</div>
+    </div>
+  );
+}
+
 /** QuickTime .mov often fails in Chrome; prefer optional H.264 `videoMp4` when set. */
 function ChtSolutionBrowserVideo({
   src,
@@ -214,14 +240,16 @@ export default function CommunityHealthCaseStudy({
         <div className="cht-hero-image">
           <LightboxTrigger images={[{ src: sections[0].images[0].src, alt: sections[0].images[0].alt }]}>
             <div className="cht-hero-image-wrapper cursor-zoom-in">
-              <Image
-                src={sections[0].images[0].src}
-                alt={sections[0].images[0].alt}
-                width={CHT_IMG_W}
-                height={CHT_IMG_H}
-                className="w-full h-auto max-w-full object-contain object-top"
-                sizes="100vw"
-              />
+              <MacWindowFrame title="communityhealthmedia.com">
+                <Image
+                  src={sections[0].images[0].src}
+                  alt={sections[0].images[0].alt}
+                  width={CHT_IMG_W}
+                  height={CHT_IMG_H}
+                  className="w-full h-auto max-w-full"
+                  sizes="100vw"
+                />
+              </MacWindowFrame>
             </div>
           </LightboxTrigger>
         </div>
