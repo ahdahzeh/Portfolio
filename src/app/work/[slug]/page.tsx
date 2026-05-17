@@ -16,6 +16,7 @@ import WTVCaseStudy from '@/components/WTVCaseStudy';
 import ScourCaseStudy from '@/components/ScourCaseStudy';
 import AutopilotCaseStudy from '@/components/AutopilotCaseStudy';
 import LockdinCaseStudy from '@/components/LockdinCaseStudy';
+import MortonSaltCaseStudy from '@/components/MortonSaltCaseStudy';
 import BackToHomeButton from '@/components/BackToHomeButton';
 import ScrollProgressBar from '@/components/ScrollProgressBar';
 import SectionNav from '@/components/SectionNav';
@@ -283,6 +284,31 @@ async function WorkContent({ params }: { params: Promise<{ slug: string }> }) {
           link={item.link}
           videoUrl={study.videoUrl}
         />
+        <nav
+          className="max-w-[1200px] mx-auto px-4 sm:px-6 md:px-8 mt-[10px] mb-[10px] pt-8 border-t border-gray-200 dark:border-gray-800 flex flex-wrap items-center justify-between gap-6"
+          aria-label="Project navigation"
+        >
+          {itemIndex > 0 ? (
+            <a href={`/work/${workHistory[itemIndex - 1].slug}`} className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-2xl border border-[#0060d9] bg-white hover:bg-gray-100 text-[#0060d9] font-medium transition-colors dark:bg-black dark:border-[#0060d9] dark:text-[#0060d9] dark:hover:bg-gray-900">
+              <span aria-hidden>←</span>
+              {workHistory[itemIndex - 1].company}
+            </a>
+          ) : <span />}
+          {itemIndex < workHistory.length - 1 ? (
+            <a href={`/work/${workHistory[itemIndex + 1].slug}`} className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-2xl border border-[#0060d9] bg-white hover:bg-gray-100 text-[#0060d9] font-medium transition-colors dark:bg-black dark:border-[#0060d9] dark:text-[#0060d9] dark:hover:bg-gray-900 ml-auto">
+              {workHistory[itemIndex + 1].company}
+              <span aria-hidden>→</span>
+            </a>
+          ) : <span />}
+        </nav>
+      </>
+    );
+  }
+
+  if (slug === 'morton-salt') {
+    return (
+      <>
+        <MortonSaltCaseStudy />
         <nav
           className="max-w-[1200px] mx-auto px-4 sm:px-6 md:px-8 mt-[10px] mb-[10px] pt-8 border-t border-gray-200 dark:border-gray-800 flex flex-wrap items-center justify-between gap-6"
           aria-label="Project navigation"

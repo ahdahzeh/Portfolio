@@ -15,7 +15,7 @@ export const personalInfo = {
     { name: "Block Equity Group", url: "https://www.blockequitygr.com" },
     { name: "Omnicom", url: "https://www.omnicomhealthgroup.com" },
   ] as const,
-  availableForWork: true,
+  availableForWork: false,
   contactMessage: "I'm always happy to chat and talk shop. Send me a note!",
   /** Video URL (local path e.g. /videos/intro.mp4) shown 50px to the right of Get In Touch. Set to a string to enable. */
   contactVideoUrl: undefined as string | undefined,
@@ -167,7 +167,7 @@ I prototyped four distinct card system directions—Editorial Cards, Data-Forwar
     description: "Product design for community health platform",
     image: "/images/work/cht.png",
     coverVideo: "/videos/work/community-health-media/site-walkthrough.mp4",
-    color: "#10b981",
+    color: "#ea580c",
     wip: false,
     link: "https://testapp.communityhealth.media/home",
     caseStudy: {
@@ -178,7 +178,7 @@ I prototyped four distinct card system directions—Editorial Cards, Data-Forwar
       team: "AO, DE",
       problemStatement: "Designing the future of healthcare education with no roadmap to follow",
       /** Short intro under the hero - matches HTML reference */
-      heroIntro: "Community Health Technologies is redefining how pharma reaches healthcare audiences. I joined as the sole designer and built the platform from the ground up. I designed every screen in Figma and shipped the frontend with Cursor, Next.js, and AWS. Partnering with one engineer, we replaced a fully analog workflow of emails and Zoom calls with an automated, data-driven content platform.",
+      heroIntro: "Community Health Technologies is redefining how pharma reaches healthcare audiences. I joined as the sole designer and built the platform from the ground up. I designed every screen in Figma and shipped the web app with Cursor, React, Vite, and AWS behind the API. Partnering with one engineer, we replaced a fully analog workflow of emails and Zoom calls with an automated, data-driven content platform.",
       /** Bold lead sentence for overview (Framer-style) */
       overviewLead: "Community Health Technologies is redefining how pharma reaches healthcare audiences.",
       narrative: `At Community Health Media (CHT), I work as a Product Designer on the HCP (Healthcare Professional) Content Platform, a digital product that helps connect healthcare providers and communities with vital health information and resources.
@@ -193,7 +193,7 @@ My work spans the end-to-end experience: the main content hub and landing experi
           images: [
             {
               src: "/images/work/community-health-media/hero-mockup.png",
-              alt: "CHT marketing homepage shown on laptop and mobile against a teal backdrop",
+              alt: "Community Health Technologies — marketing homepage and clinician-focused layout",
               caption: "",
             },
           ],
@@ -208,7 +208,7 @@ My work spans the end-to-end experience: the main content hub and landing experi
       ],
       industry: "Healthcare &\nPharma Tech",
       /** Video walkthrough for browser frame section (replaces hero image) */
-      browserFrameVideo: "/videos/work/community-health-media/site-walkthrough.mov",
+      browserFrameVideo: "/videos/work/community-health-media/site-walkthrough.mp4",
       chtProblems: [
         { badge: "Problem 01", title: "No precedent for this platform", content: "There was no real precedent for a platform that lets doctors and healthcare professionals consume medical education the way CHT envisioned. Traditional CME platforms and conference tools don't match how HCPs engage with content in daily workflows, so I designed the experience from first principles and translated product strategy into clear, usable screens.", image: "/images/work/community-health-media/fourup-content-library-catalogue.png", imageAlt: "In-product topic and biomarker content experience" },
         { badge: "Problem 02", title: "The business ran on email and Zoom", content: "Before the platform, every interaction between pharma companies, HCPs, and content was coordinated manually through email threads, calendar invites, and Zoom recordings. There was no data layer, no analytics, and no scalable way to understand performance. I shaped a system that could host content, automate the core workflows, and make engagement measurable.", image: "/images/work/community-health-media/cht-problem-02-education-landing.png", imageAlt: "Clinical education landing — catalogue, search, and workflow-focused messaging" },
@@ -220,16 +220,14 @@ My work spans the end-to-end experience: the main content hub and landing experi
           content: "To make the product feel credible and easy to use, I defined the visual system while the UI was being built. The result is a clean, clinical aesthetic that balances authority with clarity, anchored by a strong navigation and a content-forward layout that works across dashboards, libraries, and detail views.",
           imageAlt: "Brand identity walkthrough",
           image: "/images/work/community-health-media/screen-1.png",
-          video: "/videos/work/community-health-media/brand-identity-walkthrough.mov",
-          videoMp4: "/videos/work/community-health-media/brand-identity-walkthrough.mp4",
+          video: "/videos/work/community-health-media/brand-identity-walkthrough.mp4",
         },
         {
           title: "Turned manual workflows into a measurable platform",
           content:
             "Behind the HCP-facing experience is an internal admin dashboard where CHT runs day-to-day operations: content libraries, webinar and survey programs, uploads, and scheduling. I designed these tools so admins get a single, consistent surface for publishing and governance—backed by analytics on views, active users, and engagement instead of one-off spreadsheets and inbox threads.",
           imageAlt: "Admin dashboard and operations walkthrough",
-          video: "/videos/work/community-health-media/admin-dashboard-walkthrough.mov",
-          videoMp4: "/videos/work/community-health-media/admin-dashboard-walkthrough.mp4",
+          video: "/videos/work/community-health-media/admin-dashboard-walkthrough.mp4",
         },
       ],
       chtTwoUpPairs: [
@@ -241,8 +239,24 @@ My work spans the end-to-end experience: the main content hub and landing experi
         { title: "Data-Driven Insights", content: "For the first time, CHT can see how HCPs engage with content, which enables smarter decisions about what to produce and promote." },
         { title: "New Product Category", content: "Created a new kind of platform for healthcare education, one that didn't exist before in the pharma marketing space." },
       ],
-      chtTools: ["Figma", "Cursor", "AWS", "Next.js"],
+      chtTools: ["Figma", "Cursor", "Vite", "React", "Tailwind", "Supabase", "AWS"],
     }
+  },
+  {
+    id: "14",
+    slug: "morton-salt",
+    company: "Morton Salt",
+    role: "Product Designer",
+    period: "Feb 2026",
+    description: "Full website redesign, consumer product pages, B2B food service and manufacturing funnels, animated mascot system",
+    color: "#0034BA",
+    caseStudy: {
+      title: "Morton Salt",
+      subtitle: "Website Redesign, Cerebral",
+      roleDisplay: "Product Designer",
+      timeline: "February 2026",
+      narrative: "Full redesign of mortonssalt.com at Cerebral, covering seven distinct page templates across consumer and B2B audiences. Built a rigged Figma character system for the Morton Girl mascot with Smart Animate prototyping between three distinct poses.",
+    },
   },
   {
     id: "13",

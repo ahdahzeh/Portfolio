@@ -1,10 +1,21 @@
 'use client';
 
 import Image from 'next/image';
+import { useState } from 'react';
 import { personalInfo } from '@/data/portfolio';
 import VideoWithFallback from './VideoWithFallback';
 
 export default function Contact() {
+  const [btnOffset, setBtnOffset] = useState({ x: 0, y: 0 });
+
+  const handleBtnMouseMove = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    const cx = rect.left + rect.width / 2;
+    const cy = rect.top + rect.height / 2;
+    setBtnOffset({ x: (e.clientX - cx) * 0.3, y: (e.clientY - cy) * 0.3 });
+  };
+
+  const handleBtnMouseLeave = () => setBtnOffset({ x: 0, y: 0 });
   const videoUrl = personalInfo.contactVideoUrl;
 
   return (
@@ -21,7 +32,10 @@ export default function Contact() {
             <div className="flex flex-wrap items-center gap-0">
               <a
                 href={`mailto:${personalInfo.email.replace(/^mailto:/i, '')}?subject=Hey!%20👋`}
-                className="flex items-center justify-center gap-2 px-8 h-[88px] w-[283px] bg-[#006eff] rounded-[20px] hover:bg-[#0060d9] transition-colors font-medium text-white"
+                className="flex items-center justify-center gap-2 px-8 h-[88px] w-[283px] bg-[#006eff] rounded-[20px] hover:bg-[#0060d9] font-medium text-white"
+                onMouseMove={handleBtnMouseMove}
+                onMouseLeave={handleBtnMouseLeave}
+                style={{ transform: `translate(${btnOffset.x}px, ${btnOffset.y}px)`, transition: 'transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), background-color 0.2s' }}
               >
                 <span>Get In Touch</span>
                 <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">

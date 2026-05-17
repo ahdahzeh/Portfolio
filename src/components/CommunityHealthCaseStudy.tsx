@@ -53,8 +53,21 @@ function ChtSolutionBrowserVideo({
         aria-label={label}
         onError={() => setDecodeError(true)}
       >
-        {srcMp4 != null && srcMp4 !== '' ? <source src={srcMp4} type="video/mp4" /> : null}
-        <source src={src} type="video/quicktime" />
+        {(() => {
+          const mp4 =
+            srcMp4 != null && srcMp4 !== ''
+              ? srcMp4
+              : /\.mp4$/i.test(src)
+                ? src
+                : null;
+          const hasMov = /\.mov$/i.test(src);
+          return (
+            <>
+              {mp4 != null ? <source src={mp4} type="video/mp4" /> : null}
+              {hasMov ? <source src={src} type="video/quicktime" /> : null}
+            </>
+          );
+        })()}
         Your browser does not support the video tag.
       </video>
     </div>
@@ -286,7 +299,6 @@ export default function CommunityHealthCaseStudy({
               {browserFrameVideo != null ? (
                 <div className="cht-browser-content cht-browser-content-video relative">
                   <video
-                    src={browserFrameVideo}
                     autoPlay
                     playsInline
                     muted
@@ -295,6 +307,7 @@ export default function CommunityHealthCaseStudy({
                     className="absolute inset-0 w-full h-full object-cover object-top"
                     aria-label="CHT Platform site walkthrough"
                   >
+                    <source src={browserFrameVideo} type="video/mp4" />
                     Your browser does not support the video tag.
                   </video>
                 </div>

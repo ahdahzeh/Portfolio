@@ -92,6 +92,15 @@ nextjs-portal {
   background: #aaa;
 }
 
+/* Shimmer sweep */
+@keyframes shimmer-sweep {
+  0% { transform: translateX(-150%) skewX(-20deg); }
+  100% { transform: translateX(350%) skewX(-20deg); }
+}
+.animate-shimmer {
+  animation: shimmer-sweep 2.8s ease-in-out infinite;
+}
+
 /* Animations */
 @keyframes wave {
   0%, 100% {

@@ -5,6 +5,122 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { workHistory } from '@/data/portfolio';
 
+function PonderingPoseCard() {
+  return (
+    <div style={{ position: 'relative', width: '100%', height: '100%' }}>
+      <div style={{ position: 'absolute', top: '31.72%', right: '12.35%', bottom: '5.16%', left: '23.07%' }}>
+        <img src="/images/work/morton-salt/girl/ponder-body.svg" alt="" style={{ width: '100%', height: '100%', display: 'block' }} />
+      </div>
+      <div style={{ position: 'absolute', left: '8.1%', top: '4.25%', width: '74.76%', height: '43.31%' }}>
+        <div style={{ position: 'absolute', inset: 0, transform: 'scaleX(-1)' }}>
+          <div style={{ position: 'absolute', top: '3.55%', right: '30.29%', bottom: '54.12%', left: '31.4%' }}>
+            <div style={{ width: '100%', height: '100%', transform: 'scaleX(-1)' }}>
+              <img src="/images/work/morton-salt/girl/ponder-head.svg" alt="" style={{ width: '100%', height: '100%', display: 'block' }} />
+            </div>
+          </div>
+          <div style={{ position: 'absolute', top: '34.44%', right: '24.02%', bottom: '12.89%', left: '24.97%' }}>
+            <div style={{ width: '100%', height: '100%', transform: 'scaleX(-1)' }}>
+              <img src="/images/work/morton-salt/girl/ponder-arms.svg" alt="" style={{ width: '100%', height: '100%', display: 'block' }} />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function BinocularsPoseCard() {
+  return (
+    <div style={{ position: 'relative', width: '100%', height: '100%' }}>
+      <div style={{ position: 'absolute', top: '15.68%', right: '32.41%', bottom: '70.9%', left: '45.94%' }}>
+        <img src="/images/work/morton-salt/girl/search-backarm.svg" alt="" style={{ width: '100%', height: '100%', display: 'block' }} />
+      </div>
+      <div style={{ position: 'absolute', top: '21.44%', right: '12.35%', bottom: '5.16%', left: '23.07%' }}>
+        <img src="/images/work/morton-salt/girl/search-body.svg" alt="" style={{ width: '100%', height: '100%', display: 'block' }} />
+      </div>
+      <div style={{ position: 'absolute', top: '5.8%', right: '42.31%', bottom: '75.94%', left: '29.23%' }}>
+        <img src="/images/work/morton-salt/girl/search-head.svg" alt="" style={{ width: '100%', height: '100%', display: 'block' }} />
+      </div>
+      <div style={{ position: 'absolute', top: '14.49%', right: '28.73%', bottom: '79.78%', left: '46.05%' }}>
+        <img src="/images/work/morton-salt/girl/search-binoculars.svg" alt="" style={{ width: '100%', height: '100%', display: 'block' }} />
+      </div>
+      <div style={{ position: 'absolute', top: '14.31%', right: '44.67%', bottom: '77.51%', left: '49.61%' }}>
+        <img src="/images/work/morton-salt/girl/search-hand.svg" alt="" style={{ width: '100%', height: '100%', display: 'block' }} />
+      </div>
+      <div style={{ position: 'absolute', top: '21.16%', right: '45.89%', bottom: '65.09%', left: '28.56%' }}>
+        <img src="/images/work/morton-salt/girl/search-frontarm.svg" alt="" style={{ width: '100%', height: '100%', display: 'block' }} />
+      </div>
+    </div>
+  );
+}
+
+function ReadingPoseCard() {
+  return (
+    <div style={{ position: 'relative', width: '100%', height: '100%' }}>
+      <div style={{ position: 'absolute', top: '36.01%', right: '-6.05%', bottom: '-23.69%', left: '16.35%' }}>
+        <img src="/images/work/morton-salt/girl/reading-body.svg" alt="" style={{ width: '100%', height: '100%', display: 'block' }} />
+      </div>
+      <div style={{ position: 'absolute', top: '21.85%', right: '13.16%', bottom: '47.83%', left: '13.92%' }}>
+        <img src="/images/work/morton-salt/girl/reading-book1.svg" alt="" style={{ width: '100%', height: '100%', display: 'block' }} />
+      </div>
+      <div style={{ position: 'absolute', top: '23.63%', right: '21.78%', bottom: '49.05%', left: '15.6%' }}>
+        <img src="/images/work/morton-salt/girl/reading-book2.svg" alt="" style={{ width: '100%', height: '100%', display: 'block' }} />
+      </div>
+      <div style={{ position: 'absolute', top: '23.37%', right: '21.34%', bottom: '48.83%', left: '15.29%' }}>
+        <img src="/images/work/morton-salt/girl/reading-book3.svg" alt="" style={{ width: '100%', height: '100%', display: 'block' }} />
+      </div>
+      <div style={{ position: 'absolute', top: '0%', right: '32.15%', bottom: '74.53%', left: '28.06%' }}>
+        <img src="/images/work/morton-salt/girl/reading-head.svg" alt="" style={{ width: '100%', height: '100%', display: 'block' }} />
+      </div>
+    </div>
+  );
+}
+
+function MortonGirlCardCycler() {
+  const [active, setActive] = useState(0);
+
+  useEffect(() => {
+    const id = setInterval(() => setActive(prev => (prev + 1) % 3), 2500);
+    return () => clearInterval(id);
+  }, []);
+
+  const poses = [
+    <PonderingPoseCard key="ponder" />,
+    <BinocularsPoseCard key="bino" />,
+    <ReadingPoseCard key="reading" />,
+  ];
+
+  return (
+    <div className="relative w-full h-full overflow-hidden" style={{ background: '#0034BA' }}>
+      {/* Scale up 1.4× anchored to top-center so we see waist-up only */}
+      <div style={{
+        position: 'absolute',
+        width: 280,
+        height: 420,
+        left: '50%',
+        top: 0,
+        transform: 'translateX(-50%) scale(1.4)',
+        transformOrigin: 'top center',
+      }}>
+        {poses.map((pose, i) => (
+          <div
+            key={i}
+            style={{
+              position: 'absolute',
+              inset: 0,
+              opacity: i === active ? 1 : 0,
+              transition: 'opacity 0.7s ease-in-out',
+              pointerEvents: i === active ? 'auto' : 'none',
+            }}
+          >
+            {pose}
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 function CoverVideo({ src, alt, poster }: { src: string; alt: string; poster?: string }) {
   const videoRef = useRef<HTMLVideoElement>(null);
 
@@ -49,6 +165,8 @@ function WorkCardImage({ item, priority = false }: { item: (typeof workHistory)[
   }, [images.length]);
 
   const coverImages = item.coverImages;
+
+  if (item.slug === 'morton-salt') return <MortonGirlCardCycler />;
 
   if (item.coverVideo) {
     return <CoverVideo src={item.coverVideo} alt={item.company} poster={item.image} />;

@@ -12,6 +12,7 @@ const navLinks = [
   ...(socialLinks.linkedin ? [{ href: socialLinks.linkedin, label: 'LinkedIn', external: true }] : []),
   ...(socialLinks.instagram ? [{ href: socialLinks.instagram, label: 'Instagram', external: true }] : []),
   ...(socialLinks.tiktok ? [{ href: socialLinks.tiktok, label: 'TikTok', external: true }] : []),
+  { href: '/Adaze_Oviawe_Resume.pdf', label: 'Resume', external: true },
 ];
 
 export default function Header() {
@@ -69,13 +70,14 @@ export default function Header() {
       .catch(() => setTemperature(null));
   }, [mounted]);
 
-  const linkClass = 'text-base font-normal text-black dark:text-white hover:text-gray-500 dark:hover:text-gray-400 transition-colors';
+  const linkClass = 'text-base font-normal text-black dark:text-white relative after:absolute after:-bottom-0.5 after:left-0 after:h-px after:w-0 after:bg-current after:transition-all after:duration-300 hover:after:w-full transition-colors';
 
   return (
     <>
       {showAvailableBanner && (
-        <div className="sticky top-0 z-50 w-full py-1.5 text-center text-sm bg-emerald-500 text-white dark:bg-emerald-600">
-          <span>Available for work</span>
+        <div className="sticky top-0 z-50 w-full py-1.5 text-center text-sm bg-emerald-500 text-white dark:bg-emerald-600 overflow-hidden relative">
+          <span className="relative z-10">Available for work</span>
+          <span className="absolute inset-y-0 w-1/4 bg-white/20 animate-shimmer pointer-events-none" aria-hidden />
         </div>
       )}
       <header className={`sticky z-40 w-full bg-white dark:bg-black border-b border-gray-200 dark:border-gray-800 ${showAvailableBanner ? 'top-8' : 'top-0'}`}>

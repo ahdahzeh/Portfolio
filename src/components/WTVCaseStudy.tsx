@@ -1,9 +1,15 @@
 'use client';
 
 import { useState, useRef, useEffect } from 'react';
+import dynamic from 'next/dynamic';
 import BackToHomeButton from '@/components/BackToHomeButton';
 import ScrollProgressBar from '@/components/ScrollProgressBar';
 import SectionNav, { type SectionNavItem } from '@/components/SectionNav';
+
+const WTVPlayer = dynamic(
+  () => import('@/remotion/WTVPlayer').then((m) => m.WTVPlayer),
+  { ssr: false, loading: () => <div className="w-full aspect-[9/19.5] bg-stone-100 rounded-[2rem] animate-pulse" /> }
+);
 
 // WTV brand palette — mirrors WTVTheme.swift
 const WTV = {
@@ -122,6 +128,19 @@ function PhoneFrameVideo({
   );
 }
 
+// Phone frame wrapping a Remotion composition
+function RemotionFrame({ scene }: { scene: string }) {
+  return (
+    <div
+      className="relative w-full aspect-[9/19.5] rounded-[2rem] overflow-hidden shadow-xl"
+      style={{ border: '6px solid #1A1A1A', background: '#FAFAF8' }}
+    >
+      {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
+      <WTVPlayer scene={scene as any} />
+    </div>
+  );
+}
+
 // Subway line badge
 function SubwayBadge({ line }: { line: string }) {
   const colorMap: Record<string, string> = {
@@ -223,20 +242,17 @@ export default function WTVCaseStudy({
               {
                 title: 'Block Report',
                 desc: 'A curated intelligence card for your block: vibe summary, events, food grades, transit status, and street conditions. Personalized to your location and interests.',
-                src:   '/videos/work/wtv/block-report.mp4',
-                label: 'WTV Block Report',
+                scene: 'block-report',
               },
               {
                 title: 'Live Feed',
                 desc:  'A swipeable home feed of spots, eats, events, and transit — filtered by your neighborhood and categorized with haptic-driven card interactions.',
-                src:   '/videos/work/wtv/feed.mp4',
-                label: 'WTV Feed',
+                scene: 'live-feed',
               },
               {
                 title: 'Map Layer',
                 desc:  'An interactive SwiftUI Map with a sliding bottom tray: spot, food, event, and transit carousels with live annotations and direct detail sheets.',
-                src:   '/videos/work/wtv/map.mp4',
-                label: 'WTV Map',
+                scene: 'map-layer',
               },
             ].map((card) => (
               <div
@@ -247,7 +263,7 @@ export default function WTVCaseStudy({
                 <p className="text-gray-500 dark:text-gray-400 leading-relaxed mb-4 text-sm">{card.desc}</p>
                 <div className="flex justify-center mt-4">
                   <div className="w-[160px]">
-                    <PhoneFrameVideo src={card.src} label={card.label} />
+                    <RemotionFrame scene={card.scene} />
                   </div>
                 </div>
               </div>
@@ -335,15 +351,15 @@ export default function WTVCaseStudy({
           <h3 className="text-xl font-semibold text-black dark:text-white mb-6">Card System</h3>
           <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
             {[
-              { src: '/videos/work/wtv/card-spot.mp4',    label: 'Spot Card',    desc: 'Rating, category badge, vibe tags' },
-              { src: '/videos/work/wtv/card-food.mp4',    label: 'Food Card',    desc: 'DOH grade, cuisine, neighborhood' },
-              { src: '/videos/work/wtv/card-event.mp4',   label: 'Event Card',   desc: 'Type, time, price, location' },
-              { src: '/videos/work/wtv/card-transit.mp4', label: 'Transit Card', desc: 'Lines, crowding level, walk time' },
+              { scene: 'spot-card',    label: 'Spot Card',    desc: 'Rating, category badge, vibe tags' },
+              { scene: 'food-card',    label: 'Food Card',    desc: 'DOH grade, cuisine, neighborhood' },
+              { scene: 'event-card',   label: 'Event Card',   desc: 'Type, time, price, location' },
+              { scene: 'transit-card', label: 'Transit Card', desc: 'Lines, crowding level, walk time' },
             ].map((card) => (
               <div key={card.label} className="text-center">
                 <div className="flex justify-center mb-3">
                   <div className="w-[160px]">
-                    <PhoneFrameVideo src={card.src} label={card.label} />
+                    <RemotionFrame scene={card.scene} />
                   </div>
                 </div>
                 <p className="text-sm font-semibold text-black dark:text-white">{card.label}</p>
@@ -363,7 +379,7 @@ export default function WTVCaseStudy({
           </p>
 
           {/* Feed */}
-          <div className="grid md:grid-cols-[1fr_260px] gap-8 md:gap-16 items-center mb-16">
+          <div className="grid md:grid-cols-[1fr_180px] gap-8 md:gap-16 items-center mb-16">
             <div className="max-w-lg">
               <p className="text-sm font-mono uppercase tracking-wider mb-3" style={{ color: WTV.accent }}>Tab 01</p>
               <h3 className="text-xl font-semibold text-black dark:text-white mb-6">Home Feed</h3>
@@ -387,13 +403,13 @@ export default function WTVCaseStudy({
               </ul>
             </div>
             <div>
-              <PhoneFrameVideo src="/videos/work/wtv/feed.mp4" label="WTV Home Feed" cropScreenRecording />
+              <RemotionFrame scene="live-feed" />
               <p className="text-xs text-gray-500 dark:text-gray-400 text-center mt-3">Home Feed — Personalized, Layered</p>
             </div>
           </div>
 
           {/* Map */}
-          <div className="grid md:grid-cols-[1fr_260px] gap-8 md:gap-16 items-center mb-16">
+          <div className="grid md:grid-cols-[1fr_180px] gap-8 md:gap-16 items-center mb-16">
             <div className="max-w-lg">
               <p className="text-sm font-mono uppercase tracking-wider mb-3" style={{ color: WTV.accent }}>Tab 02</p>
               <h3 className="text-xl font-semibold text-black dark:text-white mb-6">Map + Tray</h3>
@@ -417,13 +433,13 @@ export default function WTVCaseStudy({
               </ul>
             </div>
             <div>
-              <PhoneFrameVideo src="/videos/work/wtv/map.mp4" label="WTV Map with Tray" cropScreenRecording />
+              <RemotionFrame scene="map-layer" />
               <p className="text-xs text-gray-500 dark:text-gray-400 text-center mt-3">Map — Tray, Annotations, Carousels</p>
             </div>
           </div>
 
           {/* Block Report */}
-          <div className="grid md:grid-cols-[1fr_260px] gap-8 md:gap-16 items-center mb-16">
+          <div className="grid md:grid-cols-[1fr_180px] gap-8 md:gap-16 items-center mb-16">
             <div className="max-w-lg">
               <p className="text-sm font-mono uppercase tracking-wider mb-3" style={{ color: WTV.accent }}>Tab 03</p>
               <h3 className="text-xl font-semibold text-black dark:text-white mb-6">Block Report</h3>
@@ -447,13 +463,13 @@ export default function WTVCaseStudy({
               </ul>
             </div>
             <div>
-              <PhoneFrameVideo src="/videos/work/wtv/block-report.mp4" label="WTV Block Report" cropScreenRecording />
+              <RemotionFrame scene="block-report" />
               <p className="text-xs text-gray-500 dark:text-gray-400 text-center mt-3">Block Report — Personalized, Contextual</p>
             </div>
           </div>
 
           {/* Search */}
-          <div className="grid md:grid-cols-[1fr_260px] gap-8 md:gap-16 items-center">
+          <div className="grid md:grid-cols-[1fr_180px] gap-8 md:gap-16 items-center">
             <div className="max-w-lg">
               <p className="text-sm font-mono uppercase tracking-wider mb-3" style={{ color: WTV.accent }}>Tab 04</p>
               <h3 className="text-xl font-semibold text-black dark:text-white mb-6">Search</h3>
@@ -473,7 +489,7 @@ export default function WTVCaseStudy({
               </ul>
             </div>
             <div>
-              <PhoneFrameVideo src="/videos/work/wtv/search.mp4" label="WTV Search" cropScreenRecording />
+              <RemotionFrame scene="search" />
               <p className="text-xs text-gray-500 dark:text-gray-400 text-center mt-3">Search — Intent-Driven, Cross-Entity</p>
             </div>
           </div>
