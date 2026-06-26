@@ -128,7 +128,7 @@ export default function Hero({ animationDelayMs = 0 }: HeroProps) {
                 <span aria-hidden className="absolute left-0 right-0 bottom-0 h-[60%] bg-yellow-200 dark:bg-yellow-300/40 -z-0 origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-[500ms] ease-[cubic-bezier(0.65,0,0.35,1)]" />
                 <span className="relative z-10">Omnicom</span>
               </a>
-              . Now Cerebral, my studio in New York.
+              . Now a product designer at <span className="font-medium tracking-tight">J.P. Morgan</span>, plus Cerebral, my studio in New York.
             </p>
           </div>
           {/* Right - Profile image */}

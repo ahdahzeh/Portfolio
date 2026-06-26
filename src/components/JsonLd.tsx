@@ -24,12 +24,12 @@ export function JsonLdPerson() {
     alternateName: 'ahdahzeh',
     url: SITE_URL,
     image: `${SITE_URL}/images/profile.png`,
-    jobTitle: 'Design Engineer',
+    jobTitle: 'Product Designer',
     description:
-      'Designer and engineer building products in industries where the interface has consequences. Healthcare, fintech, ADHD productivity, luxury resale.',
+      'Product designer at J.P. Morgan and founder of Cerebral, building products in industries where the interface has consequences: healthcare, fintech, ADHD productivity, luxury resale.',
     worksFor: {
       '@type': 'Organization',
-      name: 'Cerebral',
+      name: 'J.P. Morgan',
       address: {
         '@type': 'PostalAddress',
         addressLocality: 'New York',

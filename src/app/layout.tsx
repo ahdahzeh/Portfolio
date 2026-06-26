@@ -12,11 +12,11 @@ const baseUrl =
 export const metadata: Metadata = {
   metadataBase: new URL(baseUrl),
   title: {
-    default: 'Adaze Oviawe — Designer and engineer at Cerebral, NYC',
-    template: '%s — Adaze Oviawe',
+    default: 'Adaze Oviawe - Product Designer at J.P. Morgan, NYC',
+    template: '%s - Adaze Oviawe',
   },
   description:
-    'I design and build products in industries where the interface has consequences. Healthcare, fintech, ADHD productivity, luxury resale. Cerebral, NYC.',
+    'I design and build products in industries where the interface has consequences. Healthcare, fintech, ADHD productivity, luxury resale. Product designer at J.P. Morgan, plus Cerebral, NYC.',
   keywords: [
     'Adaze Oviawe',
     'ahdahzeh',
@@ -24,6 +24,8 @@ export const metadata: Metadata = {
     'product designer',
     'NYC designer',
     'Cerebral studio',
+    'J.P. Morgan',
+    'JPMorgan',
     'LOCKDIN',
     'Scour',
     'iOS designer',
@@ -41,7 +43,7 @@ export const metadata: Metadata = {
     canonical: 'https://ahdahzeh.com',
   },
   openGraph: {
-    title: 'Adaze Oviawe — Designer and engineer at Cerebral, NYC',
+    title: 'Adaze Oviawe - Product Designer at J.P. Morgan, NYC',
     description:
       'I design and build products in industries where the interface has consequences. Healthcare, fintech, ADHD productivity, luxury resale.',
     url: 'https://ahdahzeh.com',
@@ -53,13 +55,13 @@ export const metadata: Metadata = {
         url: '/og-image.png',
         width: 1200,
         height: 630,
-        alt: 'Adaze Oviawe — Designer and engineer at Cerebral, NYC. Past: Amazon, Block Equity Group, Omnicom.',
+        alt: 'Adaze Oviawe - Product Designer at J.P. Morgan and founder of Cerebral, NYC. Past: Amazon, Block Equity Group, Omnicom.',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Adaze Oviawe — Designer and engineer at Cerebral, NYC',
+    title: 'Adaze Oviawe - Product Designer at J.P. Morgan, NYC',
     description:
       'I design and build products in industries where the interface has consequences. Healthcare, fintech, ADHD productivity, luxury resale.',
     creator: '@ahdahzeh',

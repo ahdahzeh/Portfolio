@@ -7,9 +7,9 @@ export const personalInfo = {
   name: "Adaze Oviawe",
   pronunciation: "[ah-dah-zeh oh-vee-ah-weh]",
   location: "New York, NY",
-  title: "UX Designer",
+  title: "Product Designer",
   email: "ahdahzeh@gmail.com",
-  bio: `I have over 6 years of experience solving problems, designing experiences, and building digital products. I've worked with both startups and enterprise teams at companies like Amazon, Block Equity Group, and Omnicom, delivering user-centered solutions that drive measurable results.`,
+  bio: `I have over 6 years of experience solving problems, designing experiences, and building digital products. I'm currently a product designer at J.P. Morgan and run Cerebral, my studio in New York. I've worked across startups and enterprise teams at Amazon, Block Equity Group, and Omnicom, delivering user-centered solutions that drive measurable results.`,
   bioCompanies: [
     { name: "Amazon", url: "https://www.amazon.com" },
     { name: "Block Equity Group", url: "https://www.blockequitygr.com" },
