@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { DM_Sans } from 'next/font/google';
+import ReducedMotionVideos from '@/components/ReducedMotionVideos';
 import './globals.css';
 
 const dmSans = DM_Sans({ subsets: ['latin'], variable: '--font-dm-sans' });
@@ -98,8 +99,15 @@ export default function RootLayout({
             __html: `(function(){var t=localStorage.getItem('theme');if(t==='dark'){document.documentElement.classList.add('dark');document.documentElement.style.colorScheme='dark';}else{document.documentElement.classList.remove('dark');document.documentElement.style.colorScheme='light';if(!t)localStorage.setItem('theme','light');}})();`,
           }}
         />
+        {/* Without JavaScript, RevealOnScroll never runs: show its content. */}
+        <noscript
+          dangerouslySetInnerHTML={{
+            __html: '<style>[data-scroll-reveal]{opacity:1;transform:none}</style>',
+          }}
+        />
       </head>
       <body className={`${dmSans.variable} antialiased`} suppressHydrationWarning>
+        <ReducedMotionVideos />
         {children}
       </body>
     </html>

@@ -260,6 +260,7 @@ export default function WorkCarousel() {
   useEffect(() => {
     const el = scrollRef.current;
     if (!el) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
     let rafId: number;
     const tick = () => {
       if (!isPaused && el) {

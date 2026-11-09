@@ -240,6 +240,29 @@ nextjs-portal {
   transform: translateY(0);
 }
 
+/* Reduced motion: no animations, transitions or smooth scrolling, and
+   reveal targets show at once. */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    animation-delay: 0ms !important;
+    transition-duration: 0.01ms !important;
+    transition-delay: 0ms !important;
+  }
+
+  [data-scroll-reveal] {
+    opacity: 1;
+    transform: none;
+  }
+}
+
 
 
 @keyframes fadeIn {
