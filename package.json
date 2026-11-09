@@ -18,9 +18,9 @@
   "dependencies": {
     "@mdx-js/loader": "^3.1.1",
     "@mdx-js/react": "^3.1.1",
-    "@next/mdx": "^16.4.4",
+    "@next/mdx": "^16.4.6",
     "@remotion/player": "^4.0.445",
-    "next": "^16.1.6",
+    "next": "^16.4.6",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "remotion": "^4.0.445"
