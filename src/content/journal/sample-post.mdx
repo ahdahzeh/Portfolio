@@ -1,0 +1,36 @@
+export const metadata = {
+  title: 'sample post title,\nwritten on two lines.',
+  dek: 'Draft template. Shows every block a post can use. Delete or rename this file once you have a real post.',
+  date: '2026-11-03',
+  excerpt: 'A template post that shows the journal blocks: full-width looks, photo rows, inline product links, and a shop-the-post strip.',
+  cover: 'https://cdn.shopify.com/s/files/1/0302/7829/files/AimeLeonDore6ada5e56bc70796ada5e56bc8d0.583670466ada5e56bc8d0.jpg',
+  picks: ['renee-renelle-leather-bomber', 'cole-buxton-ruched-loafer', 'spencer-badu-beanie', 'balenciaga-venom-boot'],
+  draft: true,
+}
+
+This is placeholder copy. Write paragraphs as plain text, and link products inline the way Tuba does: a [brown flight cap](https://www.drakes.com/products/cableami-brown-wool-flight-cap) or a pair of [woven loafers](https://kith.com/products/fp122611303350-259). Links open the store in a new tab.
+
+## Option 1: a subhead
+
+A second paragraph under a subhead. `##` makes a subhead, a blank line starts a new paragraph.
+
+<Row
+  images={[
+    'https://cdn.shopify.com/s/files/1/0094/2252/files/26327513_GW_1.jpg',
+    'https://cdn.shopify.com/s/files/1/0302/7829/files/AimeLeonDore6adf6e48c757636adf6e48c7747.287770426adf6e48c7747.jpg',
+  ]}
+  caption="Row: two or three photos side by side"
+/>
+
+> A pull quote, for the line you want people to screenshot.
+
+<Look
+  src="https://cdn.shopify.com/s/files/1/1218/8970/files/MRF26CS016_ROUGHRIDERHOODIE_NAVY_FRONT_3354_PreOct23.jpg"
+  caption="Look: one full-width photo with a caption"
+/>
+
+## Option 2: picks inside the post
+
+<Picks title="In this look" ids={['paf-m66-short-parka', 'drkshdw-creatch-cargo', 'sacai-carhartt-blouson', 'spc-core-hoodie']} />
+
+The `picks` list in the metadata at the top also adds a "Shop the post" strip at the end automatically.
