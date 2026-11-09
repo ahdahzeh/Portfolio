@@ -6,11 +6,13 @@ import ScrollProgressBar from '@/components/ScrollProgressBar';
 import SectionNav from '@/components/SectionNav';
 import CursorDot from '@/components/CursorDot';
 import RevealOnScroll from '@/components/RevealOnScroll';
+import { currentPicks } from '@/data/picks';
 import { JsonLdPerson, JsonLdWebSite, JsonLdWorkList } from '@/components/JsonLd';
 
 const WorkCarousel = dynamic(() => import('@/components/WorkCarousel'), { ssr: true });
 const ThoughtsSection = dynamic(() => import('@/components/ThoughtsSection'), { ssr: true });
 const WritingSection = dynamic(() => import('@/components/WritingSection'), { ssr: true });
+const PicksIndex = dynamic(() => import('@/components/picks/PicksIndex'), { ssr: true });
 const Archive = dynamic(() => import('@/components/Archive'), { ssr: true });
 const Contact = dynamic(() => import('@/components/Contact'), { ssr: true });
 
@@ -19,6 +21,7 @@ const HOME_SECTIONS = [
   { id: 'past-work', label: 'Past Work' },
   { id: 'thoughts-notions', label: 'Thoughts & Notions' },
   { id: 'design-videos', label: 'Design Videos' },
+  { id: 'current-favs', label: 'Current Favs' },
   { id: 'archive', label: 'Archive' },
   { id: 'contact', label: 'Talk to Me' },
 ];
@@ -56,6 +59,11 @@ export default function Home() {
         <section id="design-videos" className="scroll-mt-24">
           <RevealOnScroll>
             <WritingSection />
+          </RevealOnScroll>
+        </section>
+        <section id="current-favs" className="scroll-mt-24">
+          <RevealOnScroll>
+            <PicksIndex week={currentPicks} />
           </RevealOnScroll>
         </section>
         <section id="archive" className="scroll-mt-24">
