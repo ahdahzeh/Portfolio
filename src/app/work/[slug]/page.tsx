@@ -21,8 +21,12 @@ import BackToHomeButton from '@/components/BackToHomeButton';
 import ScrollProgressBar from '@/components/ScrollProgressBar';
 import SectionNav from '@/components/SectionNav';
 import { JsonLdCreativeWork, JsonLdBreadcrumbs } from '@/components/JsonLd';
+import { workImage, DEFAULT_OG_IMAGE } from '@/lib/work-image';
 
 const SITE_URL = 'https://ahdahzeh.com';
+
+// Only the slugs in workHistory exist; anything else is a real 404.
+export const dynamicParams = false;
 
 export async function generateStaticParams() {
   return workHistory.map((w) => ({ slug: w.slug }));
@@ -46,16 +50,8 @@ export async function generateMetadata({
     item.description ??
     `${item.role} at ${item.company} (${item.period}).`;
 
-  // Pick best image: case-study cover image -> coverVideo poster -> coverImages.desktop
-  let image = item.image;
-  if (!image && item.coverVideo) {
-    image = item.coverVideo
-      .replace('/videos/', '/images/')
-      .replace(/\.mp4$/, '-poster.jpg');
-  }
-  if (!image && item.coverImages?.desktop) {
-    image = item.coverImages.desktop;
-  }
+  // Pick best real image (see workImage), else the site's default OG image
+  const image = workImage(item) ?? DEFAULT_OG_IMAGE;
 
   const ogTitle = `${title} — Adaze Oviawe`;
   const url = `${SITE_URL}/work/${slug}`;
@@ -70,15 +66,13 @@ export async function generateMetadata({
       url,
       type: 'article',
       siteName: 'Adaze Oviawe',
-      images: image
-        ? [{ url: image, alt: `${title} — ${item.role}` }]
-        : undefined,
+      images: [{ url: image, alt: `${title} — ${item.role}` }],
     },
     twitter: {
       card: 'summary_large_image',
       title: ogTitle,
       description,
-      images: image ? [image] : undefined,
+      images: [image],
     },
   };
 }

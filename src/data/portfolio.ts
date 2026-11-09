@@ -43,6 +43,8 @@ export interface WorkItem {
   coverStyle?: boolean;
   coverVideo?: string;
   coverImages?: { desktop: string; mobile: string };
+  /** Link preview image when image, coverVideo and coverImages don't give one */
+  ogImage?: string;
   /** When true, shows a WIP (work in progress) page instead of the full case study */
   wip?: boolean;
   /** When true, hides from the work carousel and appears only in the archive */
@@ -148,6 +150,7 @@ export const workHistory: WorkItem[] = [
     period: "2026",
     description: "NYC block intelligence — native iOS app for hyperlocal city data",
     coverVideo: "/videos/work/wtv/hero.mp4",
+    ogImage: "/videos/work/wtv/feed.png",
     color: "#E85D3A",
     archived: true,
     caseStudy: {
@@ -401,6 +404,7 @@ The work ran from wireframes in January 2026 to a first coded release in the spr
     role: "Product Designer",
     period: "Feb 2026",
     description: "Full website redesign, consumer product pages, B2B food service and manufacturing funnels, animated mascot system",
+    ogImage: "/images/work/morton-salt.png",
     color: "#0034BA",
     caseStudy: {
       title: "Morton Salt",

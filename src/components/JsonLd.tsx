@@ -1,4 +1,5 @@
 import { workHistory, socialLinks, type WorkItem } from '@/data/portfolio';
+import { workImage } from '@/lib/work-image';
 
 const SITE_URL = 'https://ahdahzeh.com';
 
@@ -93,28 +94,13 @@ export function JsonLdWebSite() {
 }
 
 /**
- * Pick the best representative image for a work item. Falls back through
- * coverVideo poster -> image -> coverImages.desktop.
- */
-function pickImage(item: WorkItem): string | undefined {
-  if (item.image) return item.image;
-  if (item.coverVideo) {
-    return item.coverVideo
-      .replace('/videos/', '/images/')
-      .replace(/\.mp4$/, '-poster.jpg');
-  }
-  if (item.coverImages?.desktop) return item.coverImages.desktop;
-  return undefined;
-}
-
-/**
  * CreativeWork schema for an individual case study page. Tells search
  * engines this URL is a portfolio piece authored by Adaze, with image and
  * publication date.
  */
 export function JsonLdCreativeWork({ item }: { item: WorkItem }) {
   const study = item.caseStudy;
-  const image = pickImage(item);
+  const image = workImage(item);
   const url = `${SITE_URL}/work/${item.slug}`;
   const description =
     study?.subtitle ??
