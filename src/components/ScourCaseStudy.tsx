@@ -131,7 +131,7 @@ export default function ScourCaseStudy({
           </h2>
           <div className="rounded-2xl border border-black/10 dark:border-white/10 p-6 md:p-8 mb-10">
             <p className="text-lg text-black/80 dark:text-white/80 leading-relaxed">
-              Scour is a mobile-first shopping agent for the secondary luxury and streetwear market, currently live as a web app, architected from day one for native iOS. It searches across 30+ resale platforms in real time, normalizes product data across sources, and surfaces the best deals using a proprietary scoring system. I designed and built the entire product solo: UX, visual system, frontend, backend, data infrastructure, and AI integration.
+              Scour is a mobile-first shopping agent for the secondary luxury and streetwear market, live on the web and as a native SwiftUI iOS app in public TestFlight beta. It searches across 30+ resale platforms in real time, normalizes product data across sources, and surfaces the best deals using a proprietary scoring system. I designed and built the entire product solo: UX, visual system, frontend, backend, data infrastructure, and AI integration.
             </p>
           </div>
           <div className="grid md:grid-cols-2 gap-6 md:gap-8">
@@ -422,7 +422,16 @@ export default function ScourCaseStudy({
             Results
           </h2>
           <p className="text-gray-500 dark:text-gray-400 leading-relaxed max-w-3xl mb-12">
-            Live and deployed, currently web, native iOS via Capacitor is next. The numbers below reflect the current state of the product.
+            Live on the web, and the native SwiftUI iOS app is in a{' '}
+            <a
+              href="https://testflight.apple.com/join/dNvVgKV2"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-black dark:text-white underline underline-offset-2"
+            >
+              public TestFlight beta
+            </a>
+            . The numbers below reflect the current state of the product.
           </p>
           <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-6">
             {[
@@ -450,7 +459,7 @@ export default function ScourCaseStudy({
             {[
               { title: 'Frontend', items: 'Next.js, TypeScript, Tailwind CSS, Vercel AI SDK, Three.js' },
               { title: 'Backend & Data', items: 'Supabase, custom data pipeline, Claude API (AI search), Stripe' },
-              { title: 'Deployment', items: 'Vercel (hosting + edge functions), mobile-first web → native iOS via Capacitor' },
+              { title: 'Deployment', items: 'Vercel (hosting + edge functions), mobile-first web + native SwiftUI iOS app (TestFlight)' },
               { title: 'Design', items: 'Figma (explorations + system), Claude Code (rapid prototyping), HTML/CSS prototypes' },
             ].map((stack) => (
               <div key={stack.title} className="rounded-2xl border border-black/10 dark:border-white/10 p-6 md:p-8">
