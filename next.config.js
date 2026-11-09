@@ -14,6 +14,12 @@ const nextConfig = {
   // Journal posts live in src/content/journal/*.mdx and are imported by
   // src/app/journal/[slug]/page.tsx.
   pageExtensions: ['js', 'jsx', 'ts', 'tsx', 'md', 'mdx'],
+  // src/lib/work-image.ts checks public/ for a case study's preview image at
+  // build time. Without this the file tracer copies all of public/ (the
+  // videos, 360 MB) into the server function and Vercel refuses the deploy.
+  outputFileTracingExcludes: {
+    '*': ['./public/**/*'],
+  },
   images: {
     remotePatterns: [
       {
