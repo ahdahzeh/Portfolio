@@ -143,6 +143,7 @@ async function WorkContent({ params }: { params: Promise<{ slug: string }> }) {
           narrativeAfterCarousel={study.narrativePart2}
           launchedSiteNarrative={study.launchedSiteNarrative}
           launchedSiteVideoUrl={study.launchedSiteVideoUrl}
+          launchedSiteVideoPoster={study.launchedSiteVideoPoster}
         />
         <nav
           className="max-w-[1200px] mx-auto px-4 sm:px-6 md:px-8 mt-[10px] mb-[10px] pt-8 border-t border-gray-200 dark:border-gray-800 flex flex-wrap items-center justify-between gap-6"
@@ -186,6 +187,7 @@ async function WorkContent({ params }: { params: Promise<{ slug: string }> }) {
           videoUrl={study.videoUrl}
           problemSolutionVideoUrl={study.problemSolutionVideoUrl}
           mobileViewVideoUrl={study.mobileViewVideoUrl}
+          mobileViewVideoPoster={study.mobileViewVideoPoster}
         />
         <nav
           className="max-w-[1200px] mx-auto px-4 sm:px-6 md:px-8 mt-[10px] mb-[10px] pt-8 border-t border-gray-200 dark:border-gray-800 flex flex-wrap items-center justify-between gap-6"

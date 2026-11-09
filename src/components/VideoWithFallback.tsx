@@ -8,6 +8,8 @@ interface VideoWithFallbackProps {
   fallbackImageSrc: string;
   fallbackAlt: string;
   className?: string;
+  poster?: string;
+  preload?: 'auto' | 'metadata' | 'none';
 }
 
 export default function VideoWithFallback({
@@ -15,6 +17,8 @@ export default function VideoWithFallback({
   fallbackImageSrc,
   fallbackAlt,
   className = '',
+  poster,
+  preload = 'auto',
 }: VideoWithFallbackProps) {
   const [error, setError] = useState(false);
 
@@ -33,11 +37,12 @@ export default function VideoWithFallback({
   return (
     <video
       src={src}
+      poster={poster}
       autoPlay
       muted
       loop
       playsInline
-      preload="auto"
+      preload={preload}
       className={`box-content bg-black ${className}`}
       onError={() => setError(true)}
     >

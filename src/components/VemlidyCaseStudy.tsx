@@ -51,6 +51,7 @@ interface VemlidyCaseStudyProps {
   launchedSiteNarrative?: string;
   /** Optional video of the current site (Loom/YouTube/Vimeo embed URL or path to local video) */
   launchedSiteVideoUrl?: string;
+  launchedSiteVideoPoster?: string;
 }
 
 export default function VemlidyCaseStudy({
@@ -64,6 +65,7 @@ export default function VemlidyCaseStudy({
   narrativeAfterCarousel,
   launchedSiteNarrative,
   launchedSiteVideoUrl,
+  launchedSiteVideoPoster,
 }: VemlidyCaseStudyProps) {
   const keepVideoMuted = (e: React.SyntheticEvent<HTMLVideoElement>) => {
     const video = e.currentTarget;
@@ -139,11 +141,12 @@ export default function VemlidyCaseStudy({
                 ) : (
                   <video
                     src={launchedSiteVideoUrl}
+                    poster={launchedSiteVideoPoster}
                     autoPlay
                     muted
                     loop
                     playsInline
-                    preload="auto"
+                    preload="metadata"
                     onVolumeChange={keepVideoMuted}
                     className="absolute inset-0 w-full h-full object-contain"
                   >
@@ -213,36 +216,6 @@ export default function VemlidyCaseStudy({
             <p className="text-black dark:text-white leading-relaxed text-center mt-8 mx-auto" style={{ width: '774px', maxWidth: '100%' }}>
               {launchedSiteNarrative}
             </p>
-          )}
-          {launchedSiteVideoUrl && (
-            <div className="relative w-full aspect-video rounded-2xl overflow-hidden border border-gray-200 dark:border-gray-700 bg-black mt-8 max-w-4xl mx-auto">
-              {/loom\.com|youtube\.com|youtu\.be|vimeo\.com/.test(launchedSiteVideoUrl) ? (
-                <iframe
-                  src={
-                    launchedSiteVideoUrl.includes('/share/')
-                      ? launchedSiteVideoUrl.replace('/share/', '/embed/')
-                      : launchedSiteVideoUrl
-                  }
-                  title="Vemlidy — current site walkthrough"
-                  className="absolute inset-0 w-full h-full"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                />
-              ) : (
-                <video
-                  src={launchedSiteVideoUrl}
-                  autoPlay
-                  muted
-                  loop
-                  playsInline
-                  preload="auto"
-                  onVolumeChange={keepVideoMuted}
-                  className="absolute inset-0 w-full h-full object-contain"
-                >
-                  Your browser does not support the video tag.
-                </video>
-              )}
-            </div>
           )}
         </section>
       </div>

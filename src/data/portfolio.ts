@@ -66,6 +66,8 @@ export interface WorkItem {
     launchedSiteNarrative?: string;
     /** Optional video of the current site (Loom/YouTube/Vimeo URL or path to local video; Vemlidy case study) */
     launchedSiteVideoUrl?: string;
+    /** Poster frame for launchedSiteVideoUrl when it is a local file */
+    launchedSiteVideoPoster?: string;
     /** Optional images for the Launched Site carousel (when using generic work template) */
     launchedSiteImages?: { src: string; alt: string; caption?: string }[];
     images?: { src: string; alt: string; caption?: string }[];
@@ -74,6 +76,8 @@ export interface WorkItem {
     problemSolutionVideoUrl?: string;
     /** Optional video URL for WeChipn case study Mobile View section (file path or Loom/YouTube/Vimeo embed) */
     mobileViewVideoUrl?: string;
+    /** Poster frame for mobileViewVideoUrl when it is a local file */
+    mobileViewVideoPoster?: string;
     /** Optional sections for rich case studies (e.g. Amazon): title, content, and images per section */
     sections?: { title?: string; content?: string; images?: { src: string; alt: string; caption?: string }[] }[];
     /** Houzz-style meta block: Team, Tools, Year, Role */
@@ -520,7 +524,8 @@ Healthcare UX is a unique challenge. You're designing for patients who may be de
 
 The work focused on accessibility and health literacy, ensuring patients from all backgrounds could navigate the platform with ease.`,
       launchedSiteNarrative: `The site launched with separate experiences for healthcare providers (HCP) and patients. On the HCP side, I designed the efficacy and safety experience—pivotal and long-term data, trials, and guidelines—so clinicians could quickly find what they need. My contribution was end-to-end UX from wireframes through launch: defining structure, content hierarchy, and interactions while working with medical, legal, and regulatory to keep everything compliant and on-brand. The live site reflects that—one experience for the moments that matter to patients, and one for the evidence that matters to clinicians.`,
-      launchedSiteVideoUrl: "/videos/work/vemlidy/Vemlidy%20crop.mp4",
+      launchedSiteVideoUrl: "/videos/work/vemlidy/vemlidy-site.mp4",
+      launchedSiteVideoPoster: "/images/work/vemlidy/vemlidy-site-poster.jpg",
     }
   },
   {
@@ -617,7 +622,8 @@ The entire webapp is responsive and the mobile optimization was done to keep the
 
 Key takeaways: If more time was allotted for the project I would have loved to continue testing even after the project was completed to see how well users are engaging with the app. Working on the code side by side with the engineer made for a more seamless and efficient process—I knew the proper way all my designs should be translated.`,
       problemSolutionVideoUrl: "/videos/work/wechipn/problem-solution-1.mp4",
-      mobileViewVideoUrl: "/videos/work/wechipn/ScreenRecording_02-01-2026%2017-40-46_1.mp4"
+      mobileViewVideoUrl: "/videos/work/wechipn/mobile-view.mp4",
+      mobileViewVideoPoster: "/images/work/wechipn/mobile-view-poster.jpg"
     }
   },
   {

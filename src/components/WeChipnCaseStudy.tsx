@@ -45,6 +45,7 @@ interface WeChipnCaseStudyProps {
   problemSolutionVideoUrl?: string;
   /** When set, the Mobile View section shows this video instead of the static image */
   mobileViewVideoUrl?: string;
+  mobileViewVideoPoster?: string;
 }
 
 export default function WeChipnCaseStudy({
@@ -55,6 +56,7 @@ export default function WeChipnCaseStudy({
   videoUrl,
   problemSolutionVideoUrl,
   mobileViewVideoUrl,
+  mobileViewVideoPoster,
 }: WeChipnCaseStudyProps) {
   return (
     <article className="max-w-[1200px] mx-auto px-6 py-16 md:py-24">
@@ -275,6 +277,8 @@ export default function WeChipnCaseStudy({
             {mobileViewVideoUrl && !/loom\.com|youtube\.com|youtu\.be|vimeo\.com/.test(mobileViewVideoUrl) ? (
               <VideoWithFallback
                 src={mobileViewVideoUrl}
+                poster={mobileViewVideoPoster}
+                preload="metadata"
                 fallbackImageSrc={IMG.mobileView}
                 fallbackAlt="Mobile view — responsive, hamburger menu, 1-column cards"
                 className="absolute inset-0 w-full h-full object-contain box-content bg-black"
