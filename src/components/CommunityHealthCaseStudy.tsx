@@ -150,6 +150,57 @@ function ChtSolutionSectionWithMedia({ s }: { s: ChtSolutionItem }) {
   );
 }
 
+type ChtGalleryItem = { src: string; alt: string; caption: string; tag?: string };
+
+type ChtChapterBlock =
+  | { kind: 'gallery'; columns?: 2 | 3; aspect?: string; items: ChtGalleryItem[] }
+  | { kind: 'feature'; item: ChtSolutionItem }
+  | { kind: 'note'; content: string };
+
+type ChtChapter = { label: string; title: string; intro: string; blocks: ChtChapterBlock[] };
+
+function ChtChapterHeader({ label, title, intro }: { label: string; title: string; intro: string }) {
+  return (
+    <section className="cht-beta-header">
+      <ScrollReveal>
+        <p className="cht-outcomes-label">{label}</p>
+        <h2>{title}</h2>
+        <p className="cht-beta-intro">{intro}</p>
+      </ScrollReveal>
+    </section>
+  );
+}
+
+/** Screens side by side, each with a mono tag (version, direction) and a caption. One lightbox walks the whole set. */
+function ChtGallery({ columns = 2, aspect = '16 / 10', items }: { columns?: 2 | 3; aspect?: string; items: ChtGalleryItem[] }) {
+  const lightboxImages = items.map((item) => ({ src: item.src, alt: item.alt }));
+  return (
+    <div className={`cht-gallery cht-gallery-${columns}`}>
+      {items.map((item, i) => (
+        <ScrollReveal key={item.src} delay={(i % columns) * 80}>
+          <figure className="cht-gallery-item">
+            <LightboxTrigger images={lightboxImages} initialIndex={i}>
+              <div className="cht-gallery-media relative w-full overflow-hidden" style={{ aspectRatio: aspect }}>
+                <Image
+                  src={item.src}
+                  alt={item.alt}
+                  fill
+                  className="object-cover object-top"
+                  sizes={columns === 3 ? '(max-width: 768px) 100vw, 33vw' : '(max-width: 768px) 100vw, 50vw'}
+                />
+              </div>
+            </LightboxTrigger>
+            <figcaption>
+              {item.tag != null && <span className="cht-gallery-tag">{item.tag}</span>}
+              {item.caption}
+            </figcaption>
+          </figure>
+        </ScrollReveal>
+      ))}
+    </div>
+  );
+}
+
 export interface CaseStudySection {
   title?: string;
   content?: string;
@@ -183,7 +234,11 @@ interface CommunityHealthCaseStudyProps {
   /** Bold lead sentence for overview (Framer-style, ~30px) */
   overviewLead?: string;
   /** CHT HTML: Problem sections */
-  chtProblems?: { badge: string; title: string; content: string; image: string; imageAlt: string }[];
+  chtProblems?: { badge: string; title: string; content: string; image?: string; imageAlt?: string }[];
+  /** How the work was approached: principles shown as numbered cards after the problems */
+  chtApproach?: { label: string; title: string; intro?: string; items: { title: string; content: string }[] };
+  /** The work in order: each chapter has a header, then galleries, feature sections and notes */
+  chtChapters?: ChtChapter[];
   /** CHT HTML: Solution sections — `video` shows a browser-frame walkthrough; `image` is optional poster / still */
   chtSolutions?: {
     title: string;
@@ -195,6 +250,15 @@ interface CommunityHealthCaseStudyProps {
   }[];
   /** CHT HTML: Two-up screenshot pairs */
   chtTwoUpPairs?: { left: { src: string; alt: string; caption: string }; right: { src: string; alt: string; caption: string } }[];
+  /** Beta launch chapter: header, launch film, feature sections, team credit */
+  chtBeta?: {
+    label: string;
+    title: string;
+    intro: string;
+    film?: { src: string; poster?: string; caption?: string };
+    items: ChtSolutionItem[];
+    credit?: string;
+  };
   /** CHT HTML: Outcome/impact cards */
   chtOutcomes?: { title: string; content: string }[];
   /** CHT HTML: Tools used */
@@ -218,8 +282,11 @@ export default function CommunityHealthCaseStudy({
   browserFrameVideo,
   overviewLead,
   chtProblems,
+  chtApproach,
+  chtChapters,
   chtSolutions,
   chtTwoUpPairs,
+  chtBeta,
   chtOutcomes,
   chtTools,
 }: CommunityHealthCaseStudyProps) {
@@ -240,7 +307,7 @@ export default function CommunityHealthCaseStudy({
         <div className="cht-hero-image">
           <LightboxTrigger images={[{ src: sections[0].images[0].src, alt: sections[0].images[0].alt }]}>
             <div className="cht-hero-image-wrapper cursor-zoom-in">
-              <MacWindowFrame title="communityhealthmedia.com">
+              <MacWindowFrame title="communityhealth.media">
                 <Image
                   src={sections[0].images[0].src}
                   alt={sections[0].images[0].alt}
@@ -370,28 +437,68 @@ export default function CommunityHealthCaseStudy({
               <p>{p.content}</p>
             </div>
           </section>
-          <div className="cht-problem-image">
-            <div className="cht-browser-frame">
-              <div className="cht-browser-chrome">
-                <div className="cht-browser-dot" />
-                <div className="cht-browser-dot" />
-                <div className="cht-browser-dot" />
-                <div className="cht-browser-bar" />
-              </div>
-              <LightboxTrigger images={[{ src: p.image, alt: p.imageAlt }]}>
-                <div className="cht-browser-content cursor-zoom-in relative">
-                  <Image
-                    src={p.image}
-                    alt={p.imageAlt}
-                    width={CHT_IMG_W}
-                    height={CHT_IMG_H}
-                    className="w-full h-auto max-w-full object-contain object-top"
-                    sizes="100vw"
-                  />
+          {p.image != null && (
+            <div className="cht-problem-image">
+              <div className="cht-browser-frame">
+                <div className="cht-browser-chrome">
+                  <div className="cht-browser-dot" />
+                  <div className="cht-browser-dot" />
+                  <div className="cht-browser-dot" />
+                  <div className="cht-browser-bar" />
                 </div>
-              </LightboxTrigger>
+                <LightboxTrigger images={[{ src: p.image, alt: p.imageAlt ?? p.title }]}>
+                  <div className="cht-browser-content cursor-zoom-in relative">
+                    <Image
+                      src={p.image}
+                      alt={p.imageAlt ?? p.title}
+                      width={CHT_IMG_W}
+                      height={CHT_IMG_H}
+                      className="w-full h-auto max-w-full object-contain object-top"
+                      sizes="100vw"
+                    />
+                  </div>
+                </LightboxTrigger>
+              </div>
             </div>
-          </div>
+          )}
+        </div>
+      ))}
+
+      {/* Approach: the principles every chapter below leans on */}
+      {chtApproach != null && (
+        <section className="cht-approach">
+          <ScrollReveal>
+            <p className="cht-outcomes-label">{chtApproach.label}</p>
+            <h2>{chtApproach.title}</h2>
+            {chtApproach.intro != null && <p className="cht-beta-intro">{chtApproach.intro}</p>}
+          </ScrollReveal>
+          <ol className="cht-approach-grid">
+            {chtApproach.items.map((a, i) => (
+              <ScrollReveal key={a.title} delay={(i % 2) * 80}>
+                <li className="cht-approach-card">
+                  <span className="cht-gallery-tag">{String(i + 1).padStart(2, '0')}</span>
+                  <h4>{a.title}</h4>
+                  <p>{a.content}</p>
+                </li>
+              </ScrollReveal>
+            ))}
+          </ol>
+        </section>
+      )}
+
+      {/* Chapters: the work in the order it happened */}
+      {chtChapters?.map((c) => (
+        <div key={c.label}>
+          <ChtChapterHeader label={c.label} title={c.title} intro={c.intro} />
+          {c.blocks.map((b, i) =>
+            b.kind === 'gallery' ? (
+              <ChtGallery key={i} columns={b.columns} aspect={b.aspect} items={b.items} />
+            ) : b.kind === 'feature' ? (
+              <ChtSolutionSectionWithMedia key={i} s={b.item} />
+            ) : (
+              <p key={i} className="cht-beta-credit">{b.content}</p>
+            ),
+          )}
         </div>
       ))}
 
@@ -521,6 +628,26 @@ export default function CommunityHealthCaseStudy({
         </>
       )}
 
+      {/* Beta launch chapter */}
+      {chtBeta != null && (
+        <>
+          <ChtChapterHeader label={chtBeta.label} title={chtBeta.title} intro={chtBeta.intro} />
+          {chtBeta.film != null && (
+            <div className="cht-beta-film">
+              <video controls playsInline preload="metadata" poster={chtBeta.film.poster} aria-label={chtBeta.film.caption ?? chtBeta.title}>
+                <source src={chtBeta.film.src} type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+              {chtBeta.film.caption != null && <p className="cht-screenshot-caption">{chtBeta.film.caption}</p>}
+            </div>
+          )}
+          {chtBeta.items.map((s, i) => (
+            <ChtSolutionSectionWithMedia key={i} s={s} />
+          ))}
+          {chtBeta.credit != null && <p className="cht-beta-credit">{chtBeta.credit}</p>}
+        </>
+      )}
+
       {/* Outcomes */}
       {chtOutcomes != null && chtOutcomes.length > 0 && (
         <section className="cht-outcomes">
@@ -563,7 +690,7 @@ export default function CommunityHealthCaseStudy({
                   </div>
                 </LightboxTrigger>
                 <div className="cht-four-up-caption">
-                  <strong>{item.alt}</strong> — {item.caption}
+                  <strong>{item.alt}</strong>: {item.caption}
                 </div>
               </div>
             </ScrollReveal>

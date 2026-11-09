@@ -237,8 +237,11 @@ async function WorkContent({ params }: { params: Promise<{ slug: string }> }) {
           browserFrameVideo={study.browserFrameVideo}
           overviewLead={study.overviewLead}
           chtProblems={study.chtProblems}
+          chtApproach={study.chtApproach}
+          chtChapters={study.chtChapters}
           chtSolutions={study.chtSolutions}
           chtTwoUpPairs={study.chtTwoUpPairs}
+          chtBeta={study.chtBeta}
           chtOutcomes={study.chtOutcomes}
           chtTools={study.chtTools}
         />

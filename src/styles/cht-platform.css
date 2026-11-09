@@ -443,6 +443,149 @@
   letter-spacing: -0.16px;
 }
 
+/* Beta launch chapter */
+.cht-platform .cht-beta-header {
+  margin: 40px var(--cht-page-padding) 0;
+  padding: 100px 0 48px;
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.dark .cht-platform .cht-beta-header {
+  border-top-color: rgba(255, 255, 255, 0.1);
+}
+
+.cht-platform .cht-beta-header h2 {
+  font-size: clamp(36px, 4.5vw, 60px);
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  line-height: 1.05;
+  max-width: 820px;
+}
+
+.cht-platform .cht-beta-intro {
+  margin-top: 24px;
+  max-width: 720px;
+  font-size: 20px;
+  color: var(--cht-gray);
+  line-height: 1.5;
+  letter-spacing: -0.2px;
+}
+
+.cht-platform .cht-beta-film {
+  padding: 0 var(--cht-page-padding) 40px;
+}
+
+.cht-platform .cht-beta-film video {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: 12px;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  background: #fff;
+}
+
+.cht-platform .cht-beta-credit {
+  padding: 0 var(--cht-page-padding) 40px;
+  max-width: calc(820px + 2 * var(--cht-page-padding));
+  font-size: 16px;
+  color: var(--cht-gray-dim);
+  line-height: 1.5;
+  letter-spacing: -0.16px;
+}
+
+/* Chapter galleries: versions and directions side by side */
+.cht-platform .cht-gallery {
+  padding: 0 var(--cht-page-padding) 64px;
+  display: grid;
+  gap: 32px 24px;
+}
+
+.cht-platform .cht-gallery-2 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.cht-platform .cht-gallery-3 {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.cht-platform .cht-gallery-media {
+  border-radius: 12px;
+  background: var(--cht-bg-elevated);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.dark .cht-platform .cht-gallery-media {
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.cht-platform .cht-gallery-item figcaption {
+  margin-top: 14px;
+  font-size: 15px;
+  color: var(--cht-gray);
+  line-height: 1.45;
+  letter-spacing: -0.15px;
+  text-wrap: pretty;
+}
+
+.cht-platform .cht-gallery-tag {
+  display: block;
+  margin-bottom: 6px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--cht-gray-dim);
+}
+
+/* Approach: numbered principle cards */
+.cht-platform .cht-approach {
+  margin: 40px var(--cht-page-padding) 0;
+  padding: 100px 0 40px;
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.dark .cht-platform .cht-approach {
+  border-top-color: rgba(255, 255, 255, 0.1);
+}
+
+.cht-platform .cht-approach h2 {
+  font-size: clamp(36px, 4.5vw, 60px);
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  line-height: 1.05;
+  max-width: 820px;
+}
+
+.cht-platform .cht-approach-grid {
+  margin-top: 48px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+  list-style: none;
+  padding: 0;
+}
+
+.cht-platform .cht-approach-card {
+  height: 100%;
+  background: var(--cht-bg-elevated);
+  border-radius: 16px;
+  padding: 32px 28px;
+}
+
+.cht-platform .cht-approach-card h4 {
+  font-size: 20px;
+  font-weight: 500;
+  letter-spacing: -0.2px;
+  margin-bottom: 8px;
+}
+
+.cht-platform .cht-approach-card p {
+  font-size: 16px;
+  color: var(--cht-gray);
+  line-height: 1.5;
+  letter-spacing: -0.16px;
+}
+
 /* Outcomes (HTML) */
 .cht-platform .cht-outcomes {
   padding: 80px var(--cht-page-padding) 120px;
@@ -558,6 +701,9 @@
   .cht-platform .cht-outcomes-grid {
     grid-template-columns: repeat(2, 1fr);
   }
+  .cht-platform .cht-gallery-3 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 }
 
 /* Mobile (768px) */
@@ -630,6 +776,37 @@
   .cht-platform .cht-two-up {
     grid-template-columns: 1fr;
     padding-bottom: 60px;
+  }
+  .cht-platform .cht-beta-header {
+    margin-top: 24px;
+    padding: 56px 0 32px;
+  }
+  .cht-platform .cht-beta-header h2 {
+    font-size: clamp(28px, 7vw, 40px);
+  }
+  .cht-platform .cht-beta-intro {
+    font-size: 18px;
+  }
+  .cht-platform .cht-gallery-2,
+  .cht-platform .cht-gallery-3 {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 28px;
+    padding-bottom: 48px;
+  }
+  .cht-platform .cht-approach {
+    margin-top: 24px;
+    padding: 56px 0 24px;
+  }
+  .cht-platform .cht-approach h2 {
+    font-size: clamp(28px, 7vw, 40px);
+  }
+  .cht-platform .cht-approach-grid {
+    grid-template-columns: minmax(0, 1fr);
+    margin-top: 32px;
+    gap: 16px;
+  }
+  .cht-platform .cht-approach-card {
+    padding: 24px 20px;
   }
   .cht-platform .cht-outcomes {
     padding: 48px var(--cht-page-padding) 80px;

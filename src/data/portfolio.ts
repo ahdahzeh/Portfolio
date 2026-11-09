@@ -92,7 +92,20 @@ export interface WorkItem {
     /** CHT overview: bold lead sentence (Framer-style, ~30px) */
     overviewLead?: string;
     /** CHT HTML: Problem sections (badge, title, content, image) */
-    chtProblems?: { badge: string; title: string; content: string; image: string; imageAlt: string }[];
+    chtProblems?: { badge: string; title: string; content: string; image?: string; imageAlt?: string }[];
+    /** CHT: approach principles, shown as numbered cards after the problems */
+    chtApproach?: { label: string; title: string; intro?: string; items: { title: string; content: string }[] };
+    /** CHT: the work in order. Each chapter is a header followed by galleries, feature sections and notes */
+    chtChapters?: {
+      label: string;
+      title: string;
+      intro: string;
+      blocks: (
+        | { kind: 'gallery'; columns?: 2 | 3; aspect?: string; items: { src: string; alt: string; caption: string; tag?: string }[] }
+        | { kind: 'feature'; item: { title: string; content: string; imageAlt: string; image?: string; video?: string } }
+        | { kind: 'note'; content: string }
+      )[];
+    }[];
     /** CHT HTML: Solution sections — use `video` for a browser-frame walkthrough, or `image` for a still */
     chtSolutions?: {
       title: string;
@@ -106,6 +119,15 @@ export interface WorkItem {
     }[];
     /** CHT HTML: Two-up screenshot pairs */
     chtTwoUpPairs?: { left: { src: string; alt: string; caption: string }; right: { src: string; alt: string; caption: string } }[];
+    /** CHT: beta launch chapter (header, launch film, feature sections, team credit) */
+    chtBeta?: {
+      label: string;
+      title: string;
+      intro: string;
+      film?: { src: string; poster?: string; caption?: string };
+      items: { title: string; content: string; imageAlt: string; image?: string; video?: string }[];
+      credit?: string;
+    };
     /** CHT HTML: Outcome/impact cards */
     chtOutcomes?: { title: string; content: string }[];
     /** CHT HTML: Tools used (e.g. Figma, Cursor) */
@@ -165,81 +187,207 @@ I prototyped four distinct card system directions—Editorial Cards, Data-Forwar
     role: "Product Designer",
     period: "2026",
     description: "Product design for community health platform",
-    image: "/images/work/cht.png",
-    coverVideo: "/videos/work/community-health-media/site-walkthrough.mp4",
+    image: "/images/work/community-health-media/site-walkthrough-2026-poster.jpg",
+    coverVideo: "/videos/work/community-health-media/site-walkthrough-2026-card.mp4",
     color: "#ea580c",
     wip: false,
-    link: "https://testapp.communityhealth.media/home",
+    link: "https://communityhealth.media/",
     caseStudy: {
-      title: "Community Health\u00a0Media",
+      title: "Community Health Media",
       subtitle: "Designing a digital platform that transforms how pharma educates and engages healthcare professionals.",
       roleDisplay: "Product Design\nDesign Engineering",
-      timeline: "Dec 2025 – Mar 2026",
+      timeline: "Dec 2025 – Present",
       team: "AO, DE",
       problemStatement: "Designing the future of healthcare education with no roadmap to follow",
       /** Short intro under the hero - matches HTML reference */
-      heroIntro: "Community Health Technologies is redefining how pharma reaches healthcare audiences. I joined as the sole designer and built the platform from the ground up. I designed every screen in Figma and shipped the web app with Cursor, React, Vite, and AWS behind the API. Partnering with one engineer, we replaced a fully analog workflow of emails and Zoom calls with an automated, data-driven content platform.",
+      heroIntro: "Community Health Technologies is redefining how pharma reaches healthcare audiences. I joined as the sole designer in December 2025, when the product was an idea and the public site was a WordPress video blog. Over eleven months I took it from wireframes to a revised brand, a public site rebuilt on WordPress, and a web app for clinicians, designing in Figma first and then more and more in code alongside the engineers. Both shipped in October 2026: the new communityhealth.media, and a Friends & Family beta where HCPs register for live sessions, join, give feedback and get paid in one place.",
       /** Bold lead sentence for overview (Framer-style) */
       overviewLead: "Community Health Technologies is redefining how pharma reaches healthcare audiences.",
-      narrative: `At Community Health Media (CHT), I work as a Product Designer on the HCP (Healthcare Professional) Content Platform, a digital product that helps connect healthcare providers and communities with vital health information and resources.
+      narrative: `At Community Health Media (CHT), I am the product designer on the HCP Content Platform: a public site for oncology education and a web app where healthcare professionals join live sessions, answer surveys and get paid for their time.
 
-The platform centers on the idea of innovating the next frontier of health care through information. It offers a content hub with featured videos, biomarker playlists (e.g., HER2+, HR+, HIV+), disease-specific sections (Breast Cancer, Triple Negative, High Risk), and curated resources. Healthcare professionals can browse webinars, surveys, and educational content through a clear, consistent interface.
-
-My work spans the end-to-end experience: the main content hub and landing experience, topic-specific content pages (e.g., Breast Cancer, HIV+), webinar and survey catalogues with detail and watch views, and administrative tools including an analytics dashboard (page views, active users, engagement rate), content upload flows, webinar scheduling, and survey creation. I established a shared design system with card-based layouts, clear typography, and a consistent top bar and sidebar so HCPs can move from discovery to deeper learning without friction.`,
+The work ran from wireframes in January 2026 to a first coded release in the spring, a brand revision and four builds of the homepage in the summer, a WordPress rebuild of communityhealth.media, and a Friends & Family beta of the app in October 2026.`,
       sections: [
         {
           title: "Overview",
           content: "",
           images: [
             {
-              src: "/images/work/community-health-media/chm-homepage-hero.png",
-              alt: "Community Health Technologies — marketing homepage hero and featured video section",
+              src: "/images/work/community-health-media/site-hero-2026.webp",
+              alt: "The communityhealth.media homepage: a gallery of oncology video tiles under the line Medicine Moves Through Shared Knowledge",
               caption: "",
             },
           ],
         },
       ],
       images: [],
-      fourUpItems: [
-        { src: "/images/work/community-health-media/fourup-featured-videos-crop20l.png", alt: "Featured Videos", caption: "Curated content series for HCPs organized by specialty", imageScale: 1.05 },
-        { src: "/images/work/community-health-media/fourup-conversations-playlist.png", alt: "CHT Conversations", caption: "Live and recorded webinars with leading physicians" },
-        { src: "/images/work/community-health-media/fourup-content-library-catalogue.png", alt: "Content Library", caption: "Topic and biomarker-based paths—how HCPs find structured education in the product" },
-        { src: "/images/work/community-health-media/fourup-data-earnings-v3.png", alt: "Data & Reporting", caption: "Analytics dashboard tracking engagement metrics" },
-      ],
       industry: "Healthcare &\nPharma Tech",
       /** Video walkthrough for browser frame section (replaces hero image) */
-      browserFrameVideo: "/videos/work/community-health-media/site-walkthrough.mp4",
+      browserFrameVideo: "/videos/work/community-health-media/site-walkthrough-2026.mp4",
       chtProblems: [
-        { badge: "Problem 01", title: "No precedent for this platform", content: "There was no real precedent for a platform that lets doctors and healthcare professionals consume medical education the way CHT envisioned. Traditional CME platforms and conference tools don't match how HCPs engage with content in daily workflows, so I designed the experience from first principles and translated product strategy into clear, usable screens.", image: "/images/work/community-health-media/fourup-content-library-catalogue.png", imageAlt: "In-product topic and biomarker content experience" },
-        { badge: "Problem 02", title: "The business ran on email and Zoom", content: "Before the platform, every interaction between pharma companies, HCPs, and content was coordinated manually through email threads, calendar invites, and Zoom recordings. There was no data layer, no analytics, and no scalable way to understand performance. I shaped a system that could host content, automate the core workflows, and make engagement measurable.", image: "/images/work/community-health-media/cht-problem-02-education-landing.png", imageAlt: "Clinical education landing — catalogue, search, and workflow-focused messaging" },
+        { badge: "Problem 01", title: "A video blog, not a platform", content: "communityhealth.media ran on an off-the-shelf WordPress video theme. Hundreds of expert sessions were filed under 44 overlapping categories (her2 and p-her2, hr and p-hr), so the same topic lived in two places and nothing told a clinician where to start. There was no real precedent to copy either: CME portals and conference tools don't match how HCPs fit learning into a working day.", image: "/images/work/community-health-media/legacy-site.webp", imageAlt: "The previous communityhealth.media homepage on a WordPress video theme, May 2026" },
+        { badge: "Problem 02", title: "The business ran on email and Zoom", content: "Every interaction between pharma partners, HCPs and content was coordinated by hand: email threads, calendar invites, Zoom links, and honoraria paid through Bill.com. There was no data layer and no way to see what was working. The product had to host the content, run the live-session loop end to end, and make engagement measurable." },
       ],
-      chtSolutions: [
-        { title: "Designed for how doctors actually find information", content: "Instead of guessing at information architecture, I designed around real HCP behaviors. Doctors don't browse; they search by biomarker, condition, and treatment. I organized the platform around biomarker playlists and curated series so physicians can quickly find what they need, the same way they think about patient care.", image: "/images/work/community-health-media/cht-solution-01-webinars.png", imageAlt: "Webinars page — upcoming live sessions with registration" },
+      chtApproach: {
+        label: "Approach",
+        title: "How I worked",
+        intro: "There was no product to benchmark against, so the method mattered more than any single screen. Four rules held from the first wireframe to launch.",
+        items: [
+          { title: "Organize around clinical questions", content: "Clinicians look for a disease state first, then a subtype, then a trial. Every surface follows that order, from the homepage to the library filters: breast cancer, then HER2+, HR+ or triple negative, then DESTINY-Breast09." },
+          { title: "One recording, three formats", content: "CHM records one expert conversation and publishes it as video, podcast and editorial. The design treats those as one piece of content with three ways in, not three separate libraries." },
+          { title: "Explore wide in real code, then converge", content: "Every big decision got several working versions before one was picked: three brand directions, four builds of the homepage, three ways to render the hero, two layouts for the faculty profile. Building them in code meant stakeholders reacted to something they could click." },
+          { title: "One design system across both products", content: "The WordPress theme and the React app read the same design tokens, copied across unchanged, so the public site and the signed-in product can't drift apart." },
+        ],
+      },
+      chtChapters: [
         {
-          title: "Built a visual system that scales",
-          content: "To make the product feel credible and easy to use, I defined the visual system while the UI was being built. The result is a clean, clinical aesthetic that balances authority with clarity, anchored by a strong navigation and a content-forward layout that works across dashboards, libraries, and detail views.",
-          imageAlt: "Brand identity walkthrough",
-          image: "/images/work/community-health-media/screen-1.png",
-          video: "/videos/work/community-health-media/brand-identity-walkthrough.mp4",
+          label: "Chapter 01 · Dec 2025 – Jan 2026",
+          title: "Wireframes before anything had a name",
+          intro: "I started with structure, not style: what an HCP needs to find, and in what order. Wireframes 2.0 laid out the homepage as a run of jobs (browse by treatment type, watch, register for the next live webinar with its faculty, find resources). The first high-fidelity pass turned each disease into a page of biomarker playlists, HER2+, HR+, triple negative, HER2-low and high risk, the idea the whole library is still built on.",
+          blocks: [
+            {
+              kind: "gallery",
+              items: [
+                { src: "/images/work/community-health-media/wf-home.webp", alt: "Grayscale homepage wireframe with a hero, treatment type carousel and video carousel", tag: "Wireframes 2.0 · Jan 2026", caption: "The homepage as a sequence of jobs: discover by treatment type, watch, then register for what is live." },
+                { src: "/images/work/community-health-media/hifi-disease.webp", alt: "High-fidelity breast cancer page with featured video, webinar and biomarker playlists", tag: "High fidelity · Jan 2026", caption: "Breast cancer as biomarker playlists, the first version of browsing by disease state." },
+              ],
+            },
+          ],
         },
         {
-          title: "Turned manual workflows into a measurable platform",
-          content:
-            "Behind the HCP-facing experience is an internal admin dashboard where CHT runs day-to-day operations: content libraries, webinar and survey programs, uploads, and scheduling. I designed these tools so admins get a single, consistent surface for publishing and governance—backed by analytics on views, active users, and engagement instead of one-off spreadsheets and inbox threads.",
-          imageAlt: "Admin dashboard and operations walkthrough",
-          video: "/videos/work/community-health-media/admin-dashboard-walkthrough.mp4",
+          label: "Chapter 02 · Apr – Jul 2026",
+          title: "Version one, in code",
+          intro: "Engineering built the first release from the Figma files, and in April I moved into the codebase myself to close the gap between design and build: syncing screens to the reviewed designs, fixing dark-mode contrast, evening out the content cards and moving search into the header. Living with the real product exposed the next problem. Orange was carrying the logo, every button, payments, live states and the warm moments all at once, so nothing stood out. In July I rebuilt the color layer as design tokens, with teal as the primary and orange as a sparing accent, which set up the brand work that followed.",
+          blocks: [
+            {
+              kind: "gallery",
+              columns: 3,
+              items: [
+                { src: "/images/work/community-health-media/v1-home.webp", alt: "First public homepage with a full-bleed hero and featured videos", tag: "v1 · Apr 2026", caption: "The first public homepage: a full-bleed hero and a strip of featured videos." },
+                { src: "/images/work/community-health-media/v1-catalog.webp", alt: "First catalog page with a featured session and tag and doctor filters", tag: "v1 · Apr 2026", caption: "The catalog led with one featured session, filtered by tag and by doctor." },
+                { src: "/images/work/community-health-media/v1-app-explore.webp", alt: "First in-app Explore page with best match, live, video and survey tabs", tag: "v1 · Apr 2026", caption: "In the app, Explore sorted opportunities by best match, live, video and survey." },
+              ],
+            },
+          ],
+        },
+        {
+          label: "Chapter 03 · Aug 2026",
+          title: "Three brand directions, then a revision",
+          intro: "Before redesigning the site, CHM needed a sharper brand. I explored three directions, each with its own palette, type and motion: ATLAS framed CHM as an evidence layer, SIGNAL as a live broadcast network, and VITAL as a living network of experts. All three were set aside for a revision of the existing identity. The logo and typeface stay, and the palette tightens to four colors on one ground, each with exactly one job. Orange left the core palette, and each of its old jobs got a clearer owner.",
+          blocks: [
+            {
+              kind: "gallery",
+              columns: 3,
+              aspect: "40 / 27",
+              items: [
+                { src: "/images/work/community-health-media/brand-atlas.webp", alt: "ATLAS brand direction: knowledge graph, specification sheet and Klein blue palette", tag: "Direction 01 · ATLAS", caption: "The evidence layer: knowledge graphs, spec sheets and an academic serif." },
+                { src: "/images/work/community-health-media/brand-signal.webp", alt: "SIGNAL brand direction: dark broadcast look with an on-air badge and phosphor green", tag: "Direction 02 · SIGNAL", caption: "A broadcast network: on-air badges, waveforms and timecodes." },
+                { src: "/images/work/community-health-media/brand-vital.webp", alt: "VITAL brand direction: fuchsia network of expert nodes on cream", tag: "Direction 03 · VITAL", caption: "A living network: experts as nodes, warm and saturated." },
+              ],
+            },
+            {
+              kind: "gallery",
+              columns: 3,
+              aspect: "1600 / 1076",
+              items: [
+                { src: "/images/work/community-health-media/brand-guide-colors.webp", alt: "Brand guide page showing four colors on one ground", tag: "Brand guide v2", caption: "Knowledge Blue, Deep Expertise, Amber and Precision Ink on Base White." },
+                { src: "/images/work/community-health-media/brand-guide-orange.webp", alt: "Brand guide page reassigning each job orange used to do", tag: "Brand guide v2", caption: "Every job orange was doing, handed to a clearer owner." },
+                { src: "/images/work/community-health-media/brand-guide-wild.webp", alt: "Brand guide page applying the palette to thumbnails, a poster, the app and avatars", tag: "Brand guide v2", caption: "The same system on thumbnails, posters, the app and avatars." },
+              ],
+            },
+          ],
+        },
+        {
+          label: "Chapter 04 · Aug – Sep 2026",
+          title: "Four builds of one homepage",
+          intro: "With the brand settled, I designed the new public site directly in code so each direction could be clicked through end to end. I built the homepage four times, from a light editorial shelf to a dark build, then tested section orders A, B and C and a bento variant inside the app before order C became the homepage. The hero went through the same loop: a CSS 3D room, a Canvas 2D version and a WebGL cylinder, ending in the gallery of video tiles that ships today.",
+          blocks: [
+            {
+              kind: "gallery",
+              columns: 3,
+              items: [
+                { src: "/images/work/community-health-media/dir-shelf.webp", alt: "Shelf homepage build with Chillax headline and stacked session cards", tag: "Build · Shelf", caption: "Chillax display type, stacked session cards and a tab for each tumor track." },
+                { src: "/images/work/community-health-media/dir-editorial-light.webp", alt: "Light editorial homepage build with a large headline over faded session tiles", tag: "Build · Editorial, light", caption: "Large, tight type over a field of session tiles." },
+                { src: "/images/work/community-health-media/dir-editorial-dark.webp", alt: "Dark editorial homepage build with a blue primary button", tag: "Build · Editorial, dark", caption: "The same structure in dark mode, with one electric blue action." },
+              ],
+            },
+            {
+              kind: "gallery",
+              columns: 3,
+              items: [
+                { src: "/images/work/community-health-media/hero-proto-css.webp", alt: "Hero prototype with session cards angled in a CSS 3D room", tag: "Hero · CSS 3D", caption: "Session and disease-state cards angled around the viewer with CSS transforms." },
+                { src: "/images/work/community-health-media/hero-proto-canvas.webp", alt: "Hero prototype redrawn on canvas with flat session cards", tag: "Hero · Canvas 2D", caption: "The same room redrawn on canvas, flatter and easier to keep smooth." },
+                { src: "/images/work/community-health-media/site-hero-2026.webp", alt: "Shipped hero: a curved gallery of video tiles", tag: "Hero · Shipped", caption: "The live gallery: video tiles in a curved room that pauses under the pointer." },
+              ],
+            },
+          ],
+        },
+        {
+          label: "Chapter 05 · Sep – Oct 2026",
+          title: "Moving the public site onto WordPress",
+          intro: "The new design first lived in the React app, but CHM's content already lived in WordPress: more than 500 posts, 44 categories and dozens of KOL series, with a webhook feeding the app's content hub. Rendering the public site from WordPress removed a layer instead of adding one, and the content team kept publishing the way they already did. I wrote the launch brief, ported the design into a custom theme, and split the build into four parallel workstreams (homepage, content library, KOL network and site pages) that I reviewed and merged.",
+          blocks: [
+            {
+              kind: "gallery",
+              items: [
+                { src: "/images/work/community-health-media/wp-formats.webp", alt: "Homepage formats row with video, podcast and editorial cards above featured content", tag: "Homepage", caption: "One recording, three formats: the content library, the podcast network, and news and insights." },
+                { src: "/images/work/community-health-media/wp-disease.webp", alt: "Explore by disease state grid and This Moment in Medicine episodes", tag: "Homepage", caption: "Explore by disease state, then This Moment in Medicine, the live episode series." },
+                { src: "/images/work/community-health-media/wp-kols-row.webp", alt: "Meet the experts row with four faculty cutout portraits", tag: "Homepage", caption: "Meet the experts: the KOL row, rebuilt with cutout portraits." },
+                { src: "/images/work/community-health-media/wp-podcasts.webp", alt: "CHM podcast network with four show cards", tag: "Homepage", caption: "The podcast network: four shows, each with its own color." },
+                { src: "/images/work/community-health-media/wp-catalog.webp", alt: "Content library with a featured episode, search, format filters and sort", tag: "Content library", caption: "Search, format filters and sort across every session, podcast and article." },
+                { src: "/images/work/community-health-media/wp-kol-directory.webp", alt: "KOL network directory with search by name, state and institution", tag: "KOL network", caption: "A faculty directory you can search by name, state and institution." },
+              ],
+            },
+            { kind: "note", content: "Under the hood, the theme reads the app's design tokens unchanged and renders every page on the server, so it works with JavaScript off. Every post kept its URL, categories moved under /catalog/ with 301 redirects from the old paths, and no page scrolls sideways on a 375px phone. It went live on communityhealth.media in October 2026." },
+          ],
+        },
+        {
+          label: "Chapter 06 · Sep – Oct 2026",
+          title: "The app clinicians sign in to",
+          intro: "The signed-in product moved to the same design language. I rebuilt the dashboard around what an HCP needs next: the next live session, earnings and required surveys. The content library follows the public site's disease-state structure, the KOL directory leads with large portraits and bios, and each podcast has its own channel page. For the internal team I also designed admin tools, including a post-production studio that cuts clips, thumbnails and social posts from each recording.",
+          blocks: [
+            {
+              kind: "gallery",
+              items: [
+                { src: "/images/work/community-health-media/beta-dashboard.webp", alt: "Dashboard", tag: "Dashboard", caption: "The next live session, earnings and required surveys at a glance." },
+                { src: "/images/work/community-health-media/beta-library.webp", alt: "Content Library", tag: "Content library", caption: "Browse by disease state: TNBC, HER2+ and more." },
+                { src: "/images/work/community-health-media/beta-kol-network.webp", alt: "KOL Network", tag: "KOL network", caption: "Leading oncology faculty, each with a profile and their sessions." },
+                { src: "/images/work/community-health-media/beta-podcasts.webp", alt: "Podcasts", tag: "Podcasts", caption: "Four shows in one network, with the latest episodes up front." },
+              ],
+            },
+          ],
         },
       ],
-      chtTwoUpPairs: [
-        { left: { src: "/images/work/community-health-media/cht-marketing-homepage-hero.png", alt: "Marketing homepage", caption: "Full-width homepage — hero, navigation, and primary messaging" }, right: { src: "/images/work/community-health-media/cht-two-up-featured-videos.png", alt: "Featured content", caption: "Featured video cards and content discovery" } },
-        { left: { src: "/images/work/community-health-media/cht-two-up-about-us.png", alt: "About page", caption: "About page: company mission and team" }, right: { src: "/images/work/community-health-media/cht-two-up-contact.png", alt: "Contact page", caption: "Contact page: streamlined inquiry flow" } },
-      ],
+      chtBeta: {
+        label: "Chapter 07 · Launch · October 2026",
+        title: "From prototype to a live beta",
+        intro: "The Friends & Family beta put the platform in front of practicing clinicians for the first time. Its first session tested the whole loop: sign in, register, join the webinar, answer the survey, and confirm payout details. After launch I redesigned the two steps between finishing a session and getting paid.",
+        film: {
+          src: "/videos/work/community-health-media/chm-beta-walkthrough.mp4",
+          poster: "/images/work/community-health-media/chm-beta-walkthrough-poster.jpg",
+          caption: "The walkthrough I made for invited HCPs: sign-in to payout in two minutes, shown with test data.",
+        },
+        items: [
+          {
+            title: "Post-event steps as one guided path",
+            content: "Finishing a session used to mean a requirements checklist, a survey, and a separate Payments page to find on your own. I turned it into a four-step map (attend, survey, payment info, done) at the top of the session page that opens a drawer wizard. Teal marks where you are, orange marks what needs attention, and the step labels stay readable on a phone. Survey answers save as a draft, so closing the drawer never loses work.",
+            imageAlt: "Post-event steps: survey, payment info, and confirmation in the drawer wizard",
+            video: "/videos/work/community-health-media/beta-post-event-steps.mp4",
+          },
+          {
+            title: "Payout setup as one bank card",
+            content: "Getting paid used to start with W-9 and payout forms on their own page. Now payout setup is a single card inside the flow, with 1-2-3 guidance for connecting a bank through Stripe. Once connected, HCPs see a masked card with the account holder, method, and last four digits, and confirm it in one click. The platform keeps only a reference and the masked value, never the account number.",
+            imageAlt: "Confirm payment information step with the connected bank card",
+            image: "/images/work/community-health-media/beta-payout-card.webp",
+          },
+        ],
+        credit: "Alongside these, the engineering team shipped an honorarium pipeline that lets finance release or hold payouts, an admin survey workspace, role-based admin access, a beta feedback survey, and beta terms and invitations.",
+      },
       chtOutcomes: [
-        { title: "Fully Automated", content: "Replaced an entirely analog process of emails, Zoom calls, and manual coordination with a centralized digital platform." },
-        { title: "Data-Driven Insights", content: "For the first time, CHT can see how HCPs engage with content, which enables smarter decisions about what to produce and promote." },
-        { title: "New Product Category", content: "Created a new kind of platform for healthcare education, one that didn't exist before in the pharma marketing space." },
+        { title: "Live with clinicians", content: "The Friends & Family beta opened on October 20, 2026. Clinicians register, join, give feedback and get paid without leaving the platform." },
+        { title: "Payouts without the paperwork", content: "Honoraria moved from Bill.com and email follow-ups to in-app Stripe payouts, with a pipeline finance can filter, release or hold." },
+        { title: "A public site the team can run", content: "communityhealth.media now renders from WordPress, where the content already lived, with every post at its old URL and the app's design system carried over unchanged." },
       ],
-      chtTools: ["Figma", "Cursor", "Vite", "React", "Tailwind", "Supabase", "AWS"],
+      chtTools: ["Figma", "Cursor", "Claude Code", "React", "Vite", "Tailwind", "WordPress", "PHP", "Supabase", "AWS", "Stripe", "Zoom"],
     }
   },
   {
