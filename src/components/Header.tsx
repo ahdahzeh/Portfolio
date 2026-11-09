@@ -12,7 +12,7 @@ const navLinks = [
   ...(socialLinks.linkedin ? [{ href: socialLinks.linkedin, label: 'LinkedIn', external: true }] : []),
   ...(socialLinks.instagram ? [{ href: socialLinks.instagram, label: 'Instagram', external: true }] : []),
   ...(socialLinks.tiktok ? [{ href: socialLinks.tiktok, label: 'TikTok', external: true }] : []),
-  { href: '/Adaze_Oviawe_Resume.pdf', label: 'Resume', external: true },
+  ...(process.env.NEXT_PUBLIC_HAS_RESUME ? [{ href: '/Adaze_Oviawe_Resume.pdf', label: 'Resume', external: true }] : []),
 ];
 
 export default function Header() {
